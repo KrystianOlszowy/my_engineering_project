@@ -57,16 +57,58 @@
 \clearpage
 
 \section{Wstęp}
-Być może punkty nie powinny być wyszczególnione?
-\subsection{Sposoby sterowania telewizorem}
-Ogólny wstęp o sposobach sterowania telewizorem i sygnalizacja kolejnych podpunktów.
-\subsection{Płytki rozwojowe w szybkim prototypowaniu}
-Krótka syganlizacja słuszności wyboru sposobu budowy prototypu.
+\subsection{Telewizor i jego sposoby sterowania}
+{Współcześnie nie wyborażamy sobie domu, w którym nie ma telewizora. Telewizory, będące 
+centralnym elementem więszkości domostw, przekształciły się z tradycyjnych urządzeń 
+telewizyjnych w zaawansowane systemy multimedialne, oferujące nie tylko dostęp do programów telewizyjnych,
+ale również do różnorodnych treści wideo, gier, czy nawet aplikacji internetowych. 
+Ich powszechność we współczesnym społeczeństwie i nas świecie, a także mnogość producentów i ich pomysłów 
+sprawia, że wyodrębniło się wiele technologii i sposobów sterowania nimi.
+
+W wielu gospodarstwach domowych znajaduje się wciąż telewizor sterwany za pomocą podczerwieni i jest
+ to nadal najpopularniejszy sposób sterowania tymi urzadzeniami. Rozwiązania takie jak sterowanie poprzez WiFi, czy Bluetooth
+ mimo, że są już pewien czas na rynku jeszcze nie goszczą u wszystkich użytkowników, zazwyczaj z powodu ceny
+ nowego urządzenia multimedialnego lub zwykłego braku potrzeby wymiany telewizora. Czy jest jednak sposób aby
+móc korzystać z wygody nowych rozwiązań komunikacji bezprzewodowej, które będzie dostępne zawsze w naszej kieszeni 
+dla urządzeń telewizyjnych nie posiadających nowoczesnych technologii bezprzewodowych?
+}
+
 \subsection{Smartfon i jego powszechność}
-Kolejna sygnalizacja słuszności wyboru, tym urządzenia służącego za pilota.
-Opis jak jest powszechny i prosty w użyciu a tym samym aplikacja jest odpowiednim wyborem.
-\subsection{Metody komunikacji aplikacji mobilnych z urządzeniami wbudowanymi}
-Bardzo krótkie wspomnienie o dostępnych rozwiązaniach i deliaktne wskazanie zalet BLE.
+{W dynamicznie rozwijającym się świecie, smartfony stały się nieodłącznym elementem życia społecznego, 
+definiując nowy wymiar komunikacji, rozrywki i funkcji użytkowych. 
+W ciągu ostatnich kilku dekad, powszechność smartfonów osiągnęła niespotykany poziom, 
+stając się nie tylko przedmiotem codziennego użytku, lecz również nieodzownym 
+narzędziem wspierającym wszystkie aspekty naszego życia.
+
+Obecnie smartfony są nie tylko urządzeniami komunikacyjnymi, ale także mobilnymi centrami multimedialnymi,
+ umożliwiającymi dostęp do rozmaitych treści, od filmów i muzyki po aplikacje społecznościowe. 
+ Ich interaktywne interfejsy i intuicyjne systemy operacyjne sprawiają, że stają się łatwe w obsłudze nawet dla osób starszych, 
+ które powoli przekonują się do współczesnej wersji telefonów komórkowych.
+
+ Z uwagi na wyżej wymienione zalety samrtfonów naturalnym pomysłem wydaje się także użycie ich do 
+ sterowania urządzeniami multidemialnymi, w tym także telewizorem. Właściwie wszystkie współczesne smartfony posiadają 
+ wcześniej wspomniane nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth jednak nie uświdczymy
+ zbyt często już w nich obsługi podczerwieni. Aby skomunikować więc przy ich pomocy smartfon
+ z starszym telewizorem powstaje potrzeba dołączenia pośrednika tłumaczącego interakcję 
+ użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.}
+
+\subsection{Proponowane rozwiązanie}
+{Sposobem na rozwiązanie problemu pośrednika w komunikacji aplikacji mobilnej z telewizorem
+może być urządzenie pośredniczące oparte na mikrokontrolerze i odpowiednich podzespołach 
+realizujących komunikację oraz interakcję z użytkownikiem. Dla systmów wbudownych, a zwłaszcza
+dla systemu służcego jak pilot odpowiednią technologią przesyłania danych będzie Bluetooth Low Energy,
+która zapewni niższe zużycie energii oraz możliwość skorzystania z architektury komunikacji klient-serwer.
+ Takie rozwiązanie będzie maksymalnie elastyczne w projektowaniu jego możliwości, zapewniając jednak modularność
+oraz dużą dostępność komponentów na rynku, czy łatwość w budowie pełnego systemu sterującego.
+
+Niniejsza praca skupi się zaproponowaniu rozwiązania sterowania telewizorem z poziomu 
+smartfona dzięki aplikacji Fulttera, komunikującej się z systemem pośredniczączym za pomocą 
+Bluetooth Low Energy, który to system zostanie oparty o płytkę ESP32 wraz odpowiednimi komponentami,
+mający za zadanie wysyłać sygnały podczerwone do telewizora. 
+Omówione zostaną podobne dostępne rozwiązania na rynku, budowa systemu z
+ mikrokontrolerem i jego oprogramowanie, a także projekt i oprogramowanie aplikacji
+mobilnej służącej jako pilot uniwersalny, aby końcowo przedstawić przykładowe działanie 
+aplikacji oraz możliwe rozbudowanie możliwości systemu.}
 
 \clearpage
 \section{Porównanie zaprojektowanego systemu z dostępnymi rozwiązaniami}
