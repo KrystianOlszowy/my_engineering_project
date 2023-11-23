@@ -171,8 +171,7 @@ Warto podkreślić, że ESP32 cieszy się uznaniem wśród społeczności dewelo
  z MicroPython dodatkowo zwiększają elastyczność platformy, umożliwiając dostosowanie do indywidualnych potrzeb projektu.
  Nieocenione są także biblioteki i moduły tworzone przez społeczność i udostępniane w formie otwartoźródłowej.}
 \subsection{Język programowania C++}
-{
-Język C++ oferuje zaawansowane funkcje i umożliwia programistom skuteczną pracę nad różnorodnymi projektami związanymi z systemami wbudowanymi.
+{Język C++ oferuje zaawansowane funkcje i umożliwia programistom skuteczną pracę nad różnorodnymi projektami związanymi z systemami wbudowanymi.
 W tym kontekście, kluczową cechą języka C++ jest jego zdolność do zapewniania niskopoziomowej kontroli nad sprzętem,
 co jest kluczowe w przypadku urządzeń o ograniczonych zasobach. 
 
@@ -183,8 +182,7 @@ czytelność i zrozumienie kodu są kluczowe dla sukcesu projektu.
 C++ daje także możliwość korzystania z funkcji inline, co przekłada się na minimalizację narzutu czasowego związanego z wywołaniami funkcji.
 To istotne, gdy każdy cykl procesora ma znaczenie, a efektywność kodu jest priorytetem. Ważną cechą tego języka  
  jest również możliwość korzystania z mechanizmów zarządzania pamięcią, takich jak alokacja dynamiczna, co zapewnia elastyczność rozwiązania
- w zmiennych warunkach pracy systemu.
-}
+ w zmiennych warunkach pracy systemu.}
 \subsection{Framework Arduino}
 {Framework Arduino to otwarte oprogramowanie, które umożliwia łatwe tworzenie aplikacji dla mikrokontrolerów. 
 Bazuje na języku programowania C++ oraz wykorzystuje uproszczoną warstwę abstrakcji, co sprawia, że 
@@ -197,7 +195,7 @@ Arduino oferuje także prostą obsługę wejścia/wyjścia (I/O), dzięki czemu 
 innymi modułami jest błyskawiczna i intuicyjna. Ponadto, framework zapewnia prosty sposób dostęp do interfejsów komunikacyjnych,
  takich jak UART, SPI czy I2C. Ważną częścią frameworka Arduino są też przyjazne w użyciu biblioteki. Obejmują one obszar komunikacji 
  bezprzewodowej, obsługi czujników, sterowania silnikami, czy obsługi ekranów LCD.}
-\subsection{Komunikacja przez podczerwień}
+\subsection{Komunikacja za pomocą podczerwieni}
 {Komunikacja przez podczerwień (IR) to forma przesyłania danych, wykorzystująca fale elektromagnetyczne
  o niższej częstotliwości niż światło widzialne. Fale podczerwone znajdują się w zakresie elektromagnetycznym 
  poniżej czerwonego końca widma światła widzialnego, typowo w zakresie od 300 GHz do 400 THz. Te fale są 
@@ -205,12 +203,70 @@ innymi modułami jest błyskawiczna i intuicyjna. Ponadto, framework zapewnia pr
  wysyłając sygnał według konkretnego protokołu najpierw moduluje się go według określonego kodu liczbowego.
 Modulacja może obejmować zmianę amplitudy, częstotliwości lub fazy fali podczerwonej. Gdy sygnał dociera do odbiornika 
 (zazwycza zasięg wynosi do 10m), odbiornik wyposważony także w diodę interpretuje odebrany sygnał, przeprowadzając proces demodulacji, do kodu 
-liczbowego. Z tak wysłanej informacji może teraz skorzystać urządzenie odbierające i podjąć na jej podstawie działania.
-}
-\subsection{Android}
+liczbowego. Z tak wysłanej informacji może teraz skorzystać urządzenie odbierające i podjąć na jej podstawie działania.}
+\subsection{System operacyjny Android}
+{System Android, rozwijany przez firmę Google, stanowi środowisko operacyjne oparte na otwartym kodzie źródłowym,
+   co przyczynia się do jego wyjątkowej elastyczności i dostosowywalności do różnych urządzeń mobilnych, głównie 
+   smartfonów i tabletów, ale z powodzeniem stosowany jest także inncyh urządzeniach przenośnych.
+    Otwartość kodu umożliwia deweloperom z całego świata dostosowywanie systemu do specyficznych 
+   potrzeb. Istotną cechą Androida jest także jego wszechstronność, manifestująca się w szerokiej gamie dostępnych 
+   urządzeń, produkowanych przez różnych producentów co powoduje jednak, że wymagana jest obsługa w programowanej aplikacji różnych środowisk sprzętowych.
+    System ten obsługuje różne poziomy cenowe urządzeń, umożliwiając 
+   programistom tworzenie aplikacji dostępnych dla różnych grup odbiorców. Sklep Google Play, jako główne źródło 
+   aplikacji, gier, multimediów i innych treści, stanowi istotny element ekosystemu Androida. Ponadto, integracja 
+   z usługami Google, takimi jak Gmail, Google Drive czy Google Maps, ułatwia korzystanie z tych usług na urządzeniach 
+   z systemem Android. Względną jednolitość tego środowiska sprawia, że dla programistów stanowi ono atrakcyjne pole do 
+   rozwoju i tworzenia innowacyjnych rozwiązań, z uwagi na szeroką bazę użytkowników oraz dynamiczny rynek aplikacji mobilnych.}
 \subsection{Język programowania Dart}
+{Dart to język programowania stworzony przez Google, zaprojektowany z myślą o tworzeniu wydajnych, skalowalnych i nowoczesnych aplikacji. 
+Jego głównym zastosowaniem jest budowa interaktywnych stron internetowych oraz aplikacji mobilnych przy użyciu frameworka Flutter.
+
+Język ten charakteryzuje się statycznym typowaniem, co oznacza, że typy zmiennych są sprawdzane w trakcie kompilacji, co może pomóc 
+w wykrywaniu błędów przed uruchomieniem programu. Dart wspiera również programowanie obiektowe,
+ co umożliwia programistom organizację kodu w logiczne i zrozumiałe struktury.
+
+Jedną z ważnych cech Darta jest również jego zdolność do wykonywania kodu zarówno w trybie just-in-time (JIT),
+ jak i ahead-of-time (AOT). Tryb JIT umożliwia szybki rozwój i testowanie aplikacji, podczas gdy tryb AOT pozwala na kompilację
+  kodu źródłowego do natywnego kodu maszynowego, co przyspiesza wydajność aplikacji podczas działania.
+
+Dart oferuje także mechanizmy asynchroniczne, co jest istotne w programowaniu współbieżnym i 
+obsłudze operacji wejścia/wyjścia bez blokowania głównego wątku.
+
+W kontekście frameworka Flutter, Dart staje się kluczowym elementem do budowy interfejsów użytkownika. }
 \subsection{Framework Flutter}
+{Flutter to open-source'owy framework stworzony przez Google do budowy interfejsów użytkownika (UI - User Inferface). 
+Jest wykorzystywany do tworzenia aplikacji mobilnych, webowych i desktopowych, ze wskazaniem na aplikacje mobilne. 
+Jednym z głównych atutów Fluttera jest możliwość tworzenia jednego kodu źródłowego, który może być używany budowany do
+ aplikacji dla różnych platform, takich jak Android, iOS, web, Windows czy Linux.
+
+W centrum Fluttera znajduje się język programowania Dart, który jest używany do definiowania interfejsu użytkownika oraz logiki biznesowej. 
+Framework ten bazuje na podejściu deklaratywnym, co oznacza, że programiści opisują, jak ma wyglądać interfejs w danym momencie,
+ a nie jak ma być aktualizowany w odpowiedzi na różne zdarzenia. To podejście ułatwia zrozumienie i utrzymanie kodu.
+Wprowadza on również własny silnik renderujący. Dzięki temu aplikacje Fluttera często charakteryzują się płynnością i responsywnością.
+
+Framework oferuje bogatą gamę wbudowanych widgetów, które są podstawowymi elementami budującymi interfejs użytkownika. 
+Programiści mogą również tworzyć własne niestandardowe widgety, co umożliwia pełną swobodę w projektowaniu interfejsu.
+
+Flutter wspiera hot-reloading, co pozwala na natychmiastowe obserwowanie zmian wprowadzanych w kodzie bez konieczności ponownego uruchamiania całej aplikacji.
+To znacznie skraca czas pracy podczas rozwijania projektu.
+Dzięki narzędziom takim jak Flutter DevTools, deweloperzy mają dostęp do zaawansowanych narzędzi do analizy, debugowania i optymalizacji swoich aplikacji.
+
+Flutter zdobył popularność wśród programistów, zwłaszcza tych, którzy chcą tworzyć estetyczne, responsywne i wieloplatformowe 
+aplikacje z minimalnym nakładem pracy co jest elementem chrakterystycznym dla tego rozwiązania.}
 \subsection{Komunikacja przez Bluetooth Low Energy}
+{Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii.
+Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjne i centralne. 
+Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
+
+Cechą charakterystyczną BLE jest niskie zużycie energii, co sprawia, że jest idealne do zastosowań, gdzie ważne jest przedłużenie życia baterii w urządzeniach mobilnych.
+ Komunikacja BLE opiera się na transmisji krótkich pakietów danych, co przyczynia się do efektywności energetycznej.
+
+Protokół BLE definiuje dwie główne kategorie operacji: operacje bezpośrednie i operacje oparte na atrybutach.
+ Operacje bezpośrednie umożliwiają natychmiastową wymianę danych, podczas gdy operacje oparte na atrybutach 
+pozwalają na dostęp do atrybutów urządzenia, takich jak czujniki czy inne dane charakterystyczne.
+
+Atrybuty w BLE reprezentują dane, które urządzenia wymieniają między sobą. Każdy atrybut ma swój identyfikator 
+(UUID) i może przechowywać różne typy danych, takie jak liczby całkowite, tekst czy dane binarne.}
 
 \clearpage	
 
