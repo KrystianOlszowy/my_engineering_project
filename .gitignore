@@ -1,0 +1,6 @@
+# ignorowanie wszytskich plików
+*
+# wyłączenie ignorowania dla poniższych rozszerzeń
+!*.tex
+!*.sty
+!.gitignore
