@@ -49,28 +49,21 @@
 \clearpage
 \blankpage
 
-
-\section*{Wykaz symboli, oznaczeń i skrótów (opcjonalny)}
-\addcontentsline{toc}{section}{Wykaz symboli, oznaczeń i skrótów (opcjonalny)}%
-
-1 $\div$ 2 stron wykaz ważniejszych symboli i oznaczeń (jeśli jest potrzebny).
-\clearpage
-
 \section{Wstęp}
 \subsection{Telewizor i sposoby sterowania nim}
 {Współcześnie nie wyborażamy sobie domu, w którym nie ma telewizora. Telewizory, będące 
 centralnym elementem więszkości domostw, przekształciły się z tradycyjnych urządzeń 
 telewizyjnych w zaawansowane systemy multimedialne, oferujące nie tylko dostęp do programów telewizyjnych,
 ale również do różnorodnych treści wideo, gier, czy nawet aplikacji internetowych. 
-Ich powszechność we współczesnym społeczeństwie i na świecie, a także mnogość producentów i ich pomysłów 
-sprawia, że wyodrębniło się wiele technologii i sposobów sterowania nimi.
+Ich powszechność we współczesnym świecie, a także mnogość producentów i ich pomysłów 
+sprawiło, że wyodrębniło się wiele technologii i sposobów sterowania tymi urządzeniami.
 
-W wielu gospodarstwach domowych znajaduje się wciąż telewizor sterowany za pomocą podczerwieni i jest
+W wielu gospodarstwach domowych znajduje się wciąż telewizor sterowany jedynie za pomocą podczerwieni i jest
  to nadal najpopularniejszy sposób sterowania tymi urzadzeniami. Rozwiązania takie jak sterowanie poprzez WiFi, czy Bluetooth
  mimo, że są już pewien czas na rynku jeszcze nie goszczą u wszystkich użytkowników, zazwyczaj z powodu ceny
  nowego urządzenia multimedialnego lub zwykłego braku potrzeby wymiany telewizora. Czy jest jednak sposób aby
-móc korzystać z wygody nowych rozwiązań komunikacji bezprzewodowej, które będzie dostępne zawsze w naszej kieszeni 
-dla urządzeń telewizyjnych nie posiadających nowoczesnych technologii bezprzewodowych?
+móc korzystać z wygody nowych rozwiązań komunikacji bezprzewodowej, mając urządzenie zdolne do sterowania 
+telewizorem zawsze w naszej kieszeni dla urządzeń telewizyjnych nie posiadających obsługi nowoczesnych technologii bezprzewodowych?
 }
 
 \subsection{Smartfon i jego powszechność}
@@ -86,19 +79,20 @@ Obecnie smartfony są nie tylko urządzeniami komunikacyjnymi, ale także mobiln
  które powoli przekonują się do współczesnej wersji telefonów komórkowych.
 
  Z uwagi na wyżej wymienione zalety samrtfonów naturalnym pomysłem wydaje się także użycie ich do 
- sterowania urządzeniami multidemialnymi, w tym także telewizorów. Właściwie wszystkie współczesne smartfony posiadają 
- wcześniej wspomniane nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth jednak nie uświadczymy
+ sterowania urządzeniami multimedialnymi, w tym także telewizorów. Właściwie wszystkie współczesne smartfony posiadają 
+ wcześniej wspomniane nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth, jednak nie uświadczymy
  zbyt często już w nich obsługi podczerwieni. Aby skomunikować więc przy ich pomocy smartfon
  ze starszym telewizorem, powstaje potrzeba dołączenia pośrednika tłumaczącego interakcję 
  użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.}
 
 \subsection{Proponowane rozwiązanie}
 {Sposobem na rozwiązanie problemu pośrednika w komunikacji aplikacji mobilnej z telewizorem
-może być urządzenie pośredniczące oparte na mikrokontrolerze i odpowiednich podzespołach 
+może być urządzenie oparte na mikrokontrolerze i odpowiednich podzespołach 
 realizujących komunikację oraz interakcję z użytkownikiem. Dla systemów wbudowanych, a zwłaszcza
-dla systemu służącego jako pilot, odpowiednią technologią przesyłania danych będzie Bluetooth Low Energy,
+dla systemu służącego jako pilot, odpowiednią technologią przesyłania danych do smartfona będzie Bluetooth Low Energy,
 która zapewni niższe zużycie energii oraz możliwość skorzystania z architektury komunikacji klient-serwer.
- Takie rozwiązanie będzie maksymalnie elastyczne w projektowaniu jego możliwości, zapewniając jednak modularność
+Rozwiązanie korzystające z popularnego mikrokontrolera i szeroko wspieranego protokołu komunikacji 
+będzie maksymalnie elastyczne w projektowaniu, zapewniając modularność
 oraz dużą dostępność komponentów na rynku, czy łatwość w budowie pełnego systemu sterującego.
 
 Niniejsza praca skupi się zaproponowaniu rozwiązania sterowania telewizorem z poziomu 
@@ -107,7 +101,7 @@ Bluetooth Low Energy, który to system zostanie oparty o płytkę ESP32 wraz odp
 mający za zadanie wysyłać sygnały podczerwone do telewizora. 
 Omówione zostaną podobne dostępne rozwiązania na rynku, budowa systemu z
  mikrokontrolerem i jego oprogramowanie, a także projekt i oprogramowanie aplikacji
-mobilnej służącej jako pilot uniwersalny, aby końcowo przedstawić przykładowe działanie 
+mobilnej służącej jako pilot uniwersalny, aby końcowo przedstawić działanie zaprojektowanej 
 aplikacji współpracującej z zbudowanym urządzeniem pośredniczącym oraz możliwości rozbudowania systemu.}
 
 \clearpage
@@ -115,22 +109,22 @@ aplikacji współpracującej z zbudowanym urządzeniem pośredniczącym oraz mo�
 \subsection{Omówienie dostępnych rozwiązań}
 {Na rynku można znaleźć niezliczoną ilość pilotów uniwersalnych. Rożnią się one 
 ceną, obsługiwanymi funkcjonalnościami czy sposobami zasilania. Większość z nich zazwyczaj 
-wykorzystuje programowanie oparte na nasłuchiwaniu sygnałów, co dla niektórych może stanowić 
+wykorzystuje programowanie oparte na nasłuchiwaniu sygnałów, co dla niektórych użytkowników może stanowić 
 wyzwanie ze względu na uciążliwą obsługę procesu, wymagającą ciągłej modyfikacji odbieranego 
 sygnału podczerwonego dla każdego przycisku. Cena rzędu jedynie kilku czy kilkunastu złotych 
-już na polskim rynku kusi potencjalnych użytkowników pomimo wątpliwej jakości wykonania. Przykładem 
-takiego pilota uniwersalnego może być urządzenie Blow 74-258\#\cite{cheapController}. 
+już na polskim rynku jednak kusi potencjalnych nabywców pomimo wątpliwej jakości wykonania. Przykładem 
+takiego pilota uniwersalnego może być urządzenie Blow 74-258\#\cite{cheapController} dostępne w serwisie allegro.pl. 
 
 Więksi producenci oferują również piloty uniwersalne z predefinowanymi sygnałami dla przycisków jednak
 prawie zawsze są to modele właśnie tego producenta. Oczom nie umyka tażke wyższa cena takich
-rozwiązań argumentowana zazwyczaj prestiżem marki i jakością wykoaniania. Takie rozwiązanie znaleźć
-możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController}.
+rozwiązań argumentowana zazwyczaj prestiżem marki i jakością wykonania. Takie rozwiązanie znaleźć
+możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController} możliwym do nabycie w x-kom.pl.
 
-Dostępne są także aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone, 
+Dostępne są jednak także aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone, 
 podłączanymi poprzez port microUSB w smartfonie. Znajdujemy już w nich wiele z pożądanych cech w pilocie
- uniwersalnym jak niska cena, możliwość otrzymania predefiniowanych modeli telewizorów 
+ uniwersalnym jak: niska cena, możliwość otrzymania predefiniowanych modeli telewizorów 
  czy edycję nie wymagającą posiadania oryginalnego pilota do sterowanego urządzenia. Przykładowym dostępnym
-  rozwiązaniem tego typu jest EKX4S-T \cite{appController}}
+rozwiązaniem tego typu jest model urządzenie EKX4S-T\cite{appController}} dostępny na allegro.pl.
 \subsection{Zestawienie z autorskim projektem}
 {Wymienione wcześniej urządzenia mają swoje zastosowania jedank nie wystrzegają się wad. Wiele z nich 
  wymaga baterii co jest szkodliwe dla środowiska, o które szczególnie stara się dbać
