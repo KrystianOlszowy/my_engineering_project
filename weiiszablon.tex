@@ -1,5 +1,5 @@
-% typ dokumentu
-\documentclass[12pt,twoside,draft]{article}
+% typ dokumentu,draft
+\documentclass[12pt,twoside]{article}
 
 % użycie pakietu , jak include
 \usepackage{weiiszablon}
@@ -51,213 +51,207 @@
 
 \section{Wstęp}
 \subsection{Telewizor i sposoby sterowania nim}
-{Współcześnie nie wyborażamy sobie domu, w którym nie ma telewizora. Telewizory, będące 
-centralnym elementem więszkości domostw, przekształciły się z tradycyjnych urządzeń 
+Współcześnie nie wyborażamy sobie domu, w którym nie ma telewizora. Telewizory, będące
+centralnym elementem więszkości domostw, przekształciły się z tradycyjnych urządzeń
 telewizyjnych w zaawansowane systemy multimedialne, oferujące nie tylko dostęp do programów telewizyjnych,
-ale również do różnorodnych treści wideo, gier, czy nawet aplikacji internetowych. 
-Ich powszechność we współczesnym świecie, a także mnogość producentów i ich pomysłów 
+ale również do różnorodnych treści wideo, gier, czy nawet aplikacji internetowych.
+Ich powszechność we współczesnym świecie, a także mnogość producentów i ich pomysłów
 sprawiło, że wyodrębniło się wiele technologii i sposobów sterowania tymi urządzeniami.
 
 W wielu gospodarstwach domowych znajduje się wciąż telewizor sterowany jedynie za pomocą podczerwieni i jest
- to nadal najpopularniejszy sposób sterowania tymi urzadzeniami. Rozwiązania takie jak sterowanie poprzez WiFi, czy Bluetooth
- mimo, że są już pewien czas na rynku jeszcze nie goszczą u wszystkich użytkowników, zazwyczaj z powodu ceny
- nowego urządzenia multimedialnego lub zwykłego braku potrzeby wymiany telewizora. Czy jest jednak sposób aby
-móc korzystać z wygody nowych rozwiązań komunikacji bezprzewodowej, mając urządzenie zdolne do sterowania 
+to nadal najpopularniejszy sposób sterowania tymi urzadzeniami. Rozwiązania takie jak sterowanie poprzez WiFi, czy Bluetooth
+mimo, że są już pewien czas na rynku jeszcze nie goszczą u wszystkich użytkowników, zazwyczaj z powodu ceny
+nowego urządzenia multimedialnego lub zwykłego braku potrzeby wymiany telewizora. Czy jest jednak sposób aby
+móc korzystać z wygody nowych rozwiązań komunikacji bezprzewodowej, mając urządzenie zdolne do sterowania
 telewizorem zawsze w naszej kieszeni dla urządzeń telewizyjnych nie posiadających obsługi nowoczesnych technologii bezprzewodowych?
-}
 
 \subsection{Smartfon i jego powszechność}
-{W dynamicznie rozwijającym się świecie, smartfony stały się nieodłącznym elementem życia społecznego, 
-definiując nowy wymiar komunikacji, rozrywki i funkcji użytkowych. 
-W ciągu ostatnich kilku dekad, powszechność smartfonów osiągnęła niespotykany poziom, 
-stając się nie tylko przedmiotem codziennego użytku, lecz również nieodzownym 
+W dynamicznie rozwijającym się świecie, smartfony stały się nieodłącznym elementem życia społecznego,
+definiując nowy wymiar komunikacji, rozrywki i funkcji użytkowych.
+W ciągu ostatnich kilku dekad, powszechność smartfonów osiągnęła niespotykany poziom,
+stając się nie tylko przedmiotem codziennego użytku, lecz również nieodzownym
 narzędziem wspierającym wszystkie aspekty naszego życia.
 
 Obecnie smartfony są nie tylko urządzeniami komunikacyjnymi, ale także mobilnymi centrami multimedialnymi,
- umożliwiającymi dostęp do rozmaitych treści, od filmów i muzyki, po aplikacje społecznościowe. 
- Ich interaktywne interfejsy i intuicyjne systemy operacyjne sprawiają, że stają się łatwe w obsłudze nawet dla osób starszych, 
- które powoli przekonują się do współczesnej wersji telefonów komórkowych.
+umożliwiającymi dostęp do rozmaitych treści, od filmów i muzyki, po aplikacje społecznościowe.
+Ich interaktywne interfejsy i intuicyjne systemy operacyjne sprawiają, że stają się łatwe w obsłudze nawet dla osób starszych,
+które powoli przekonują się do współczesnej wersji telefonów komórkowych.
 
- Z uwagi na wyżej wymienione zalety samrtfonów naturalnym pomysłem wydaje się także użycie ich do 
- sterowania urządzeniami multimedialnymi, w tym także telewizorów. Właściwie wszystkie współczesne smartfony posiadają 
- wcześniej wspomniane nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth, jednak nie uświadczymy
- zbyt często już w nich obsługi podczerwieni. Aby skomunikować więc przy ich pomocy smartfon
- ze starszym telewizorem, powstaje potrzeba dołączenia pośrednika tłumaczącego interakcję 
- użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.}
+Z uwagi na wyżej wymienione zalety samrtfonów naturalnym pomysłem wydaje się także użycie ich do
+sterowania urządzeniami multimedialnymi, w tym także telewizorów. Właściwie wszystkie współczesne smartfony posiadają
+wcześniej wspomniane nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth, jednak nie uświadczymy
+zbyt często już w nich obsługi podczerwieni. Aby skomunikować więc przy ich pomocy smartfon
+ze starszym telewizorem, powstaje potrzeba dołączenia pośrednika tłumaczącego interakcję
+użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.
 
 \subsection{Cel pracy}
-Celem pracy jest zaproponowanie rozwiązania sterowania telewizorem z poziomu 
-smartfona dzięki aplikacji mobilnej, komunikującej się z systemem pośredniczącym opartym o płytkę , który to system ma być oparty o mikrokontroler wraz odpowiednimi komponentami, mający za zadanie wysyłać sygnały podczerwone do telewizora. System ma zapewniać możliwość programowania przycisków dzięki dedykowanemu ekranowi w aplikacji i 
+Celem pracy jest zaproponowanie rozwiązania sterowania telewizorem z poziomu
+smartfona dzięki aplikacji mobilnej, komunikującej się z systemem pośredniczącym opartym o płytkę , który to system ma być oparty o mikrokontroler wraz odpowiednimi komponentami, mający za zadanie wysyłać sygnały podczerwone do telewizora. System ma zapewniać możliwość programowania przycisków dzięki dedykowanemu ekranowi w aplikacji i
 wyświetlania odebranego kodu sygnału podczerwonego na wyświetlaczu zintegrowanym z mikrokontrolerem.
- 
+
 \subsection{Zakres pracy}
 Zakres pracy obejmuje omówienie podobnych dostępnych rozwiązań na rynku, budowę systemu z~mikrokontrolerem na płytce ESP32 razem z wymaganymi modułami i utworzenie jego oprogramowania sterującego ,~a także projekt i oprogramowanie aplikacji
 mobilnej frameworka Flutter służącej jako interfejs pilota uniwersalnego do telewizora. W obszarze zagadnień pedejmowanych w pracy znajduje się także przedstawienie działania zaprojektowanej aplikacji współpracującej ze zbudowanym urządzeniem pośredniczącym oraz wskazanie potencjalnych możliwości rozbudowania systemu.
 
-\subsection{Zawartość pracy}
+\subsection{Zawartość pracy [niezakończone]}
 W rozdziale drugim  omówiono ogólnodostępne rozwiązania stanowiące aktualny stan wiedzy w zakresie zdalnego sterowania odbiornikiem telewizyjnym.
 
 \clearpage
 \section{Porównanie zaprojektowanego systemu z do\-stęp\-ny\-mi rozwiązaniami}
 \subsection{Omówienie dostępnych rozwiązań}
-{Na rynku można znaleźć niezliczoną ilość pilotów uniwersalnych. Rożnią się one 
-ceną, obsługiwanymi funkcjonalnościami czy sposobami zasilania. Większość z nich zazwyczaj 
-wykorzystuje programowanie oparte na nasłuchiwaniu sygnałów, co dla niektórych użytkowników może stanowić 
-wyzwanie ze względu na uciążliwą obsługę procesu, wymagającą ciągłej modyfikacji odbieranego 
-sygnału podczerwonego dla każdego przycisku. Cena rzędu jedynie kilku czy kilkunastu złotych 
-już na polskim rynku jednak kusi potencjalnych nabywców pomimo wątpliwej jakości wykonania. Przykładem 
-takiego pilota uniwersalnego może być urządzenie Interlook L336\cite{cheapController} dostępne w serwisie allegro.pl. 
+Na rynku można znaleźć niezliczoną ilość pilotów uniwersalnych. Rożnią się one
+ceną, obsługiwanymi funkcjonalnościami czy sposobami zasilania. Większość z nich zazwyczaj
+wykorzystuje programowanie oparte na nasłuchiwaniu sygnałów, co dla niektórych użytkowników może stanowić
+wyzwanie ze względu na uciążliwą obsługę procesu, wymagającą ciągłej modyfikacji odbieranego
+sygnału podczerwonego dla każdego przycisku. Cena rzędu jedynie kilku czy kilkunastu złotych
+już na polskim rynku jednak kusi potencjalnych nabywców pomimo wątpliwej jakości wykonania. Przykładem
+takiego pilota uniwersalnego może być urządzenie Interlook L336\cite{cheapController}.
 
 Więksi producenci oferują również piloty uniwersalne z predefinowanymi sygnałami dla przycisków jednak
 prawie zawsze są to modele właśnie tego producenta. Oczom nie umyka tażke wyższa cena takich
 rozwiązań argumentowana zazwyczaj prestiżem marki i jakością wykonania. Takie rozwiązanie znaleźć
-możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController} możliwym do nabycia w x-kom.pl.
+możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController}.
 
-Dostępne są jednak także aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone, 
-podłączanymi poprzez port microUSB w smartfonie. Znajdujemy już w nich wiele z pożądanych cech w pilocie
- uniwersalnym jak: niska cena, możliwość otrzymania predefiniowanych modeli telewizorów 
- czy edycję nie wymagającą posiadania oryginalnego pilota do sterowanego urządzenia. Przykładowym dostępnym
-rozwiązaniem tego typu jest model urządzenie EKX4S-T\cite{appController}} dostępny na allegro.pl.
+Dostępne są jednak także rozbudowane aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone łączące się ze smartfonem poprzez WiFi. Znajdujemy już w nich wiele z pożądanych cech w pilocie uniwersalnym jak: niska cena względem oferowanych możliwości, możliwość otrzymania predefiniowanych modeli telewizorów czy edycję nie wymagającą posiadania oryginalnego pilota do sterowanego urządzenia. Przykładowym dostępnym rozwiązaniem tego typu jest urządzenie Smart IR Remote Crabtree\cite{appController}.
 \subsection{Zestawienie z autorskim projektem}
-{Wymienione wcześniej urządzenia mają swoje zastosowania jedank nie wystrzegają się wad. 
-Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie
-stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w niepoprawnym użyciu 
-programowanie. Każde z tych urządzeń lub ich komponentów można łatwo zgubić z uwagi na sposób 
-ich używania. Trzymanie w dłoniach czy wtykanie i wyciąganie komponentu ze smartfona znacznie
-sprzyja zapodzianiu tych gadżetów. Podczas relaksu, kiedy nikt nie jest szczególnie 
-ostrożny, zdecydowanie łatwiej o takie nieszczęście. Dostęp do tworzenia własnych 
-zestawów przycisków jest w nich nierzadko trudny, czasem niemożliwy, a użycie często wymaga 
-przeskakiwania po liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski.
+{Wymienione wcześniej urządzenia mają swoje zastosowania jedank nie wystrzegają się wad.
+   Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie
+   stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w niepoprawnym użyciu
+   programowanie. Dostęp do tworzenia własnych
+   zestawów przycisków jest w nich nierzadko trudny, czasem niemożliwy, a użycie często wymaga
+   przeskakiwania po liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski. Urządzenia nieposiadające tych wad czyli aplikacje z dedykowaną stacją wysyłającą sterowanie do urządzeń domowych łączą się jednak poprzez WiFi ze smartfonem przez co pobiera ono więcej energii niż inne rozwiązania oraz wymaga podłączenia tego urządzenia do sieci użytkownika co zmniejsza jej bezpieczeństwo.
 
-Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać te problemy. Bateria czy akumulator możliwe 
-są do używania z urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilane może i powinno odbywać się przez 
-kabel microUSB, dzięki czemu nie zwiększany jest popyt na szkodliwe dla środowiska baterie. Programowanie przycisków
-odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzją czy są one poprawne. Utworzony przez użytkownika lub predefiniowany
- model telewizora wybierany jest z listy, którą można łatwo przeglądać i rozbudować. Sama aplikacja posiada kontrolę błędów
- i intuicyjnie przeprowadza korzystającego przez jej funkcję w kierunku czytania.
+   Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać przedstawione problemy. Bateria czy akumulator możliwe
+   są do używania z urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilanie może i powinno odbywać się przez
+   kabel microUSB, dzięki czemu nie zwiększany jest popyt na szkodliwe dla środowiska baterie. Programowanie przycisków
+   odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzają czy dane w nich zawarte są poprawne, dzięki czemu użytkownik ma bezpośredni i przejrzysty dostęp do swoich ustawień pilota. Utworzony przez użytkownika lub predefiniowany
+   model telewizora wybierany jest z listy, którą można łatwo przeglądać i rozbudować. Sama aplikacja posiada kontrolę błędów konfiguracji oraz sieci
+   i jest intuicyjna dla użytkownika już podczas pierwszego uruchomienia. Komunikacja ze smartfonem odbywa się za pomocą protokołu BLE co ogranicza zużycie energii. Zauważając, że z urządzenia pośredniczącego może korzystać wiele osób jednocześnie w większej skali jest to tańsze rozwiązanie niż piloty
+   uniwersalne. Łatwość obsługi i przejrzystość interfejsu aplikacji jest atutem zwłaszcza dla osób starszych, nieobytych z technologią.
 }
 \clearpage
 \section{Przedstawienie wykorzystanych technologii}
-\subsection{Platforma ESP32[obraz płytki]}
-ESP32 jest układem typu SoC (ang. System-on-a-chip) produkowanym przez chińską firmę Espressif Systems, 
-wyposażony jest najczęściej w dwurdzeniowy procesor Xtensa LX6 o taktowaniu 240 MHz. W większości przypadków używa się
-tego układu osadzonego na płytce deweloperskiej co przyspiesza prototypowanie i projektowanie rzeczywistego 
-systemu. Na runku znajaduje sie niezliczona ilość różnych wersji płytek deweloperskich przez co dopasowanie
-jej do własnych potrzeb jest znacznie łatwiejsze niż rozważając inne rozwiązania.
+\subsection{Platforma ESP32}
+ESP32 jest układem typu SoC (ang. System-on-a-chip) produkowanym przez chińską firmę Espressif Systems,
+wyposażony jest najczęściej w dwurdzeniowy procesor Xtensa LX6 o taktowaniu 240 MHz\cite{esp32Datasheet}. Przez hobbystów w większości przypadków używany jest będą osadzonym na płytce deweloperskiej różnych producentów co przyspiesza projektowanie i prototypowanie rzeczywistego systemu. Na runku znajduje sie niezliczona ilość różnych wersji płytek deweloperskich przez co dopasowanie
+jej do własnych potrzeb jest znacznie łatwiejsze niż rozważając inne rozwiązania. Przykładem takiej płytki, która zarazem została użyta w projekcie jest DOIT DevKit V1\cite{doitDevKitV1}.Na rysunku \ref*{Fig:devkitScheme} przedstawiono poglądowy shemat wyprowadzeń tej płytki deweloperskiej.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=13cm]{images/doit_devkit_v1.png}
+   \caption{Schemat wyprowadzeń płytki DOIT DevKit V1 \cite{doitDevKitV1}}
+   \label{Fig:devkitScheme}
+\end{figure}
 
 Jednym z kluczowych atutów ESP32 jest wbudowane wsparcie dla Wi-Fi(802.11 b/g/n) i Bluetooth(klasyczny 4.2 i BLE),
- co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
- Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także 
-zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwia precyzyjny pomiar sygnałów analogowych.
+co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
+Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także
+zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwia precyzyjny pomiar sygnałów analogowych. System zawiera wiele innych możliwości, ale najważniejsze funkcjonalości i charakterystyczne cechy firma Espressif zebrała na digramie który znalazł się na rysunku \ref*{Fig:functionalDiagram}.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=12cm]{images/esp32_functional_diagram.png}
+   \caption{Diagram funkcjonalności zaczerpnięty z dokumentacji techniczej ESP32\cite{esp32Datasheet}}
+   \label{Fig:functionalDiagram}
+\end{figure}
 
 ESP32 został także zoptymalizowany pod kątem efektywnego zużycia energii, co sprawia, że jest bardzo dobrym
- wyborem dla aplikacji zasilanych bateryjnie lub kiedy zwyczajnie ważny jest niski pobór prądu. Jego wszechstronność objawia
-się obsługą różnych protokołów komunikacyjnych używanych głównie dla przewodowej komunikacji, 
+wyborem dla aplikacji zasilanych bateryjnie lub kiedy zwyczajnie ważny jest niski pobór prądu. Jego wszechstronność objawia
+się obsługą przeróżnych protokołów komunikacji przewodowej,
 takich jak SPI, I2C, UART, co ułatwia integrację z zewnętrznymi modułami i systemami.
 
 Warto podkreślić, że ESP32 cieszy się uznaniem wśród społeczności deweloperów, co przekłada się na dostęp
- do obszernej dokumentacji oraz wsparcie online. Programowalność w języku Arduino oraz możliwość korzystania 
- z MicroPython dodatkowo zwiększają elastyczność platformy, umożliwiając dostosowanie do indywidualnych potrzeb projektu.
- Nieocenione są także biblioteki i moduły tworzone przez społeczność i udostępniane w formie otwartoźródłowej.
+do obszernej dokumentacji oraz wsparcie online. Programowalność w języku Arduino oraz możliwość korzystania
+z MicroPython dodatkowo zwiększają elastyczność platformy, umożliwiając dostosowanie do indywidualnych potrzeb projektu.
+Nieocenione są także biblioteki i moduły tworzone przez społeczność i udostępniane w formie otwartoźródłowej.
 \subsection{Język programowania C++}
-Język C++ \cite{swider2004} oferuje zaawansowane funkcje i umożliwia programistom skuteczną pracę nad różnorodnymi projektami związanymi z systemami wbudowanymi.
-W tym kontekście, kluczową cechą języka C++ jest jego zdolność do zapewniania niskopoziomowej kontroli nad sprzętem,
-co jest kluczowe w przypadku urządzeń o ograniczonych zasobach. 
+Język C++ jest językiem programowania, który swoje zastosowanie znalazł w wielu dziedzinach gdzie ceni się wydajność rozwiązania. Mimo tego że powstał w latach 80-ątych na podstawie języka C, jego najnowsze wersje zdecydowanie można zaliczyć do nowoczesnych języków programowania.
 
-Język ten umożliwia także stosowanie obiektowego podejścia do projektowania, co z kolei sprzyja modularności i łatwości utrzymania kodu.
-Tworzenie klas i obiektów pozwala na strukturyzację kodu, co jest istotne w przypadku skomplikowanych systemów wbudowanych, gdzie 
-czytelność i zrozumienie kodu są kluczowe dla sukcesu projektu.
+Język ten jest kompilowany oraz sostuje silne typowanie statyczne, dzięki czemu wykrywanie błędów na etapie tworzenia kodu jest znacznie łatwiejsze niż w przypadku innych podejść tworzenia programu wynikowego. Charakteryzuje się on także niskopoziomowym dostępem do pamięci jak i możliwością jej dynamicznej alokacji w trakcie trwania programu co zapewnia elastyczność implementacji i wysoką wydajność. C++ daje także możliwość korzystania z specyfikatora inline, który powoduje, że kompilator kopiuje kod funkcji w zadane miejsce zamiast umiesczać tam wkaźnik wskaźnik do niej. Przekłada się to na minimalizację narzutu czasowego związanego z wywołaniami bloków funkcyjnych. Język ten umożliwia także stosowanie obiektowego podejścia do projektowania oprogramowania, co z kolei sprzyja modularności rozwiązania i łatwości utrzymania kodu.\cite{cppBjarne}
 
-C++ daje także możliwość korzystania z funkcji inline, co przekłada się na minimalizację narzutu czasowego związanego z wywołaniami funkcji.
-To istotne, gdy każdy cykl procesora ma znaczenie, a efektywność kodu jest priorytetem. Ważną cechą tego języka  
- jest również możliwość korzystania z mechanizmów zarządzania pamięcią, takich jak alokacja dynamiczna, co zapewnia elastyczność rozwiązania
- w zmiennych warunkach pracy systemu.
+Wydajność i możliwość niskopoziomowej kotroli zasobów urządzenia powoduje, że język tn jest  najczęściej używany do programowania skomplikownych gier
+komputerowych, protokołów komunikacyjnych oraz systemów wbudowanych. Przez jego popularność dla systemów wbudowanych, powstało wiele współracujacych z nim frameworków i bibliotek do obsługi rozmaitych mikrokontrolerów. Dzięki temu wybierając C++ jako język utworzenia oprogramowania systemu wbudowanego zyskuje się bardzo dużą kontrolę nad sprzętem oraz elastyczność w doborze narzędzi deweloperskich.
+
 \subsection{Framework Arduino}
-{Framework Arduino to otwarte oprogramowanie, które umożliwia łatwe tworzenie aplikacji dla mikrokontrolerów. 
-Bazuje na języku programowania C++ oraz wykorzystuje uproszczoną warstwę abstrakcji, co sprawia, że 
+Framework Arduino\cite{arduinoIntroduction} to otwarte oprogramowanie, które umożliwia łatwe tworzenie aplikacji dla mikrokontrolerów zgodnych z Arduino.
+Bazuje na języku programowania C++ oraz wykorzystuje uproszczoną warstwę abstrakcji, co sprawia, że
 jest przyjazny dla początkujących, jednocześnie oferując zaawansowane funkcje dla doświadczonych programistów.
-Oferuje wiele gotowych bibliotek i narzędzi, które ułatwiają programowanie mikrokontrolerów, 
-co jest szczególnie istotne w kontekście prototypowania i szybkiego tworzenia projektów.
-Sama składnia języka Arduino jest uproszczona i zbliżona do języka C++ wraz z jego podejściem obiektowym.
 
-Arduino oferuje także prostą obsługę wejścia/wyjścia (I/O), dzięki czemu integracja z czujnikami, przekaźnikami,i wielomai 
-innymi modułami jest błyskawiczna i intuicyjna. Ponadto, framework zapewnia prosty sposób dostęp do interfejsów komunikacyjnych,
- takich jak UART, SPI czy I2C. Ważną częścią frameworka Arduino są też przyjazne w użyciu biblioteki. Obejmują one obszar komunikacji 
- bezprzewodowej, obsługi czujników, sterowania silnikami, czy obsługi ekranów LCD.}
-\subsection{Komunikacja za pomocą podczerwieni[opisać komunikację NEC, przykład przesłania kodu]}
-{Komunikacja przez podczerwień (IR) to forma przesyłania danych, wykorzystująca fale elektromagnetyczne
- o niższej częstotliwości niż światło widzialne. Fale podczerwone znajdują się w zakresie elektromagnetycznym 
- poniżej czerwonego końca widma światła widzialnego, typowo w zakresie od 300 GHz do 400 THz. Te fale są 
- niewidoczne dla ludzkiego oka, ale mogą być wykrywane i generowane przez diody. Typowo 
- wysyłając sygnał według konkretnego protokołu najpierw moduluje się go według określonego kodu liczbowego.
-Modulacja może obejmować zmianę amplitudy, częstotliwości lub fazy fali podczerwonej. Gdy sygnał dociera do odbiornika 
-(zazwycza zasięg wynosi do 10m), odbiornik wyposważony także w diodę interpretuje odebrany sygnał, przeprowadzając proces demodulacji, do kodu 
-liczbowego. Z tak wysłanej informacji może teraz skorzystać urządzenie odbierające i podjąć na jej podstawie działania.}
+Framework oferuje prostą obsługę wejścia/wyjścia (I/O), dzięki czemu integracja z czujnikami, przekaźnikami, i wieloma innymi modułami jest błyskawiczna i intuicyjna. Ponadto, framework zapewnia prosty sposób dostęp do interfejsów komunikacyjnych,
+takich jak UART, SPI czy I2C. Ważną częścią frameworka Arduino są też przyjazne w użyciu biblioteki tworzone także przez użytkowników, przez co niemal zawsze znajdzie się kod obsługujący żądaną funkcjonalność. Obejmują one obszar komunikacji bezprzewodowej, obsługi czujników, sterowania silnikami, czy obsługi ekranów LCD lub OLED. Każde z nich są regularnie poprawiane przez firmę lub społeczność dzięki czemu oprogramowanie staje się szybko aktualne i wspiera nowo dodane urządzenia i narzędzia.
+\subsection{Komunikacja za pomocą podczerwieni}
+Komunikacja przez podczerwień (IR - Infra-Red) to forma przesyłania danych, wykorzystująca fale elektromagnetyczne
+o niższej częstotliwości niż światło widzialne. Fale podczerwone znajdują się w zakresie elektromagnetycznym
+poniżej czerwonego końca widma światła widzialnego, typowo w zakresie od 300 GHz do 400 THz. Te fale są
+niewidoczne dla ludzkiego oka, ale mogą być wykrywane i generowane przez diody. Typowo
+wysyłając sygnał według konkretnego protokołu najpierw moduluje się go według określonego kodu liczbowego.
+Modulacja może obejmować zmianę amplitudy, częstotliwości lub fazy fali podczerwonej. Gdy sygnał dociera do odbiornika
+(zazwycza zasięg wynosi do 10m), odbiornik wyposważony także w diodę interpretuje odebrany sygnał, przeprowadzając proces demodulacji, do kodu
+liczbowego. Z tak wysłanej informacji może teraz skorzystać urządzenie odbierające i podjąć na jej podstawie działania.
+
+W standardzie NEC, czyli najpopularniejszym sposobie przesyłania sygnałów do urządzeń RTV, zastosowana jest modulacja częstotliwośći. Każda wiadomość w tym typie komunikacji rozpoczyna się od stosunkowo długiego stanu wysokiego natężenia światła trwającego 9 ms po czym następuje 4,5 ms przerwy sygnalizując rozpoczęcie nadawania. Chcąc teraz wysłać logiczną ,,1'' , należy wygenerować stan wysoki natężenia światła podczerwonego na 562.5µs i po nim odczekać 562.5µs. Logiczne ,,0'' wysyłane jest przez taki sam zabieg, jednak z przerwą po stanie wysokim wynoszącą 1.6875 ms. Aby bit został odczytany przez odbiornik każda przerwa musi być zakończona następnym stanem wysokim natężenia fali światła, dlatego kiedy kończona jest transmisja, po ostatniej przerwie generowany jest dodatkowy puls długości 562.5µs, aby odbiornik mógł odczytać długość przerwy ostatniego bitu. Wykres ilustrujący elementarna generację sygnału w tym standardzie przedstawia rysunek \ref*{Fig:necOnesZerosFigure}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=8cm]{images/necOnesAndZeros.png}
+   \caption{Wykres elementarnej modulacji sygnału standardu NEC\cite{necIR}}
+   \label{Fig:necOnesZerosFigure}
+\end{figure}
+
+Aby wysłać pełne rządanie, które może być interpretowane przez odbiornik, trzeba wysłać informację opatrzoną w pewną strukturę. Najpierw wysyłany jest sygnał rozpoczęcia nadawania. Następnie wysyłany jest 8 bitowy adres urządzenia odbierającego sygnał i kolejno jego negacja bitowa. W takim sam sposób wysyłane jest 8 bitów danych i ich negacja bitowa. Tak zbudowana pojedyncza ramka danych potrzebuje zawsze 67,5 ms aby zostać wysłana niezależnie od danych i adresu dzięki negacji bitowej obu tych danych. Przykładowe wysłanie danej 0xAD do urządzenia o adresie 0xFF przedstawione zostało na wykresie \ref*{Fig:necFrame}.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=13cm]{images/necFrame.png}
+   \caption{Przykładowa modulacja sygnału pełnej wiadomości standardu NEC\cite{necIR}}
+   \label{Fig:necFrame}
+\end{figure}
+
 \subsection{System operacyjny Android}
-{System Android, rozwijany przez firmę Google, stanowi środowisko operacyjne oparte na otwartym kodzie źródłowym,
-   co przyczynia się do jego wyjątkowej elastyczności i dostosowywalności do różnych urządzeń mobilnych, głównie 
-   smartfonów i tabletów, ale z powodzeniem stosowany jest także inncyh urządzeniach przenośnych.
-    Otwartość kodu umożliwia deweloperom z całego świata dostosowywanie systemu do specyficznych 
-   potrzeb. Istotną cechą Androida jest także jego wszechstronność, manifestująca się w szerokiej gamie dostępnych 
-   urządzeń, produkowanych przez różnych producentów co powoduje jednak, że wymagana jest obsługa w programowanej aplikacji różnych środowisk sprzętowych.
-    System ten obsługuje różne poziomy cenowe urządzeń, umożliwiając 
-   programistom tworzenie aplikacji dostępnych dla różnych grup odbiorców. Sklep Google Play, jako główne źródło 
-   aplikacji, gier, multimediów i innych treści, stanowi istotny element ekosystemu Androida. Ponadto, integracja 
-   z usługami Google, takimi jak Gmail, Google Drive czy Google Maps, ułatwia korzystanie z tych usług na urządzeniach 
-   z systemem Android. Względną jednolitość tego środowiska sprawia, że dla programistów stanowi ono atrakcyjne pole do 
-   rozwoju i tworzenia innowacyjnych rozwiązań, z uwagi na szeroką bazę użytkowników oraz dynamiczny rynek aplikacji mobilnych.}
+System Android, rozwijany przez firmę Google, stanowi środowisko operacyjne oparte na otwartym kodzie źródłowym,
+co przyczynia się do jego wyjątkowej elastyczności i dostosowywalności do różnych urządzeń mobilnych, głównie
+smartfonów i tabletów, ale z powodzeniem stosowany jest także w innych urządzeniach przenośnych.
+Otwartość kodu umożliwia deweloperom z całego świata dostosowywanie systemu do specyficznych
+potrzeb. Istotną cechą Androida jest także jego wszechstronność, manifestująca się w szerokiej gamie dostępnych
+urządzeń posiadających zainstalowany ten system operacyjny.
+Instalowany jest na urządzeniach z wszystkich przedziałów cenowych, umożliwiając
+programistom tworzenie aplikacji dostępnych dla każdej z grup odbiorców. Sklep Google Play, jako główne źródło
+aplikacji, gier, multimediów i innych treści, stanowi istotny element ekosystemu Androida. Ponadto, integracja
+z usługami Google, takimi jak Gmail, Google Drive, Google Maps i wielu innych sprawia, że można niemal każdą czynnoś wykonać przy pomocy dedykowanej aplikacji firmy Google. Względną jednolitość tego środowiska pomimo takiej gamy obsługiwanych urządzń sprawia, że dla programistów stanowi ono atrakcyjne pole do
+rozwoju i tworzenia innowacyjnych rozwiązań, z uwagi na szeroką bazę użytkowników oraz dynamiczny rynek aplikacji mobilnych. Nie jest dziwne więc, że urządzenia z Androidem posiadało 69,74\% wszytskich użytkowników urzadzeń mobilnych i był on najczęściej używanym systemem operacyjnym w 2022 roku\cite{androidStats}.
 \subsection{Język programowania Dart}
-{Dart to język programowania stworzony przez Google, zaprojektowany z myślą o tworzeniu wydajnych, skalowalnych i nowoczesnych aplikacji. 
-Jego głównym zastosowaniem jest budowa interaktywnych stron internetowych oraz aplikacji mobilnych przy użyciu frameworka Flutter.
+Dart to język programowania stworzony przez Google, zaprojektowany z myślą o tworzeniu wydajnych, skalowalnych i nowoczesnych aplikacji. Jego głównym zastosowaniem jest budowa interaktywnych stron internetowych oraz aplikacji mobilnych przy użyciu zestawu narządzi Flutter.
 
-Język ten charakteryzuje się statycznym typowaniem, co oznacza, że typy zmiennych są sprawdzane w trakcie kompilacji, co może pomóc 
-w wykrywaniu błędów przed uruchomieniem programu. Dart wspiera również programowanie obiektowe,
- co umożliwia programistom organizację kodu w logiczne i zrozumiałe struktury.
+Język ten charakteryzuje się statycznym typowaniem, co oznacza, że typy zmiennych są sprawdzane w trakcie budowania aplikacji, co może pomóc w wykrywaniu błędów przed uruchomieniem programu. Dart wspiera również programowanie obiektowe.
 
-Jedną z ważnych cech Darta jest również jego zdolność do wykonywania kodu zarówno w trybie just-in-time (JIT),
- jak i ahead-of-time (AOT). Tryb JIT umożliwia szybki rozwój i testowanie aplikacji, podczas gdy tryb AOT pozwala na kompilację
-  kodu źródłowego do natywnego kodu maszynowego, co przyspiesza wydajność aplikacji podczas działania.
+Jedną z ważnych cech Darta jest również jego zdolność do wykonywania kodu zarówno w trybie just-in-time (JIT),jak i ahead-of-time (AOT). Tryb JIT umożliwia szybkie rozwijanie i testowanie aplikacji, podczas gdy tryb AOT pozwala na kompilację
+kodu źródłowego do natywnego kodu maszynowego, co przyspiesza wydajność aplikacji podczas działania. Dart oferuje także mechanizmy asynchroniczne, co jest istotne w programowaniu współbieżnym i obsłudze operacji wejścia/wyjścia bez blokowania głównego wątku.\cite{dartInfo}
 
-Dart oferuje także mechanizmy asynchroniczne, co jest istotne w programowaniu współbieżnym i 
-obsłudze operacji wejścia/wyjścia bez blokowania głównego wątku.
-
-W kontekście frameworka Flutter, Dart staje się kluczowym elementem do budowy interfejsów użytkownika. !!!!!!Błąd !!!!!Akapit ma conajmniej 2 zdania. }
+W kontekście frameworka Flutter, język ten staje się kluczowym narzędziem budowy interfejsów użytkownika. Sam wspomniany zestaw narzędzi został napisany przy pomocy Darta i to z nim najlepiej współpracuje.
 \subsection{Framework Flutter}
-{Flutter to open-source'owy framework stworzony przez Google do budowy interfejsów użytkownika (UI - User Inferface). 
-Jest wykorzystywany do tworzenia aplikacji mobilnych, webowych i desktopowych, ze wskazaniem na aplikacje mobilne. 
-Jednym z głównych atutów Fluttera jest możliwość tworzenia jednego kodu źródłowego, który może być używany budowany do
- aplikacji dla różnych platform, takich jak Android, iOS, web, Windows czy Linux.
+Flutter to otwartoźródłowy zestaw narzędzi(SDK - Software Development Ki) stworzony przez Google do budowy interfejsów użytkownika (UI - User Inferface). Jest wykorzystywany do tworzenia aplikacji mobilnych, webowych i desktopowych, ze wskazaniem na aplikacje mobilne. Jednym z głównych atutów Fluttera jest możliwość tworzenia jednego kodu źródłowego, który może być budowany do aplikacji dla różnych platform, takich jak Android, iOS, web, Windows czy Linux.
 
-W centrum Fluttera znajduje się język programowania Dart, który jest używany do definiowania interfejsu użytkownika oraz logiki biznesowej. 
-Framework ten bazuje na podejściu deklaratywnym, co oznacza, że programiści opisują, jak ma wyglądać interfejs w danym momencie,
- a nie jak ma być aktualizowany w odpowiedzi na różne zdarzenia. To podejście ułatwia zrozumienie i utrzymanie kodu.
-Wprowadza on również własny silnik renderujący. Dzięki temu aplikacje Fluttera często charakteryzują się płynnością i responsywnością.
+W centrum Fluttera znajduje się Dart, który jest używany do definiowania interfejsu użytkownika oraz logiki biznesowej.
+SDK ten bazuje na podejściu deklaratywnym, co oznacza, że w kodzie opisuje się, jak ma wyglądać interfejs w danym momencie, a nie jak ma być aktualizowany w odpowiedzi na różne zdarzenia. To podejście ułatwia zrozumienie i utrzymanie kodu.
+Wprowadza on również własny silnik renderujący. Dzięki temu, aplikacje Fluttera zazwyczaj charakteryzują się płynnością i responsywnością.
 
-Framework oferuje bogatą gamę wbudowanych widgetów, które są podstawowymi elementami budującymi interfejs użytkownika. 
-Programiści mogą również tworzyć własne niestandardowe widgety, co umożliwia pełną swobodę w projektowaniu interfejsu.
+Zestaw oferuje bogatą gamę wbudowanych widgetów, które są podstawowymi elementami budującymi interfejs użytkownika. Programiści mogą również tworzyć własne niestandardowe widgety, co umożliwia pełną swobodę w projektowaniu interfejsu.
 
-Flutter wspiera hot-reloading, co pozwala na natychmiastowe obserwowanie zmian wprowadzanych w kodzie bez konieczności ponownego uruchamiania całej aplikacji.
-To znacznie skraca czas pracy podczas rozwijania projektu.
-Dzięki narzędziom takim jak Flutter DevTools, deweloperzy mają dostęp do zaawansowanych narzędzi do analizy, debugowania i optymalizacji swoich aplikacji.
+Flutter wspiera hot-reloading, co pozwala na natychmiastowe obserwowanie zmian wprowadzanych w kodzie bez konieczności ponownego uruchamiania całej aplikacji, dzięki czemu znacznie skraca się czas pracy podczas rozwijania projektu.
+Dzięki narzędziom takim jak Flutter DevTools, umożliwiony jest dostęp do zaawansowanych narzędzi do analizy, debugowania i optymalizacji aplikacji końcowej.\cite{flutterDocs}
 
-Flutter zdobył popularność wśród programistów, zwłaszcza tych, którzy chcą tworzyć estetyczne, responsywne i wieloplatformowe 
-aplikacje z minimalnym nakładem pracy co jest elementem chrakterystycznym dla tego rozwiązania.}
-\subsection{Komunikacja przez Bluetooth Low Energy[jeśli dostępne jak to działa]}
-{Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii.
-Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjne i centralne. 
-Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
+Framework ten stał się niebywale popularny wśród programistów. Chcąc tworzyć estetyczne, responsywne i wieloplatformowe aplikacje z minimalnym nakładem pracy, mając do dyspozycji obszerną i interaktywną dokumnetację, jeden z najlepszych wyborów to postawienie na Fluttera jako głowne nardzędzie tworzenia interfejsu użytkownika.
+\subsection{Komunikacja przez Bluetooth Low Energy [do zrobienia dobrze]}
+Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii. Jest uproszczoną i zoptymalizowaną wersją klasycznego Bluetooth.
+Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjnego i centralnego. Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
 
-Cechą charakterystyczną BLE jest niskie zużycie energii, co sprawia, że jest idealne do zastosowań, gdzie ważne jest przedłużenie życia baterii w urządzeniach mobilnych.
- Komunikacja BLE opiera się na transmisji krótkich pakietów danych, co przyczynia się do efektywności energetycznej.
+Cechą charakterystyczną BLE jest niskie zużycie energii, co sprawia, że jest idealny do zastosowań, gdzie ważne jest przedłużenie życia baterii w urządzeniach mobilnych.
+Komunikacja BLE opiera się na transmisji krótkich pakietów danych, co przyczynia się do efektywności energetycznej.
 
-Protokół BLE definiuje dwie główne kategorie operacji: operacje bezpośrednie i operacje oparte na atrybutach.
- Operacje bezpośrednie umożliwiają natychmiastową wymianę danych, podczas gdy operacje oparte na atrybutach 
-pozwalają na dostęp do atrybutów urządzenia, takich jak czujniki czy inne dane charakterystyczne.
+Usługi w BLE to logiczne grupy charakterystyk, które reprezentowane są jako zestawy danych, udostępniające funkcjonalności lub zestawy operacji odpowiednie dla danej grupy. Charakterystyki z kolei to konkretne funkcje lub dane w ramach danej usługi. GATT (Generic Attribute Profile) jest protokołem używanym w BLE do opisu i komunikacji z usługami i charakterystykami przez klienta GATT. Każda usługa i charakterystyka posiada swój numer UUID.
 
-Atrybuty w BLE reprezentują dane, które urządzenia wymieniają między sobą. Każdy atrybut ma swój identyfikator 
-(UUID) i może przechowywać różne typy danych, takie jak liczby całkowite, tekst czy dane binarne.}
+Komunikacja między urządzeniem centralnym a peryferyjnym opiera się na zestawie reguł znanych jako GATT Server (na urządzeniu peryferyjnym) i GATT Client (na urządzeniu centralnym). GATT Server udostępnia usługi i charaktery, natomiast GATT Client korzysta z protokołu GATT do odczytywania i zapisywania danych.
 
-\clearpage	
+\clearpage
 
 \section{Prototyp urządzenia wysyłającego sygnały IR}
 \subsection{Schemat elektryczny zaprojektowanego urządzenia}
@@ -323,14 +317,9 @@ Według potrzeb zawarte i uporządkowane uzupełnienie pracy o dowolny materiał
 \addcontentsline{toc}{section}{Literatura}
 \bibliography{biblgr}
 \bibliographystyle{plain}
-% \begin{thebibliography}{4}
-% \bibitem{cheapController}{https://allegro.pl/oferta/pilot-uniwersalny-do-telewizora-tv-dvb-t-sat-dvd-11914593904}
-% \bibitem{expensiveController}{https://www.x-kom.pl/p/1196443-pilot-uniwersalny-philips-pilot-do-tv-lg.html}
-% \bibitem{appController}{https://allegro.pl/oferta/uniwersalny-adapter-pilota-na-podczerwien-14175757382}
-% \end{thebibliography}
 
 \clearpage
 
 \makesummary
 
-\end{document} 
+\end{document}
