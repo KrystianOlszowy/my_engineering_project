@@ -1,5 +1,5 @@
 % typ dokumentu
-\documentclass[12pt,twoside]{article}
+\documentclass[12pt,twoside,draft]{article}
 
 % użycie pakietu , jak include
 \usepackage{weiiszablon}
@@ -27,13 +27,13 @@
 %% przykład: dr hab. inż. Józef Nowak, prof. PRz
 
 %%% promotor ze stopniami naukowymi po angielsku
-\supervisorEN{DEng Jan Sadolewski}
+\supervisorEN{Jan Sadolewski, PhD, Eng.}
 
 \abstract{Treść streszczenia po polsku}
 \abstractEN{Treść streszczenia po angielsku}
 
 \keywords{max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami}
-\keywordsEN{max. five keywords in English}
+\keywordsEN{remote controller, BLE, IR, Flutter, mobile application}
 
 
 \begin{document}
@@ -85,27 +85,20 @@ Obecnie smartfony są nie tylko urządzeniami komunikacyjnymi, ale także mobiln
  ze starszym telewizorem, powstaje potrzeba dołączenia pośrednika tłumaczącego interakcję 
  użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.}
 
-\subsection{Proponowane rozwiązanie}
-{Sposobem na rozwiązanie problemu pośrednika w komunikacji aplikacji mobilnej z telewizorem
-może być urządzenie oparte na mikrokontrolerze i odpowiednich podzespołach 
-realizujących komunikację oraz interakcję z użytkownikiem. Dla systemów wbudowanych, a zwłaszcza
-dla systemu służącego jako pilot, odpowiednią technologią przesyłania danych do smartfona będzie Bluetooth Low Energy,
-która zapewni niższe zużycie energii oraz możliwość skorzystania z architektury komunikacji klient-serwer.
-Rozwiązanie korzystające z popularnego mikrokontrolera i szeroko wspieranego protokołu komunikacji 
-będzie maksymalnie elastyczne w projektowaniu, zapewniając modularność
-oraz dużą dostępność komponentów na rynku, czy łatwość w budowie pełnego systemu sterującego.
+\subsection{Cel pracy}
+Celem pracy jest zaproponowanie rozwiązania sterowania telewizorem z poziomu 
+smartfona dzięki aplikacji mobilnej, komunikującej się z systemem pośredniczącym opartym o płytkę , który to system ma być oparty o mikrokontroler wraz odpowiednimi komponentami, mający za zadanie wysyłać sygnały podczerwone do telewizora. System ma zapewniać możliwość programowania przycisków dzięki dedykowanemu ekranowi w aplikacji i 
+wyświetlania odebranego kodu sygnału podczerwonego na wyświetlaczu zintegrowanym z mikrokontrolerem.
+ 
+\subsection{Zakres pracy}
+Zakres pracy obejmuje omówienie podobnych dostępnych rozwiązań na rynku, budowę systemu z~mikrokontrolerem na płytce ESP32 razem z wymaganymi modułami i utworzenie jego oprogramowania sterującego ,~a także projekt i oprogramowanie aplikacji
+mobilnej frameworka Flutter służącej jako interfejs pilota uniwersalnego do telewizora. W obszarze zagadnień pedejmowanych w pracy znajduje się także przedstawienie działania zaprojektowanej aplikacji współpracującej ze zbudowanym urządzeniem pośredniczącym oraz wskazanie potencjalnych możliwości rozbudowania systemu.
 
-Niniejsza praca skupi się zaproponowaniu rozwiązania sterowania telewizorem z poziomu 
-smartfona dzięki aplikacji Fulttera, komunikującej się z systemem pośredniczączym za pomocą 
-Bluetooth Low Energy, który to system zostanie oparty o płytkę ESP32 wraz odpowiednimi komponentami,
-mający za zadanie wysyłać sygnały podczerwone do telewizora. 
-Omówione zostaną podobne dostępne rozwiązania na rynku, budowa systemu z
- mikrokontrolerem i jego oprogramowanie, a także projekt i oprogramowanie aplikacji
-mobilnej służącej jako pilot uniwersalny, aby końcowo przedstawić działanie zaprojektowanej 
-aplikacji współpracującej z zbudowanym urządzeniem pośredniczącym oraz możliwości rozbudowania systemu.}
+\subsection{Zawartość pracy}
+W rozdziale drugim  omówiono ogólnodostępne rozwiązania stanowiące aktualny stan wiedzy w zakresie zdalnego sterowania odbiornikiem telewizyjnym.
 
 \clearpage
-\section{Porównanie zaprojektowanego systemu z dostępnymi rozwiązaniami}
+\section{Porównanie zaprojektowanego systemu z do\-stęp\-ny\-mi rozwiązaniami}
 \subsection{Omówienie dostępnych rozwiązań}
 {Na rynku można znaleźć niezliczoną ilość pilotów uniwersalnych. Rożnią się one 
 ceną, obsługiwanymi funkcjonalnościami czy sposobami zasilania. Większość z nich zazwyczaj 
@@ -113,12 +106,12 @@ wykorzystuje programowanie oparte na nasłuchiwaniu sygnałów, co dla niektóry
 wyzwanie ze względu na uciążliwą obsługę procesu, wymagającą ciągłej modyfikacji odbieranego 
 sygnału podczerwonego dla każdego przycisku. Cena rzędu jedynie kilku czy kilkunastu złotych 
 już na polskim rynku jednak kusi potencjalnych nabywców pomimo wątpliwej jakości wykonania. Przykładem 
-takiego pilota uniwersalnego może być urządzenie Blow 74-258\#\cite{cheapController} dostępne w serwisie allegro.pl. 
+takiego pilota uniwersalnego może być urządzenie Interlook L336\cite{cheapController} dostępne w serwisie allegro.pl. 
 
 Więksi producenci oferują również piloty uniwersalne z predefinowanymi sygnałami dla przycisków jednak
 prawie zawsze są to modele właśnie tego producenta. Oczom nie umyka tażke wyższa cena takich
 rozwiązań argumentowana zazwyczaj prestiżem marki i jakością wykonania. Takie rozwiązanie znaleźć
-możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController} możliwym do nabycie w x-kom.pl.
+możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController} możliwym do nabycia w x-kom.pl.
 
 Dostępne są jednak także aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone, 
 podłączanymi poprzez port microUSB w smartfonie. Znajdujemy już w nich wiele z pożądanych cech w pilocie
@@ -126,13 +119,15 @@ podłączanymi poprzez port microUSB w smartfonie. Znajdujemy już w nich wiele 
  czy edycję nie wymagającą posiadania oryginalnego pilota do sterowanego urządzenia. Przykładowym dostępnym
 rozwiązaniem tego typu jest model urządzenie EKX4S-T\cite{appController}} dostępny na allegro.pl.
 \subsection{Zestawienie z autorskim projektem}
-{Wymienione wcześniej urządzenia mają swoje zastosowania jedank nie wystrzegają się wad. Wiele z nich 
- wymaga baterii co jest szkodliwe dla środowiska, o które szczególnie stara się dbać
-społeczeństwo w dzisiejszych czasach. Posiadają często mozolne i łatwe w niepoprawnym użyciu programowanie. Każde z 
-tych urządzeń lub ich komponentów można łatwo zgubić z uwagi na sposób ich używania czyli trzymanie w 
-dłoniach czy wtykanie i wyciąganie komponentu ze smartfona. Podczas relaksu kiedy raczej nikt nie jest szczególnie 
-ostrożny zdecydowanie łatwiej zapodziać takie urządzenia. Dostęp do tworzenia własnych zestawów przycisków jest w nich trudny,
- czasem niemożliwy, a użycie ich często wymaga przeskakiwania po liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski.
+{Wymienione wcześniej urządzenia mają swoje zastosowania jedank nie wystrzegają się wad. 
+Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie
+stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w niepoprawnym użyciu 
+programowanie. Każde z tych urządzeń lub ich komponentów można łatwo zgubić z uwagi na sposób 
+ich używania. Trzymanie w dłoniach czy wtykanie i wyciąganie komponentu ze smartfona znacznie
+sprzyja zapodzianiu tych gadżetów. Podczas relaksu, kiedy nikt nie jest szczególnie 
+ostrożny, zdecydowanie łatwiej o takie nieszczęście. Dostęp do tworzenia własnych 
+zestawów przycisków jest w nich nierzadko trudny, czasem niemożliwy, a użycie często wymaga 
+przeskakiwania po liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski.
 
 Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać te problemy. Bateria czy akumulator możliwe 
 są do używania z urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilane może i powinno odbywać się przez 
@@ -143,8 +138,8 @@ odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzją czy
 }
 \clearpage
 \section{Przedstawienie wykorzystanych technologii}
-\subsection{Platforma ESP32}
-{ESP32 jest układem typu SoC (ang. System-on-a-chip) produkowanym przez chińską firmę Espressif Systems, 
+\subsection{Platforma ESP32[obraz płytki]}
+ESP32 jest układem typu SoC (ang. System-on-a-chip) produkowanym przez chińską firmę Espressif Systems, 
 wyposażony jest najczęściej w dwurdzeniowy procesor Xtensa LX6 o taktowaniu 240 MHz. W większości przypadków używa się
 tego układu osadzonego na płytce deweloperskiej co przyspiesza prototypowanie i projektowanie rzeczywistego 
 systemu. Na runku znajaduje sie niezliczona ilość różnych wersji płytek deweloperskich przez co dopasowanie
@@ -152,7 +147,7 @@ jej do własnych potrzeb jest znacznie łatwiejsze niż rozważając inne rozwi�
 
 Jednym z kluczowych atutów ESP32 jest wbudowane wsparcie dla Wi-Fi(802.11 b/g/n) i Bluetooth(klasyczny 4.2 i BLE),
  co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
- Duża liczba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także 
+ Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także 
 zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwia precyzyjny pomiar sygnałów analogowych.
 
 ESP32 został także zoptymalizowany pod kątem efektywnego zużycia energii, co sprawia, że jest bardzo dobrym
@@ -163,9 +158,9 @@ takich jak SPI, I2C, UART, co ułatwia integrację z zewnętrznymi modułami i s
 Warto podkreślić, że ESP32 cieszy się uznaniem wśród społeczności deweloperów, co przekłada się na dostęp
  do obszernej dokumentacji oraz wsparcie online. Programowalność w języku Arduino oraz możliwość korzystania 
  z MicroPython dodatkowo zwiększają elastyczność platformy, umożliwiając dostosowanie do indywidualnych potrzeb projektu.
- Nieocenione są także biblioteki i moduły tworzone przez społeczność i udostępniane w formie otwartoźródłowej.}
+ Nieocenione są także biblioteki i moduły tworzone przez społeczność i udostępniane w formie otwartoźródłowej.
 \subsection{Język programowania C++}
-{Język C++ oferuje zaawansowane funkcje i umożliwia programistom skuteczną pracę nad różnorodnymi projektami związanymi z systemami wbudowanymi.
+Język C++ \cite{swider2004} oferuje zaawansowane funkcje i umożliwia programistom skuteczną pracę nad różnorodnymi projektami związanymi z systemami wbudowanymi.
 W tym kontekście, kluczową cechą języka C++ jest jego zdolność do zapewniania niskopoziomowej kontroli nad sprzętem,
 co jest kluczowe w przypadku urządzeń o ograniczonych zasobach. 
 
@@ -176,7 +171,7 @@ czytelność i zrozumienie kodu są kluczowe dla sukcesu projektu.
 C++ daje także możliwość korzystania z funkcji inline, co przekłada się na minimalizację narzutu czasowego związanego z wywołaniami funkcji.
 To istotne, gdy każdy cykl procesora ma znaczenie, a efektywność kodu jest priorytetem. Ważną cechą tego języka  
  jest również możliwość korzystania z mechanizmów zarządzania pamięcią, takich jak alokacja dynamiczna, co zapewnia elastyczność rozwiązania
- w zmiennych warunkach pracy systemu.}
+ w zmiennych warunkach pracy systemu.
 \subsection{Framework Arduino}
 {Framework Arduino to otwarte oprogramowanie, które umożliwia łatwe tworzenie aplikacji dla mikrokontrolerów. 
 Bazuje na języku programowania C++ oraz wykorzystuje uproszczoną warstwę abstrakcji, co sprawia, że 
@@ -189,7 +184,7 @@ Arduino oferuje także prostą obsługę wejścia/wyjścia (I/O), dzięki czemu 
 innymi modułami jest błyskawiczna i intuicyjna. Ponadto, framework zapewnia prosty sposób dostęp do interfejsów komunikacyjnych,
  takich jak UART, SPI czy I2C. Ważną częścią frameworka Arduino są też przyjazne w użyciu biblioteki. Obejmują one obszar komunikacji 
  bezprzewodowej, obsługi czujników, sterowania silnikami, czy obsługi ekranów LCD.}
-\subsection{Komunikacja za pomocą podczerwieni}
+\subsection{Komunikacja za pomocą podczerwieni[opisać komunikację NEC, przykład przesłania kodu]}
 {Komunikacja przez podczerwień (IR) to forma przesyłania danych, wykorzystująca fale elektromagnetyczne
  o niższej częstotliwości niż światło widzialne. Fale podczerwone znajdują się w zakresie elektromagnetycznym 
  poniżej czerwonego końca widma światła widzialnego, typowo w zakresie od 300 GHz do 400 THz. Te fale są 
@@ -226,7 +221,7 @@ Jedną z ważnych cech Darta jest również jego zdolność do wykonywania kodu 
 Dart oferuje także mechanizmy asynchroniczne, co jest istotne w programowaniu współbieżnym i 
 obsłudze operacji wejścia/wyjścia bez blokowania głównego wątku.
 
-W kontekście frameworka Flutter, Dart staje się kluczowym elementem do budowy interfejsów użytkownika. }
+W kontekście frameworka Flutter, Dart staje się kluczowym elementem do budowy interfejsów użytkownika. !!!!!!Błąd !!!!!Akapit ma conajmniej 2 zdania. }
 \subsection{Framework Flutter}
 {Flutter to open-source'owy framework stworzony przez Google do budowy interfejsów użytkownika (UI - User Inferface). 
 Jest wykorzystywany do tworzenia aplikacji mobilnych, webowych i desktopowych, ze wskazaniem na aplikacje mobilne. 
@@ -247,7 +242,7 @@ Dzięki narzędziom takim jak Flutter DevTools, deweloperzy mają dostęp do zaa
 
 Flutter zdobył popularność wśród programistów, zwłaszcza tych, którzy chcą tworzyć estetyczne, responsywne i wieloplatformowe 
 aplikacje z minimalnym nakładem pracy co jest elementem chrakterystycznym dla tego rozwiązania.}
-\subsection{Komunikacja przez Bluetooth Low Energy}
+\subsection{Komunikacja przez Bluetooth Low Energy[jeśli dostępne jak to działa]}
 {Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii.
 Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjne i centralne. 
 Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
@@ -326,12 +321,13 @@ Według potrzeb zawarte i uporządkowane uzupełnienie pracy o dowolny materiał
 \clearpage
 
 \addcontentsline{toc}{section}{Literatura}
-
-\begin{thebibliography}{4}
-\bibitem{cheapController}{https://allegro.pl/oferta/pilot-uniwersalny-do-telewizora-tv-dvb-t-sat-dvd-11914593904}
-\bibitem{expensiveController}{https://www.x-kom.pl/p/1196443-pilot-uniwersalny-philips-pilot-do-tv-lg.html}
-\bibitem{appController}{https://allegro.pl/oferta/uniwersalny-adapter-pilota-na-podczerwien-14175757382}
-\end{thebibliography}
+\bibliography{biblgr}
+\bibliographystyle{plain}
+% \begin{thebibliography}{4}
+% \bibitem{cheapController}{https://allegro.pl/oferta/pilot-uniwersalny-do-telewizora-tv-dvb-t-sat-dvd-11914593904}
+% \bibitem{expensiveController}{https://www.x-kom.pl/p/1196443-pilot-uniwersalny-philips-pilot-do-tv-lg.html}
+% \bibitem{appController}{https://allegro.pl/oferta/uniwersalny-adapter-pilota-na-podczerwien-14175757382}
+% \end{thebibliography}
 
 \clearpage
 
