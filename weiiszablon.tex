@@ -32,7 +32,7 @@
 \abstract{Treść streszczenia po polsku}
 \abstractEN{Treść streszczenia po angielsku}
 
-\keywords{max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami}
+\keywords{pilot, BLE, IR, Flutter, aplikacja mobilna}
 \keywordsEN{remote controller, BLE, IR, Flutter, mobile application}
 
 
@@ -240,36 +240,86 @@ Flutter wspiera hot-reloading, co pozwala na natychmiastowe obserwowanie zmian w
 Dzięki narzędziom takim jak Flutter DevTools, umożliwiony jest dostęp do zaawansowanych narzędzi do analizy, debugowania i optymalizacji aplikacji końcowej.\cite{flutterDocs}
 
 Framework ten stał się niebywale popularny wśród programistów. Chcąc tworzyć estetyczne, responsywne i wieloplatformowe aplikacje z minimalnym nakładem pracy, mając do dyspozycji obszerną i interaktywną dokumnetację, jeden z najlepszych wyborów to postawienie na Fluttera jako głowne nardzędzie tworzenia interfejsu użytkownika.
-\subsection{Komunikacja przez Bluetooth Low Energy [do zrobienia dobrze]}
+\subsection{Komunikacja przez Bluetooth Low Energy}
 Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii. Jest uproszczoną i zoptymalizowaną wersją klasycznego Bluetooth.
 Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjnego i centralnego. Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
 
 Cechą charakterystyczną BLE jest niskie zużycie energii, co sprawia, że jest idealny do zastosowań, gdzie ważne jest przedłużenie życia baterii w urządzeniach mobilnych.
 Komunikacja BLE opiera się na transmisji krótkich pakietów danych, co przyczynia się do efektywności energetycznej.
 
-Usługi w BLE to logiczne grupy charakterystyk, które reprezentowane są jako zestawy danych, udostępniające funkcjonalności lub zestawy operacji odpowiednie dla danej grupy. Charakterystyki z kolei to konkretne funkcje lub dane w ramach danej usługi. GATT (Generic Attribute Profile) jest protokołem używanym w BLE do opisu i komunikacji z usługami i charakterystykami przez klienta GATT. Każda usługa i charakterystyka posiada swój numer UUID.
+Usługi w BLE to logiczne grupy charakterystyk, które reprezentowane są jako zestawy danych, udostępniające funkcjonalności lub zestawy operacji odpowiednie dla danej grupy. Charakterystyki z kolei to konkretne funkcje lub dane w ramach danej usługi. GATT (Generic Attribute Profile) jest z kolei protokołem używanym w BLE do opisu i komunikacji z usługami i charakterystykami poprzez klienta GATT. Każda usługa i charakterystyka posiada swój numer UUID.
 
 Komunikacja między urządzeniem centralnym a peryferyjnym opiera się na zestawie reguł znanych jako GATT Server (na urządzeniu peryferyjnym) i GATT Client (na urządzeniu centralnym). GATT Server udostępnia usługi i charaktery, natomiast GATT Client korzysta z protokołu GATT do odczytywania i zapisywania danych.
 
+Wiele bibliotek na rożne platformy sprzętowe umożliwia łatwe i szybkie obsługiwianie technologii Bluetooth Low Energy przez wydzielenie na wysokim poziomie abstrakcji funkcji, obiektów i metod zdecydowanie ułatwiających korzystanie z tej technologii. Takie podejście zwalnia z programisty obowiązek zajecia się niuansami w projektach, w których nie są one krytycznymi elementami rozwiązania i pozwalana na uniknięcie trudnych do zdiagnozowania błędów konfiguracji.
+
 \clearpage
 
-\section{Prototyp urządzenia wysyłającego sygnały IR}
+\section{Urządzenie wysyłające sygnały IR}
 \subsection{Schemat elektryczny zaprojektowanego urządzenia}
-Opiszę sposób połaczenia wraz z rysunkiem i zdjęciem oraz opisem podjętych decyzji itp.
+Aby wykonać urzadzenie pośredniczące najpierw wykonano shemat elektryczny przy pomocy programu EasyEDA w darmowej wersji online\cite{easyEda}. Dzięki bibliotekom elementów tworzonych przez użytkowników odnalziono wszystkie niezbędne elementy do działania rozwiązania i zostały one opisane w kolejnym podpunkcie. Utworzony schemat elektryczny znajduje się na rysunku \ref*{Fig:deviceScheme}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=12cm]{images/deviceScheme.png}
+   \caption{Schemat elektryczny urządzenia pośredniczącego}
+   \label{Fig:deviceScheme}
+\end{figure}
+
+Na schemacie kolorem czarnym oznaczono połączenia do GND, kolorem czerownym zasilanie z mikrokontrolera o potencjale 3.3V, na niebiesko zaznaczone są szyny danych modułów IR, a kolorami zielonym linię zegarową I2C oraz żółtym linię danych I2C wyświetlacza OLED.
+
+Samo urządznie nie jest wrażliwe na zakłócenia elektromagnetyczne, ani nie wymagało stablinej obudowy do przestestowania poprawności założeń projektowych oraz końcowych testów pełnego systemu, dlatego jako element łączący moduły została użyta płytka stykowa. Dzięki użyciu płytki zachowano pełną funkcjonalność urządzenia oraz zyskano dowolność zmian podczas projektowania rozmieszczenia i połaczenia komponentów. Urządznie osadzone na płytce prototypowej zostało przedstawione na rysunku \ref*{Fig:deviceOnBoard}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=12cm]{images/deviceOnBoard.jpg}
+   \caption{Urządzenie pośredniczące osadzone na płytce prototypowej}
+   \label{Fig:deviceOnBoard}
+\end{figure}
 \subsection{Przegląd i opis użytych komponentów}
-Zcharateryzuję wszystkie użyte fizyczne komponenty(nie jest ich wiele).
+Elementy przedstawione na schemacie elektrycznym znalazły się w przedstawionym wcześniej modelu modelu fizycznym. Są to:
+\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
+   \item Płytka deweloperska ESP32 Wroom DevKitC V1\cite{doitDevKitV1} - to system z mikrokontroler ESP32 z procesorem Dual Core Tensilica LX6 240 MHz, pamięcią SRAM 520 KB i pamięcią flash 4 MB. Posiada wbudowane moduły WiFi 802.11 b/g/n oraz moduł Bluetooth Low Energy, dzięki którym nie trzeba dołączać osobnych modułów komunikacji bezprzewodowej. Znajduje się na nim 30 wyprowadzeń GPIO w postaci goldpinów, co znacznie zwiększa wygodę projektowania. Zasilany jest z 5 V ze złącza microUSB lub pinu VCC i GND.
+   \item Wyświetlacz OLED SH1106\cite{sh1106}- to wyświetlacz OLED o przekątnej 1,3'' i rozdzielczości 128 pikseli na 64 pikesle. Ekran oparty jest na sterowniku Adafruit SH1106 pracuje z napięciami 3,3 V oraz 5 V, komunikuje się poprzez protokół I2C. Posiada wlutowane proste złącza goldpin. Wyświetla znaki w kolorze białym.
+   \item Transmiter IR KY-005\cite{ky005} - to moduł nadawczy sygnałów podczerownych. Obsługuje wysyłanie fal IR o długości 940nm. I pobiera 90mW mocy podczas działania.
+   \item Odbiornik IR KY-022\cite{ky022}  - to moduł z odbiorczy podczerwieni, działający na częstotliwości 38 kHz. Zasilany jest napięciem od 2,7 V do 5,5 V. Wykrywa sygnał pod maksymalnym kątem odchylenia 90°. Maksymalna odległość wykrywania: 18 m. Posiada cyfrowy sygnał wyjściowy.
+   \item Rezystor 47 Ohm - resystor przewlekany o tolerancji 5\% i makasymalnej mocy 0,25 W.
+   \item Przewody połaczeniowe męsko-męskie.
+   \item Płytka stykowa.
+\end{enumerate}
+
 \clearpage
 
 \section{Oprogramowanie sterujące urządzeniem wysyłającym sygnały IR}
-\subsection{Ogólna struktura oprogramowania sterującego}
-Opis całej struktury oprogramowania i przejście przez wybrane elementy pliku main.cpp.
+\subsection{Charakter oprogramowania i założenia}
+Kod sterujący urządzeniem pośredniczącym opartym o mikrokontroler ESP32 został przygotowany za pomocą jezyka C++ oraz frameworka Arduino. Cały projekt oprogramowania zarządzany był przez rozszerzenie do edytora tekstu Visual Studio Code: PlatformIO, przy pomocy którego były doinstalowywane wymagane biblioteki oraz budowany i wgrywany na płytkę ESP32 Wroom DevKitC był program sterujący, a także przeprowadzane było debugowanie. Każda z tych operacji mogła się odbyć dzięki wsparciu programowania i debugowania za pomocą portu microUSB, które posiadała płytka oraz rozszerzenie edytora tekstu.
+\subsection{Ogólna struktura oprogramowania}
+Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zostało podzielone na 4 elementy. Główny z nich to plik main.cpp gdzie odbywa się całe sterowanie urządzeniem. Utworzone zostały także 3 moduły programowe, aby główny kod stał się bardziej przejrzysty oraz modularny. Opdowiadają one za obsługę wyświetlacza OLED, komunikację BLE oraz interpretację danych pochodzących z charakterystyk BLE. Utworzona struktura oprogramowania zawierająca autorskie kody źródłowe została przedstawiona na rysunku \ref*{Fig:codeStructure}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=4cm]{images/codeStructure.png}
+   \caption{Struktura oprogramowania sterującego urządzeniem pośredniczącym}
+   \label{Fig:codeStructure}
+\end{figure}
+
+\subsection{Główny kod sterujący}
+Plik zawierający główny kod sterujący czyli main.cpp najpierw dołącza pliki nagłówkowe dla ESP32 odpowiadające za obsługę wysyłu i odbioru syngałów podczerwonych. Dalej dołączone zostały także autorskie moduły, które można poznać po przedrostku ,,bt2ir\_''. Dzięki dołączonym plikom nagłówkowym można było utworzyć globalne obiekty klas, które później pozwalają na zarządzanie połączeniem BLE, wyświetlaczem OLED i interpretacje danych z charakterystyk. Inicjowane są także obiekty biblioteki obługi IR, dzięki którym można wysyłać i odbierać dane poprzez podczerwień. Dane z modułu odbierającego sygnały są przyjmowane na 4 pinie, a pinem sterującym wysyłaniem sygnałów jest pin 5. Kod realizujący tą logikę zanjduje się na listingu List.\ref*{Lst:globalDefinitions}.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/globalDefinitions.txt}\protect\relax}, label={Lst:globalDefinitions}]{codes/globalDefinitions.cpp}
+
+Framework Arduino oczekuje zedefiniowania funkcji setup(), która będzie wykonywana raz podczas uruchomienia urządzenia. Zawarto w niej inicjację połaczenia z wyświetlaczem OLED poprzez protokół I2C, inicjację serwera BLE za pomocą obiektów klas z autorskich modułów. Rozpoczęto też w niej także nasłuchiwanie sygnałów podczerwonych i zainicjowano pracę modułu wysyłającego sygnały IR. Definicję funkcji setup() przedstawia kod źródłówy na listingu List.\ref*{Lst:setup}.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/setup.txt}\protect\relax}, label={Lst:setup}]{codes/setup.cpp}
+
+Tworząc oprogramowanie za pomocą frameworka Arduino zdefiniować należy także funkcję, która będzie wykonywana w pętli nieskończonej na programowanym urządzeniu. W projekcie umieszczono w niej instrukcje warunkowe, przez które sprawdzane jest czy wstąpiły zdarzenia takie jak odebranie danych o wciśniętym klawiszu w aplikacji za pomocą serwera BLE, odebranie sygnału podczerwonego na module odbiornika IR, czy też rozłączenie lub połączenie z serwerem BLE nowego użytkownika aplikacji mobilnej. Jeśli funkcja wykryje zdarzenie serwera BLE, rysuje na wyświetlaczu OLED odświeżony aktualny stan połaczenia zwierający informację o liczbie połączonych użytkowników. Jeśli z kolei wykryte zostanie zdarzenie odebrania na serwerze BLE informacji o typie wciśniętego przycisku, rysowana jest jego ikona i nazwa aby poinformować użytkownika o odebraniu jego żądania. Obsługa tych zdarzeń w pierwszej części pętli porgramu została przedstawiona na listingu List.\ref*{Lst:loop1}.
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/loop1.txt}\protect\relax}, label={Lst:loop1}]{codes/loop1.cpp}
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/loop2.txt}\protect\relax}, label={Lst:loop2}]{codes/loop2.cpp}
 \subsection{Moduł komunikacji przez BLE}
 Opis modułu odpowiedzialnego za komunikację przez Bluetooth.
 \subsection{Moduł interpretujący dane z BLE}
 Opis autorskiego modułu interpretującego 2 charakterystyki serwera BLE.
 
 \subsection{Biblioteka obsługi ekranu OLED}
-Opis autorskiego modułu-nakładki do wyświetlania elementów na ekranie OLED.
+Opis autorskiego modułu-nakładki do wyświetlania elementów na ekranie OLED węgiel.
 \clearpage
 
 \section{Aplikacja sterująca telewizorem}
