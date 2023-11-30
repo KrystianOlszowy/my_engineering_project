@@ -241,7 +241,7 @@ Dzięki narzędziom takim jak Flutter DevTools, umożliwiony jest dostęp do zaa
 
 Framework ten stał się niebywale popularny wśród programistów. Chcąc tworzyć estetyczne, responsywne i wieloplatformowe aplikacje z minimalnym nakładem pracy, mając do dyspozycji obszerną i interaktywną dokumnetację, jeden z najlepszych wyborów to postawienie na Fluttera jako głowne nardzędzie tworzenia interfejsu użytkownika.
 \subsection{Komunikacja przez Bluetooth Low Energy}
-Bluetooth Low Energy (BLE) to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii. Jest uproszczoną i zoptymalizowaną wersją klasycznego Bluetooth.
+Bluetooth Low Energy(BLE)\cite{ble} to technologia komunikacyjna zaprojektowana do efektywnej wymiany danych pomiędzy urządzeniami przy niskim zużyciu energii. Jest uproszczoną i zoptymalizowaną wersją klasycznego Bluetooth.
 Komunikacja za pomocą BLE opiera się na koncepcji dwóch głównych typów urządzeń: urządzenia peryferyjnego i centralnego. Urządzenie peryferyjne emituje dane, podczas gdy urządzenie centralne zbiera te dane.
 
 Cechą charakterystyczną BLE jest niskie zużycie energii, co sprawia, że jest idealny do zastosowań, gdzie ważne jest przedłużenie życia baterii w urządzeniach mobilnych.
@@ -289,34 +289,61 @@ Elementy przedstawione na schemacie elektrycznym znalazły się w przedstawionym
 \clearpage
 
 \section{Oprogramowanie sterujące urządzeniem wysyłającym sygnały IR}
-\subsection{Charakter oprogramowania i założenia}
-Kod sterujący urządzeniem pośredniczącym opartym o mikrokontroler ESP32 został przygotowany za pomocą jezyka C++ oraz frameworka Arduino. Cały projekt oprogramowania zarządzany był przez rozszerzenie do edytora tekstu Visual Studio Code: PlatformIO, przy pomocy którego były doinstalowywane wymagane biblioteki oraz budowany i wgrywany na płytkę ESP32 Wroom DevKitC był program sterujący, a także przeprowadzane było debugowanie. Każda z tych operacji mogła się odbyć dzięki wsparciu programowania i debugowania za pomocą portu microUSB, które posiadała płytka oraz rozszerzenie edytora tekstu.
+\subsection{Środowisko narzędziowe}
+Kod sterujący urządzeniem pośredniczącym opartym o mikrokontroler ESP32 został przygotowany za pomocą jezyka C++ oraz frameworka Arduino. Cały projekt oprogramowania zarządzany był przez rozszerzenie do edytora tekstu Visual Studio Code: PlatformIO, przy pomocy którego były doinstalowywane też wymagane biblioteki oraz budowany i wgrywany na płytkę ESP32 Wroom DevKitC program sterujący, a także przeprowadzane debugowanie. Każda z tych operacji mogła się odbyć dzięki wsparciu programowania i debugowania za pomocą portu microUSB, które posiadała płytka oraz rozszerzenie edytora tekstu.
 \subsection{Ogólna struktura oprogramowania}
-Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zostało podzielone na 4 elementy. Główny z nich to plik main.cpp gdzie odbywa się całe sterowanie urządzeniem. Utworzone zostały także 3 moduły programowe, aby główny kod stał się bardziej przejrzysty oraz modularny. Opdowiadają one za obsługę wyświetlacza OLED, komunikację BLE oraz interpretację danych pochodzących z charakterystyk BLE. Utworzona struktura oprogramowania zawierająca autorskie kody źródłowe została przedstawiona na rysunku \ref*{Fig:codeStructure}.
+Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zostało podzielone na 4 elementy. Główny z nich to plik main.cpp gdzie odbywa się sterowanie urządzeniem korzystając przy tym z pozostałych modułów. Utworzone zostały 3 moduły narzędziowe, aby główny kod stał się bardziej przejrzysty oraz modularny. Opdowiadają one za obsługę wyświetlacza OLED, komunikację BLE oraz interpretację danych pochodzących z charakterystyk BLE. Wynikowa struktura podziału autorskich elementów oprogramowania została przedstawiona na rysunku \ref*{Fig:codeStructure}.
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=4cm]{images/codeStructure.png}
+   \includegraphics[width=4.5cm]{images/codeStructure.png}
    \caption{Struktura oprogramowania sterującego urządzeniem pośredniczącym}
    \label{Fig:codeStructure}
 \end{figure}
 
-\subsection{Główny kod sterujący}
-Plik zawierający główny kod sterujący czyli main.cpp najpierw dołącza pliki nagłówkowe dla ESP32 odpowiadające za obsługę wysyłu i odbioru syngałów podczerwonych. Dalej dołączone zostały także autorskie moduły, które można poznać po przedrostku ,,bt2ir\_''. Dzięki dołączonym plikom nagłówkowym można było utworzyć globalne obiekty klas, które później pozwalają na zarządzanie połączeniem BLE, wyświetlaczem OLED i interpretacje danych z charakterystyk. Inicjowane są także obiekty biblioteki obługi IR, dzięki którym można wysyłać i odbierać dane poprzez podczerwień. Dane z modułu odbierającego sygnały są przyjmowane na 4 pinie, a pinem sterującym wysyłaniem sygnałów jest pin 5. Kod realizujący tą logikę zanjduje się na listingu List.\ref*{Lst:globalDefinitions}.
+\subsection{Główny program sterujący}
+Główny program, który steruje urządzeniem pośredniczącym znajduje się w pliku ,,main.cpp''. Aby zorzumieć jakie funkcjonalności oferuje, najlepiej prześledzić jego budowę.
+
+Najpierw dołączane są pliki nagłówkowe z framweworka Arduino dla ESP32 odpowiadające za obsługę wysyłu i odbioru syngałów podczerwonych. Dołączane są także autorskie moduły, które można poznać po przedrostku ,,bt2ir\_''. Korzystając z nich z kolei można utworzyć globalne obiekty klas, które pozwalają na zarządzanie połączeniem BLE,interpretacje danych z charakterystyk tego połączenia, i pracę z  wyświetlaczem OLED. Obiekty tych klas zostają zinicjowane odpowiednimi danymi prawidłowymi dla posiadanego sprzętu jak rozdzielczość ekranu OLED czy numery pinów płytki deweloperskiej, na których będą przesyłane dane z i do modułów IR. Prametry zostały opatrzone opisami za pomocą deyrektyw \#define oraz stałych aby zwiększyć czytelność ich przekazywania do konstruktorów. Kod realizujący dołączanie plików nagłówkowych oraz inicjalizację obiektów globalnych znajduje się na List.\ref{Lst:globalDefinitions}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/globalDefinitions.txt}\protect\relax}, label={Lst:globalDefinitions}]{codes/globalDefinitions.cpp}
 
-Framework Arduino oczekuje zedefiniowania funkcji setup(), która będzie wykonywana raz podczas uruchomienia urządzenia. Zawarto w niej inicjację połaczenia z wyświetlaczem OLED poprzez protokół I2C, inicjację serwera BLE za pomocą obiektów klas z autorskich modułów. Rozpoczęto też w niej także nasłuchiwanie sygnałów podczerwonych i zainicjowano pracę modułu wysyłającego sygnały IR. Definicję funkcji setup() przedstawia kod źródłówy na listingu List.\ref*{Lst:setup}.
+Framework Arduino oczekuje zedefiniowania funkcji setup(), która będzie wykonywana raz podczas uruchomienia urządzenia. Utworzono takową i zawarto w niej już na początku zainicjowanie połaczenia szeregowego, aby móc odebrać dane z urządzenia na wypadek chęci wykrycia błędów działania. Znalazła się tam też inicjacja połaczenia z wyświetlaczem OLED poprzez protokół I2C i inicjacja serwera BLE, oba inicjacie zostały przeprowadzone za pomocą metod obiektów klas z autorskich modułów. Rozpoczęto w tej funkcji także nasłuchiwanie sygnałów podczerwonych i zainicjowano pracę modułu wysyłającego sygnały IR przy pomocy wcześniej utworzonych obiektów. Zawartość funkcji setup() przedstawia kod źródłówy na listingu List.\ref*{Lst:setup}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/setup.txt}\protect\relax}, label={Lst:setup}]{codes/setup.cpp}
 
-Tworząc oprogramowanie za pomocą frameworka Arduino zdefiniować należy także funkcję, która będzie wykonywana w pętli nieskończonej na programowanym urządzeniu. W projekcie umieszczono w niej instrukcje warunkowe, przez które sprawdzane jest czy wstąpiły zdarzenia takie jak odebranie danych o wciśniętym klawiszu w aplikacji za pomocą serwera BLE, odebranie sygnału podczerwonego na module odbiornika IR, czy też rozłączenie lub połączenie z serwerem BLE nowego użytkownika aplikacji mobilnej. Jeśli funkcja wykryje zdarzenie serwera BLE, rysuje na wyświetlaczu OLED odświeżony aktualny stan połaczenia zwierający informację o liczbie połączonych użytkowników. Jeśli z kolei wykryte zostanie zdarzenie odebrania na serwerze BLE informacji o typie wciśniętego przycisku, rysowana jest jego ikona i nazwa aby poinformować użytkownika o odebraniu jego żądania. Obsługa tych zdarzeń w pierwszej części pętli porgramu została przedstawiona na listingu List.\ref*{Lst:loop1}.
+Tworząc oprogramowanie za pomocą frameworka Arduino zdefiniować należy także funkcję, która będzie wykonywana w nieskończonej pętli na programowanym urządzeniu. Narzędzie wymaga nazywała się ona loop(). Przed nią jednak znalazły się jeszcze inicjalizacje dwóch znaczników czasowych w postaci dodatnich liczb całkowitych, które zostaną użyte do odliczania czasu trwania wyświetlania komunikatów dla użytkownika. 
+
+W samej już funkcji umieszczono instrukcje warunkowe, przez które, sprawdzane jest czy wstąpiły zdarzenia takie jak: odebranie danych o wciśniętym klawiszu w aplikacji za pomocą serwera BLE, odebranie sygnału podczerwonego na module odbiornika IR, czy też rozłączenie lub połączenie z serwerem BLE nowego użytkownika aplikacji mobilnej. Jeśli funkcja wykryje zdarzenie serwera BLE, rysuje na wyświetlaczu OLED odświeżony aktualny stan połaczenia zwierający informację o liczbie połączonych użytkowników. Jeśli z kolei wykryte zostanie zdarzenie odebrania na serwerze BLE informacji o typie wciśniętego przycisku, rysowana jest jego ikona i nazwa aby poinformować użytkownika o odebraniu jego żądania. Po obsłużeniu zdarzenia resetowana jest flaga informująca o jego aktywności. Obsługa opisanych zdarzeń w pierwszej części funkcji loop() została przedstawiona na List.\ref*{Lst:loop1}.
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/loop1.txt}\protect\relax}, label={Lst:loop1}]{codes/loop1.cpp}
 
+Program reaguje też na otrzymanie szesnastkowego kodu IR po wciśnieciu przycisku na pilocie w aplikacji. Po otrzymaniu tego kodu przez BLE przesyłany jest on dalej w formie sygnału podczerwonego do telewizora, realizując w ten sposób sterowanie nim i po zakończeniu obsługi zdarzenia resetowany jest jego flaga. Jeżeli odczytany zostanie, na zewnętrznym module odbiorczym, prawidłowy sygnał podczerwony, wypisany zostaje on na wyświetlaczu OLED, dzięki dedykowanej metodzie obiektu sterującego tym ekranem. Aktualizowany zostaje też wtedy znacznik czasowy tego zdarzenia. Następnie też wznawiane jest nasłuchiwanie sygnałów podczerwonych w tym module. Każdy z komunikatów dla użytkownika posiada swój czas wyświetlania. Limitowanie czasu ich trwania jest realizowane za pomocą sprawdzania stempli czasowych. Jeśli któryś z komunikatów powinien już się zakończyć, co jest wnioskowane na podstawie odległości aktualnego czasu od odpowiedniego znacznika czasowego, resetowane są wszystkie znaczniki czasowe komunikatów i następuje wyświetlenie domyślnego ekranu stanu połączenia BLE. Te funkcjonalności znalazły się w drugiej części funkcji loop(), a jej kod źródłowy został przedstawiony na List.\ref{Lst:loop2}.
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/loop2.txt}\protect\relax}, label={Lst:loop2}]{codes/loop2.cpp}
 \subsection{Moduł komunikacji przez BLE}
-Opis modułu odpowiedzialnego za komunikację przez Bluetooth.
+Autorski moduł odpowiedzialny za komunikację BLE został oparty o moduły biblioteki nimBLE, zamiast podstawowej biblioteki BLE przygotowanej przez Arduino, ponieważ ta druga zajmowała zbyt wiele pamięci i nie mieściła się w pamięci FLASH mikrokontrolera. Wszystkie elementy tego modułu znalazły się w przestrzeni nazw bt2ir.
+
+Klasa zarządzająca połaczeniem BLE została utworzona przy pomocy wzorca projektowego Singleton\cite{designPatterns}, który zapewnia utworzenie tylko jednej instancji takiej klasy. Zasosowano ten wzorzec aby zachowywać informacje o połączeniu BLE w całym programie. Publicznie funkcjonalności tej klasy udostępnione za pomocą metod to:
+\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
+   \item inicjalizacja serwera BLE
+   \item możliwość odczytywania i edytowania licznika połączonych urządzeń
+   \item możliwość odczytywania i edytowania flag zdarzeń odebrania danych wciśniętego przycisku w aplikacji mobilnej
+   \item dostęp do charakterystyk odebranego typu przycisku i jego kodu IR 
+   \item metoda pozwalająca narysować aktualny stan połączenia BLE.
+\end{enumerate} Część pliku nagłówkowego zawierająca dostępne metody publiczne klasy Connection została przedstawiona na List.\ref*{Lst:bleMethods}.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/bleMethods.txt}\protect\relax}, label={Lst:bleMethods}]{codes/bleMethods.cpp}
+
+Najważniejszym elementem tego modułu jest metoda setupConnection() klasy Connection. W niej właśnie odbywa się inicjowanie serwera BLE wraz z jego parametrami oraz dołączenie funkcji wywoływanych podczas zdarzeń serwera.
+
+Podczas przygotowywania urządzenia pośredniczącego do obsługi BLE w pierwszej kolejności inicjowane jest urządzenie BLE. Kolejno dalej na urządzeniu tworzony jest serwer i przypisywane są mu autorskie klasy przechowujące callbacki zdarzeń serwera, zawarte także w tym module, dzięki czemu biblioteka automatycznie będzie wykonywać czynności po połączeniu i rozłączeniu użytkownika, oraz o takim wydarzeniu zostanie poinformowany główny program sterujący. 
+Na tak utworzonym serwerze tworzony jest serwis i 2 jego charakterystyki odpowiadające wyłącznie za odbieranie danych o typie wciśniętego przycisku i jego szesnastkowym kodzie IR. Obie charakterystyki otrzymują także swoje klasy z metodami wywoływanymi podczas odebrania danych, dzięki czemu główny program sterujący informowany jest o tym zdarzeniu. Utworzony w ten sposób serwer może rozpocząć rozgłaszanie swojej obecności i nazwiązywać połączenia z klientami. Kod funkcji realizującej inicjalizację serwera BLE znajduje się na List.\ref*{Lst:setupConnection}. 
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/setupConnection.txt}\protect\relax}, label={Lst:setupConnection}]{codes/setupConnection.cpp}
+
+Aby uzyskać możliwość połaczenia wielu użytkowników z serwerem urządzenia pośredniczącego metoda wywoływana podczas każdego połączenia nowego użytkownika musi wznowić rozgłaszanie dostępności serwera.
 \subsection{Moduł interpretujący dane z BLE}
-Opis autorskiego modułu interpretującego 2 charakterystyki serwera BLE.
+Aby ułatwić pracę z danymi odebranymi przez urządznie pośredniczące utworzono moduł przetwarzający te dane. Zawiera on wygodny enumerator wykorzystywany do nadania przejrzystych nazwy programowych dla odebranych typów wciśniętego przycisku pilota aplikacji mobilnej.
+Z kolei klasa Controller odpowiada za interpretację danych odebranych za pomocą charakterystyk serwera BLE. Korzysta z ona z instancji klasy Connection aby pobrać dane charakterystyk i je zinterpretować. Udostępnia metody pozwalające odświeżać przechowywane w polach tej klasy ostatnio odebrane dane od aplikacji mobilnej.
+
 
 \subsection{Biblioteka obsługi ekranu OLED}
 Opis autorskiego modułu-nakładki do wyświetlania elementów na ekranie OLED węgiel.
