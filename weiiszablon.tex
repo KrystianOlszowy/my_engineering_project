@@ -130,8 +130,7 @@ jej do własnych potrzeb jest znacznie łatwiejsze niż w przypadku innych rozwi
    \label{Fig:devkitScheme}
 \end{figure}
 
-Jednym z kluczowych atutów ESP32 jest wbudowane wsparcie dla Wi-Fi(802.11 b/g/n) i Bluetooth(klasyczny 4.2 i BLE),
-co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
+Jednym z kluczowych atutów platformy ESP32 jest wbudowane wsparcie dla Wi-Fi(802.11 b/g/n) i Bluetooth(klasyczny 4.2 i BLE), co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
 Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwiając precyzyjny pomiar sygnałów analogowych. System zawiera wiele innych możliwości, ale najważniejsze jego funkcjonalości i charakterystyczne cechy, firma Espressif zebrała na digramie,  który znalazł się na rysunku \ref*{Fig:functionalDiagram}.
 
 \begin{figure}[ht]
@@ -238,7 +237,7 @@ Wiele bibliotek na rożne platformy sprzętowe umożliwia łatwe i szybkie obsł
 
 \section{Urządzenie wysyłające sygnały IR}
 \subsection{Schemat elektryczny zaprojektowanego urządzenia}
-Aby wykonać urzadzenie pośredniczące najpierw wykonano shemat elektryczny przy pomocy programu EasyEDA w darmowej wersji online\cite{easyEda}. Dzięki bibliotekom tworzonym przez użytkowników odnaleziono wszystkie niezbędne elementy do działania urządzenia pośredniczącego. Utworzony schemat elektryczny powstały z użytych komponentów znajduje się na Rys.\ref*{Fig:deviceScheme}.
+Aby wykonać urzadzenie pośredniczące najpierw wykonano shemat elektryczny przy pomocy programu EasyEDA w darmowej wersji online\cite{easyEda}. Dzięki bibliotekom tworzonym przez użytkowników odnaleziono wszystkie niezbędne elementy do działania urządzenia pośredniczącego. Utworzony schemat elektryczny powstały z użytych komponentów znajduje się na Rys. \ref*{Fig:deviceScheme}.
 \begin{figure}[ht]
    \centering
    \includegraphics[width=12cm]{images/deviceScheme.png}
@@ -248,7 +247,7 @@ Aby wykonać urzadzenie pośredniczące najpierw wykonano shemat elektryczny prz
 
 Na schemacie kolorem czarnym oznaczono połączenia do masy (GND), kolorem czerwonym zasilanie z mikrokontrolera o potencjale 3.3V. Na niebiesko zaznaczone są szyny danych modułów IR. Z kolei kolorem zielonym oznaczono linię zegarową, a żółtym linię danych,porotokołu komunikacjynego I2C wyświetlacza OLED.
 
-Samo urządznie nie jest wrażliwe na zakłócenia elektromagnetyczne, ani nie wymagało ochronnej obudowy do przestestowania poprawności założeń projektowych oraz końcowych testów pełnego systemu, dlatego jako element łączący moduły została użyta płytka stykowa. Dzięki użyciu płytki zachowano pełną funkcjonalność urządzenia oraz zyskano dowolność zmian podczas projektowania rozmieszczenia i połączenia komponentów. Urządznie osadzone na płytce prototypowej zostało przedstawione na Rys.\ref*{Fig:deviceOnBoard}.
+Samo urządznie nie jest wrażliwe na zakłócenia elektromagnetyczne, ani nie wymagało ochronnej obudowy do przestestowania poprawności założeń projektowych oraz końcowych testów pełnego systemu, dlatego jako element łączący moduły została użyta płytka stykowa. Dzięki użyciu płytki zachowano pełną funkcjonalność urządzenia oraz zyskano dowolność zmian podczas projektowania rozmieszczenia i połączenia komponentów. Urządznie osadzone na płytce prototypowej zostało przedstawione na Rys. \ref*{Fig:deviceOnBoard}.
 \begin{figure}[ht]
    \centering
    \includegraphics[width=12cm]{images/deviceOnBoard.jpg}
@@ -316,7 +315,7 @@ Klasa zarządzająca połaczeniem BLE została utworzona przy pomocy wzorca proj
 Najważniejszym elementem tego modułu jest metoda setupConnection() klasy Connection. W niej właśnie odbywa się inicjowanie serwera BLE wraz z jego parametrami oraz dołączenie funkcji wywoływanych podczas zdarzeń serwera.
 
 Podczas przygotowywania urządzenia pośredniczącego do obsługi BLE w pierwszej kolejności inicjowane jest abstrakcja urządzenia. Kolejno dalej na urządzeniu tworzony jest serwer i przypisywane są mu autorskie klasy przechowujące metody wywoływane przez zdarzenia serwera, zawarte także w tym module, dzięki czemu biblioteka automatycznie będzie wykonywać czynności po połączeniu i rozłączeniu użytkownika, oraz o takim wydarzeniu zostanie poinformowany główny program sterujący.
-Na tak utworzonym serwerze tworzony jest serwis i jego 2 charakterystyki odpowiadające wyłącznie za odbieranie danych o typie wciśniętego przycisku i jego szesnastkowym kodzie IR. Obie charakterystyki otrzymują także swoje klasy z metodami wywoływanymi podczas odebrania danych, dzięki czemu główny program sterujący informowany jest o tym zdarzeniu. Utworzony w ten sposób serwer może rozpocząć rozgłaszanie swojej obecności i nazwiązywać połączenia z klientami. Kod funkcji realizującej inicjalizację serwera BLE znajduje się na List.\ref*{Lst:setupConnection}.
+Na tak utworzonym serwerze tworzony jest serwis i jego 2 charakterystyki odpowiadające wyłącznie za odbieranie danych o typie wciśniętego przycisku i jego szesnastkowym kodzie IR. Obie charakterystyki otrzymują także swoje klasy z metodami wywoływanymi podczas odebrania danych, dzięki czemu główny program sterujący informowany jest o tym zdarzeniu. Utworzony w ten sposób serwer może rozpocząć rozgłaszanie swojej obecności i nazwiązywać połączenia z klientami. Kod funkcji realizującej inicjalizację serwera BLE znajduje się na List. \ref*{Lst:setupConnection}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/setupConnection.txt}\protect\relax}, label={Lst:setupConnection}]{codes/setupConnection.cpp}
 
@@ -378,38 +377,98 @@ Dolna część interfejsu użytkownika odpowiada za przemieszczanie się po ekra
 \end{enumerate}
 
 \subsection{Moduł obsługujący BLE}
-Aby skutecznie zarządzać połaczeniem BLE z urządzeniem pośredniczącym w zaprojektowanej aplikacji utworzono moduł, w postaci klasy opartej o wzorzec Singleton, korzystający z biblioteki Flutter Blue Plus[]. Utworzona klasa udostępnia szereg typowych metod dla zarządznia połączeniem.
+Aby skutecznie zarządzać połaczeniem BLE z urządzeniem pośredniczącym w zaprojektowanej aplikacji utworzono moduł, w postaci klasy opartej o wzorzec Singleton, korzystający z biblioteki Flutter Blue Plus\cite{flutterBluePlus}. Utworzona klasa udostępnia szereg typowych metod dla zarządznia połączeniem.
 
-Odnajdź dokumentację FlutterBluePlusa:
-\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-   \item initCheckingBleAdapter()
-   \item checkLocationEnabled()
-   \item scanBleDevices()
-   \item sendIrCodeToDevice()
-   \item wymyślenie jak nadmienić że są też inne funkcje i czy w ogóle pomijać 
-\end{enumerate}
+Aby nawiązać połączenie z urządzeniem pośredniczącym, najpierw należy odnaleźć wszystkie dostępne urządzenia w okolicy. Przed tym, jednak jeszcze trzeba się upewnić, że smartfon posiada włączony adapter BLE. W projektowanej klasie służy do tego metoda initCheckingBleAdapter przedstawiona na List. \ref*{Lst:checkBLE}. Dodaje ona subskyrpcję do strumienia sprawdzającego włączenie adaptera BLE, która jeśli wykryje, że adapter jest wyłączony pyta jednokrotnie użytkownika o chęć włączenia go.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/checkBLE.txt}\protect\relax}, label={Lst:checkBLE}]{codes/checkBLE.cpp}
+
+Skanowanie urządzeń dostępnych w okolicy wymaga jeszcze włączonej lokalizacji. Sprawdzanie tego warunku realizowane jest za pomocą metody checkLocationEnabled() ukazanej na List. \ref*{Lst:checkLocation}. Sprawdza ona czy użytkownik posiada włączoną lokalizację i jeśli nie, pyta go czy nie chciałby jej włączyć.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/checkLocation.txt}\protect\relax}, label={Lst:checkLocation}]{codes/checkLocation.cpp}
+
+Mając dostępny sposób na sprawdzenie działania lokalizacji i adaptera BLE, można przystąpić do skanowania dostępnych urządzeń bezprzewodowych. Zadanie to pełni metoda scanBleDevices() przedstawiona na List. \ref*{Lst:scanBLE}. Sprawdza ona najpierw dostępność lokalizacji, a następnie dodaje subskrypcje do strumienia dostępnych urządzeń zawierających w nazwie "Bluetooth2IR for TV". Następnie sprawdzane są flagi dostępności wcześniej sprawdzonych przez inne funkcje zasobów i jeśli wszytskie są dostępne, następuje 3 sekundowe skanowanie dostępnych urządzeń.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/scanBLE.txt}\protect\relax}, label={Lst:scanBLE}]{codes/scanBLE.cpp}
+
+Zakładając, że odnaleziono przynajmniej 1 urządzenie pośredniczące, klasa udostępnia możliwość połączenia się z nim za pomocą metody connectToBleDevice(), która sprawdza czy urządzenie posiada odpowiednie charakterystyki odbioru informacji o wciśniętym przycisku na pilocie. Realizowane jest to za pomocą sprawdzania UUID serwisu i charakterystyk. Jeśli każdy z atrybutów urządzenia pośredniczącego zgadza się z wymaganiami systemu, urządzenie pozostaje z nim połączone (już samo sprawdzanie atrybutów BLE wymaga chwilowego nawiązania połączenia z tym urządzeniem).
+Posiadając nawiązane połączenie moduł jest gotowy do wysyłania informacji o wciśniętym przycisku. Za wysył danych do urządzenia pośredniczącego odpowiadają 2 metody, jedna z nich to sendIrCodeToDevice() zaprezentowana na List. \ref*{Lst:sendingBLE}. Wysyła ona do charakterystyki kodu IR przycisku, dane w postaci listy 8 bajtowych liczb całkowitych bez znaku, czekając na odpowiedź o powodzeniu lub niepowodzeniu transmisji.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/sendingBLE.txt}\protect\relax}, label={Lst:sendingBLE}]{codes/sendingBLE.cpp}
+
+
 \subsection{Ekran łączenia się z urządzeniem pośredniczącym poprzez BLE}
-Przejście kolejno przez elementy łączenia się od init state do rozłączania.
+Ekran nawiązywania połączenia z urządzeniem pośredniczącym został oparty o moduł BLEService opisany w poprzednim podpunkcie. Zawiera on właściwie jedynie przycisk odświeżania dostępnych urządzeń w pobliżu oraz interaktywną listę wyświetlającą te urządzenia.
+Przełączając się na ten ekran lub włączając aplikację, gdyż jest on domyślnym pod ekranem, użytkownik uruchomi sprawdzenie włączenia adaptera BLE oraz lokalizacji. Stanie się tak, ponieważ zaimplementowane zostało automatyczne uruchamianie skanowania, które wymaga wymienionych zasobów do poprawnego działania, a metoda inicjalizacji tego obiektu zajmuje się sprawdzeniem ich dostępności. Ekrany przedstawiające zapytania o włączenie lokalizacji oraz modułu Bluetooth, a także ekran podczas wyszukiwania dostępnych urządzeń zostały przedstawione na Rys. \ref*{Fig:initBLE}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=12cm]{images/initBLE.png}
+   \caption{Ekrany kolejno zapytania o włączenie lokalizacji, adaptera Bluetooth oraz ekranu podczas skanowania dostępnych urządzeń BLE}
+   \label{Fig:initBLE}
+\end{figure}
 
-Pokazywanie stanów aplikacji i małych wycinków kodu ekranu.
+Jeśli użytkownik włączył swoje urządzenie pośredniczące i jest ono w pobliżu, a także w aplikacji nastąpiło poprawne skanowanie, zobaczy on swoje urządzenie na liście pod nazwą ,,Bluetooth2IR for TV''. Może się połączyć on z tak odnalezionym urządzeniem za pomocą kliknięcia w nie na liście, a później jeśli chce, rozłączyć za pomocą przytrzymania tego elementu. Ekran przedstawiający odnalezione urządzenie znajdujące się na liście dostępnych oraz jego stan po połączeniu się z tym urządzeniem znajdują się na Rys. \ref*{Fig:connectBLE}.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=10cm]{images/connectBLE.png}
+   \caption{Ekrany kolejno po odnalezieniu urządzenia pośredniczącego, po rozpoczęciu łączenia z nim oraz po połaczeniu za pomocą BLE}
+   \label{Fig:connectBLE}
+\end{figure}
+
 \subsection{Moduł obsługi przechowywania modelu telewizora}
-Opisanie sharedPrefs ogólnie i pokazanie funkcji jako przykładu save i get. Opis hex validatora.
-Przedstawienie tego modułu.
+W aplikacji mobilnej pilota uniwersalnego użtykownik ma możliwość wyboru modelu telewizora, którym chce sterować. Aby reprezentować programowo zbiór zdefiniowanych modeli telewizorów  i zrealizować zapamiętywanie tego zestawu pomiędzy uruchomieniem aplikacji utworzono moduł tv\_model.dart. Odpowiedzalny jest on za zdefiniowanie klasy daych pojedynczego przycisku pilota, oraz składającej się z takich przycisków klasy pełnego modelu pilota. 
+
+Klasa Button odpowiadająca za pojedynczy przycisk zawiera 2 metody fromJson() i toJson() pozwalające na pracę z danymi zapisanymi w postaci tekstu w formacie JSON. Iplementacja tych metod znajduje się na List. \ref*{Lst:buttonJson}.
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/buttonJson.txt}\protect\relax}, label={Lst:buttonJson}]{codes/buttonJson.cpp}
+
+Z kolei klasa TVModel składa się z wielu obiektów klasy Button z odpowiednio zdefniowanymi typami przycisku w postaci numerycznej oraz nazwy tego modelu telewizora, którym definiowane przysciski na pilocie mają sterować. Posiada ona także metody toJson() oraz fromJson(), które są ciągami wywołań tego rodzaju metod z klasy Button. [jakoś może szerzej to opisać]
+
+Chcąc teraz przechowywać dane pomiędzy uruchomieniami aplikacji można skorzystać z nieulotnej pamięci aplikacji, do której można uzyskać dostęp za pomocą obiektu SharedPreferences udostępnianego przez framework Flutter. Dla wygody i zkonsolidowania operacji wykonywanych na tym obiekcie utoworzono klasę SharedPrefs służącą jako interfejs dostępu do danych zapisanych w pamięci oraz udostępniający łatwe w użyciu metody zapisujące i odczytujące dane zestawów przycisków dla modeli telewizorów. Klasa ta przechowuje instancję obiektu SharedPreferences oraz udostępnia statyczne metody pozwalające zapisywać i odczytywać nawet całe listy zestawów przycisków. Część definicji tej klasy zawierającą pole przechowujące instancę obiektu SharedPreferences, metodę inicjalizującą ten obiekt oraz metody zapisujące i odczytujące listy zestawów przycisków zawarto na List. \ref*{Lst:sharedPrefs}
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/sharedPrefs.txt}\protect\relax}, label={Lst:sharedPrefs}]{codes/sharedPrefs.cpp}
+
+
 \subsection{Ekran wyboru i edycji modelu telewizora}
 Przedstawienie funkcjonalności ekranu i przyjętych rozwiązań. GG 700 linijek
 ale przejdzie się tak samo od uruchomienia do zapisania modelu
 \subsection{Ekrany przycisków pilota}
-Przedstawienie funkcjonalności ekranu i przyjętych rozwiązań. tutaj pokazanie 1 przycisku że wysyłamy dane
+Aby użytkownik mógł finalnie skorzystać ze sterowania telewizorem, udostępnione zostały 2 ekrany. Pierwszy z nich o nazwie ,,Main Buttons'' zawiera najczęściej spotykane typy przycisków jak włączający telewizor, zmieniajacy głośność, kanału i im podobne. Przyciski na tym ekranie zostały rozmiesczone tak aby jak najbardziej imitować ich rozmieszczenie na zwykłym pilocie. Wygląd tego ekranu został przedstawiony na Rys. \ref*{Fig:mainButtons}.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=8cm]{images/mainButtons.png}
+   \caption{Ekran ,,Main Buttons'' aplikacji mobilnej zawierający popularne przyciski}
+   \label{Fig:mainButtons}
+\end{figure}
+
+Utworzony został również ekran pozwalający na wprowadzanie cyfr o nazwie ,,Numeric''. Zbudwany został tak, aby cyfry były jak największe na ekranie, a zarazem przyciski pozostały wygodne w użyciu. Jego wygląd w aplikacji przedstawiony został na Rys. \ref*{Fig:numeric}.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=8cm]{images/numeric.png}
+   \caption{Ekran ,,Numeric'' aplikacji mobilnej zawierający przyciski numeryczne}
+   \label{Fig:numeric}
+\end{figure}
+
+Każdy z przycisków po naciśnięciu wysyła dane do 2 charakterystyk serwera BLE z którym wcześniej nawiązano połączenie. Dzieje się to za pomocą metod wysyłających dane z klasy BLEService i danych typu wciskanego przycisku i kodu sygnału podczerwonego zależnych od wybranego modelu telewizora, którym użytkownik chce sterować. Funkcja przypisana do parametru onPressed przycisku numerycznego ,,1'', wysyłająca te dane dla tego przycisku, została przedstawiona na List. \ref*{Lst:buttonSend}.
+
+\lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/buttonSend.txt}\protect\relax}, label={Lst:buttonSend}]{codes/buttonSend.cpp}
 \clearpage
 
 \section{Testy i prezentacja finalnego systemu}
-W każdym z rozdziałów ewentualne wady rozwiązania i komentarze.
 \subsection{Ustanawianie połączenia aplikacji z urządzeniem}
-Przedstawienie sposobu nawziązywania połączenia aplikacji mobilnej z mikrokontrolerem.
+Aplikacja mobilna podczas uruchomiania pyta użytkownika czy nie chce on włączyć adaptera Bluetooth i lokalizacji jeśli te nie są już włączone. Niweluje to możliwość ślepych prób odświeżania dostępnych urządzeń w poszukiwaniu urządzenia pośredniczącego. Jeżeli mikrokontroler jest zasilony, a aplikacja ma włączone oba wymagne moduły w ciągu 3 sekund od odświeżenia listy dostępnych urządzeń jest znajdowany system pośredniczący. Teraz użytkownik może połączyć się z nim za pomocą pojedynczego kliku na wyświetlanej liście w aplikacji. Stan urządzenia pośredniczącego i aplikacji mobilnej na chwilę przed nawiązaniem połączenia przedstawia Rys. \ref*{}.
+
+Nawiązywanie połącznia aplikacji z systemem wysyłającym sygnały podczerowne do telewizora trwa zazwyczaj do 3 sekund. Jeżeli ten czas jest przekroczony oznacza to zazwyczaj niski poziom naładowania baterii lub spadek napięcia zasilającego mikrokontroler. Po połączeniu się za pomocą BLE obu elementów systemu sterowania telewizorem, na wyświetlaczu OLED widać zwiększenie się liczby połączonych urządzeń, a w aplikacji połączone urządzenie jest podświetlane na zielono. Stan obu urządzeń po nawiązaniu połączenia przedstawia Rys.\ref*{} Tak połączony system, można teraz parametryzować w kolejnym oknie aplikacji.
 \subsection{Edycja i wybór modelu telewizora w aplikacji}
-Przedstawienie dostępnych opcji dodania, usunięcia i edycji czy wyboru modelu telewizora w którym znajdują się przyciski z kodami IR.
+Przechodząc do ekranu ,,TV Model'', nie zobaczy się od razu listy dostępnych predefiniowanych lub zdefiniowanych przez użytkownika telewizorów którymi można sterować lecz będzie to opóźnione o kilka sekund z uwagi na konieczność wczytania tych modeli z pamięci apliakacji. Po pierwszym wczytaniu danych z pamięci ekran działa już płynnie i pozwala na swobodne działanie.
+
+Użytkownik nie jest zmuszony do definiowania własnego modelu telewizora. Może on wybrać z dostępnej listy model marki Manta i przejść bezpośrednio do ekranów aplikacji z przyciskami pilota i sterować swoim urządzeniem telewizyjnym.
+
+Jeśli jednak chce edytować już wcześniej utworzony przez siebie model urządzenia odbierającego sygnały podczerwone najlepiej żeby zaopatrzył się w kody sygnałów IR interesującego go modelu z materiałów producenta. Może jednak skorzystać też z czytnika kodów podczerownych oprogramowanego w urządzeniu pośredniczącym. Wystarczy, że skieruje on swojego starego pilota na to urządzenie i będzie wciskać przyciski zapisując ich kody otrzymane na ekranie wyświetlacza OLED, do odpowiednich pól szesnatkowych kodów syngałów podczerownych w aplikacji mobilnej. Aplikacja sprawdza poprawność tych kodów oraz czy nie zmieniane są predefiniowane modele. W razie potrzeby podpowiada użytkownikowi, też jaki popełnił błąd lub infromuje go o innych możliwościach.
+
 \subsection{Korzystanie z przycisków pilota}
-Prezentacja działania systemu w kontakcie z telewizorem.
+Kiedy użytkownik ustawił już swój model telewizora w aplikacji oraz nawiązał połączenie z urządzeniem pośredniczącym może już korzystać z przycisków pilota w aplikacji mobilnej. Reakcja odbiornika na wciśnięty przycisk jest właściwie natychmiastowa i użytkownik jej nie odczuwa. Sam pilot nie obsługuje jednak przytrzymywania przycisku co może stać się zaletą ponieważ nie możliwe w ten sposób jest wysyłanie masy sygnałów naraz co często ma niezamierzone skutki jak zbyt duże zwiększenie głośności urządzenia.
 
 \clearpage
 
@@ -420,15 +479,6 @@ Prezentacja działania systemu w kontakcie z telewizorem.
 Ostatni akapit podsumowania musi zawierać wykaz własnej pracy dyplomanta i zaczynać się od sformułowania: „Autor za własny wkład pracy uważa: \ldots”.
 
 \clearpage
-
-\section*{Załączniki}
-\addcontentsline{toc}{section}{Załączniki}
-
-Według potrzeb zawarte i uporządkowane uzupełnienie pracy o dowolny materiał źródłowy (wydruk programu komputerowego, dokumentacja kons\-truk\-cyj\-no-\-tech\-no\-lo\-gicz\-na, konstrukcja modelu -- makiety -- urządzenia, instrukcja obsługi urządzenia lub stanowiska laboratoryjnego, zestawienie wyników pomiarów i obliczeń, informacyjne materiały katalogowe itp.).
-
-
-\clearpage
-
 \addcontentsline{toc}{section}{Literatura}
 \bibliography{biblgr}
 \bibliographystyle{plain}
