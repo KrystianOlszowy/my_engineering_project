@@ -1,5 +1,5 @@
-% typ dokumentu,draft
-\documentclass[12pt,twoside,draft]{article}
+% typ dokumentu
+\documentclass[12pt,twoside]{article}
 
 % użycie pakietu , jak include
 \usepackage{weiiszablon}
@@ -29,8 +29,8 @@
 %%% promotor ze stopniami naukowymi po angielsku
 \supervisorEN{Jan Sadolewski, PhD, Eng.}
 
-\abstract{Treść streszczenia po polsku}
-\abstractEN{Treść streszczenia po angielsku}
+\abstract{Praca zawiera zaproponowane rozwiązanie sterowania telewizorem z poziomu smartfona dzięki aplikacji mobilnej i urządzeniu pośredniczącemu, opartemu o mikrokontroler z niezbędnymi modułami. Przedstawiono i omówiono w niej technologie i koncepty, z których korzystano podczas procesu projektowania. Opisane zostały też najważniejsze elementy fizycznej części systemu, oprogramowanie mikrokontrolera, zbudowana aplikacja mobilna oraz ich współpraca w celu sterowania urządzeniem telewizyjnym.}
+\abstractEN{The work encompasses a solution for television control through a smartphone application and an intermediary device, based on a microcontroller with necessary modules. It introduces and discusses the technologies and concepts employed during the design process. Additionally, it details the key components of the physical system, microcontroller software, the developed mobile application, and their collaboration for television device control.}
 
 \keywords{pilot, BLE, IR, Flutter, aplikacja mobilna}
 \keywordsEN{remote controller, BLE, IR, Flutter, mobile application}
@@ -55,7 +55,7 @@ Współcześnie nie wyborażamy sobie domu, w którym nie ma telewizora. Telewiz
 centralnym elementem więszkości domostw, przekształciły się z tradycyjnych urządzeń
 telewizyjnych w zaawansowane systemy multimedialne, oferujące nie tylko dostęp do programów telewizyjnych,
 ale również do różnorodnych treści wideo, gier, czy nawet aplikacji internetowych.
-Ich powszechność we współczesnym świecie, a także mnogość producentów i ich pomysłów
+Ich powszechność we współczesnym świecie, a~także mnogość producentów i ich pomysłów
 sprawiło, że wyodrębniło się wiele technologii i sposobów sterowania tymi urządzeniami.
 
 W wielu gospodarstwach domowych znajduje się wciąż telewizor sterowany jedynie za pomocą podczerwieni i jest
@@ -73,7 +73,7 @@ stały się one nie tylko przedmiotem codziennego użytku, lecz również nieodz
 narzędziem wspierającym wszystkie aspekty naszego życia.
 
 Obecnie smartfony są poza urządzeniami komunikacyjnymi także mobilnymi centrami multimedialnymi,
-umożliwiającymi dostęp do rozmaitych treści, od filmów i muzyki, po aplikacje społecznościowe.
+umożliwiającymi dostęp do rozmaitych treści, od filmów i~muzyki, po aplikacje społecznościowe.
 Ich interaktywne interfejsy i intuicyjne systemy operacyjne sprawiają, że stają się łatwe w obsłudze nawet dla osób starszych,
 które powoli przekonują się do współczesnej wersji telefonów komórkowych.
 
@@ -81,7 +81,7 @@ Z uwagi na wyżej wymienione zalety samrtfonów naturalnym pomysłem wydaje się
 sterowania urządzeniami multimedialnymi, w tym także telewizorów. Właściwie wszystkie współczesne smartfony posiadają
 wcześniej wymienione nowoczesne technologie komunikacji bezprzewodowej jak WiFi i Bluetooth, jednak nie uświadczymy w nich zbyt często już obsługi podczerwieni. Aby skomunikować więc przy pomocy tych technologii smartfon
 ze starszym telewizorem, powstaje potrzeba dołączenia pośrednika. Miałby on za zadanie tłumaczenie interakcji
-użytkownika z aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.
+użytkownika z~ aplikacją mobilną na sygnały podczerwone, które zrozumie telewizor.
 
 \subsection{Cel pracy}
 Celem pracy jest zaproponowanie rozwiązania sterowania telewizorem z poziomu
@@ -101,9 +101,9 @@ Czwarty rozdział opisuje sposób połączenia komponentów i ich parametry, sk�
 
 W rozdziale piątym szczegółowo omówiono utworzone oprogramowanie mikrokontrolera odpowiedzialne za sterowanie jego zasobami i dołączonymi modułami.
 
-Rozdział szósty zawiera opis zaprojektowanego intefejsu użytkownika aplikacji mobilnej oraz jej funkcjonalności, a także wykorzystane rozwiązania programowe przy implementacji.
+Rozdział szósty zawiera opis zaprojektowanego intefejsu użytkownika aplikacji mobilnej oraz jej funkcjonalności, a także wykorzystane podczas implementacji, rozwiązania programowe.
 
-Siódmy rozdział koncentruje się na przedstawieniu sposobu korzystania z utworzonego rozwiązania i ocenie skuteczności poszczególnych jego funkcji.
+Siódmy rozdział koncentruje się na przedstawieniu sposobu korzystania z utworzonego rozwiązania i ocenie skuteczności działania poszczególnych jego funkcji.
 
 W ostatnim rozdziale zawarto podsumowanie całej pracy, możliwe usprawnienia zaprojektowanego rozwiązania oraz wskazano elementy projektu, które autor uważa za wkład własny.
 
@@ -127,14 +127,14 @@ Dostępne są jednak także rozbudowane aplikacje z dedykowanymi urządzeniami w
 \subsection{Zestawienie z autorskim projektem}
 {Wymienione wcześniej urządzenia mają swoje zastosowania, ale nie wystrzegają się też wad. Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w popełnieniu błędu programowanie. Dostęp do tworzenia własnych zestawów przycisków jest nierzadko trudny, czasem niemożliwy, a samo użycie często wymaga przchodzenia po niewidocznej liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski. Urządzenia nieposiadające tych wad czyli aplikacje z dedykowaną stacją wysyłającą sterowanie do urządzeń domowych, łączą się jednak poprzez WiFi ze smartfonem, przez co pobiera ono więcej energii niż inne rozwiązania oraz wymaga podłączenia do sieci użytkownika, generując jej obciążenie.
 
-   Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać przedstawione problemy. Bateria czy akumulator możliwe są do używania z urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilanie może i powinno odbywać się przez kabel microUSB, dzięki czemu nie zwiększany jest popyt na szkodliwe dla środowiska baterie. Programowanie przycisków odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzają czy dane w nich zawarte są poprawne, dzięki czemu użytkownik ma bezpośredni i przejrzysty dostęp do swoich ustawień pilota. Utworzony przez niego lub predefiniowany model telewizora wybierany jest z listy, którą można łatwo przeglądać i rozbudować. Sama aplikacja posiada kontrolę błędów konfiguracji oraz komunikacji bezprzewodowej i jest intuicyjna dla użytkownika już podczas pierwszego uruchomienia. Wywmiana danych ze smartfonem odbywa się za pomocą technologii Bluetooth Low Energy co ogranicza zużycie energii. Zauważając, że z urządzenia pośredniczącego może korzystać wiele osób jednocześnie w większej skali jest to tańsze rozwiązanie niż piloty uniwersalne, kiedy rozważymy wielu użytkowników. Łatwość obsługi i przejrzystość interfejsu aplikacji jest atutem zwłaszcza dla osób starszych, nieobytych z technologią.
+   Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać przedstawione problemy. Bateria czy akumulator możliwe są do używania z~urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilanie może i~powinno odbywać się przez kabel microUSB, dzięki czemu nie zwiększany jest popyt na szkodliwe dla środowiska baterie. Programowanie przycisków odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzają czy dane w nich zawarte są poprawne, dzięki czemu użytkownik ma bezpośredni i przejrzysty dostęp do swoich ustawień pilota. Utworzony przez niego lub predefiniowany model telewizora wybierany jest z listy, którą można łatwo przeglądać i rozbudować. Sama aplikacja posiada kontrolę błędów konfiguracji oraz komunikacji bezprzewodowej i jest intuicyjna dla użytkownika już podczas pierwszego uruchomienia. Wywmiana danych ze smartfonem odbywa się za pomocą technologii Bluetooth Low Energy co ogranicza zużycie energii. Zauważając, że z urządzenia pośredniczącego może korzystać wiele osób jednocześnie w większej skali jest to tańsze rozwiązanie niż piloty uniwersalne, kiedy rozważymy wielu użytkowników. Łatwość obsługi i przejrzystość interfejsu aplikacji jest atutem zwłaszcza dla osób starszych, nieobytych z technologią.
 }
 \clearpage
 \section{Przedstawienie wykorzystanych technologii}
 \subsection{Platforma ESP32}
 ESP32 jest układem typu SoC (ang. System-on-a-chip) produkowanym przez chińską firmę Espressif Systems,
 wyposażony jest najczęściej w dwurdzeniowy procesor Xtensa LX6 o taktowaniu 240 MHz\cite{esp32Datasheet}. W większości przypadków podczas rozwijania projektu używany jest będąc osadzonym na płytce deweloperskiej różnych producentów, co przyspiesza projektowanie i prototypowanie rzeczywistego systemu. Na rynku znajduje sie niezliczona ilość różnych wersji płytek deweloperskich przez co dopasowanie
-jej do własnych potrzeb jest znacznie łatwiejsze niż w przypadku innych rozwiązań. Przykładem takiej płytki, która została też użyta w projekcie, jest DOIT DevKit V1\cite{doitDevKitV1}. Na rysunku \ref*{Fig:devkitScheme} przedstawiono poglądowy shemat wyprowadzeń tej płytki deweloperskiej.
+jej do własnych potrzeb jest znacznie łatwiejsze niż w przypadku innych rozwiązań. Przykładem takiej płytki, która została też użyta w projekcie, jest DOIT DevKit V1\cite{doitDevKitV1}. Na Rys. \ref*{Fig:devkitScheme} przedstawiono poglądowy shemat wyprowadzeń tej płytki deweloperskiej.
 
 \begin{figure}[ht]
    \centering
@@ -144,7 +144,7 @@ jej do własnych potrzeb jest znacznie łatwiejsze niż w przypadku innych rozwi
 \end{figure}
 
 Jednym z kluczowych atutów platformy ESP32 jest wbudowane wsparcie dla Wi-Fi(802.11 b/g/n) i Bluetooth(klasyczny 4.2 i BLE), co umożliwia łatwe połączenie z siecią bezprzewodową oraz sprawną komunikację między urządzeniami zewnętrznymi.
-Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwiając precyzyjny pomiar sygnałów analogowych. System zawiera wiele innych możliwości, ale najważniejsze jego funkcjonalości i charakterystyczne cechy, firma Espressif zebrała na digramie,  który znalazł się na rysunku \ref*{Fig:functionalDiagram}.
+Duża licz\-ba portów wejścia/wyjścia czyni go idealnym do obsługi wielu czujników, akscesoriów i modułów. Układ zawiera także zintegrowany konwerter analogowo-cyfrowy (ADC) umożliwiając precyzyjny pomiar sygnałów analogowych. System zawiera wiele innych możliwości, ale najważniejsze jego funkcjonalości i charakterystyczne cechy, firma Espressif zebrała na digramie,  który znalazł się na Rys. \ref*{Fig:functionalDiagram}.
 
 \begin{figure}[ht]
    \centering
@@ -184,7 +184,7 @@ Modulacja może obejmować zmianę amplitudy, częstotliwości lub fazy fali pod
 (zazwyczaj zasięg wynosi do 10m), odbiornik wyposażony także w diodę interpretuje odebrany sygnał, przeprowadzając proces demodulacji do kodu
 liczbowego. Z tak wysłanej informacji może teraz skorzystać urządzenie odbierające i podjąć na jej podstawie działania.
 
-W standardzie NEC\cite{necIR}, czyli najpopularniejszym sposobie przesyłania sygnałów do urządzeń RTV za pomocą światła podczerownego, zastosowana jest modulacja częstotliwośći. Każda wiadomość w tym typie komunikacji rozpoczyna się od stosunkowo długiego stanu wysokiego natężenia światła trwającego 9 ms, po czym następuje 4,5 ms przerwy sygnalizując tym samym rozpoczęcie nadawania. Chcąc teraz wysłać logiczną ,,1'' , należy wygenerować stan wysoki natężenia światła podczerwonego na 562.5µs i po nim odczekać 562.5µs nie wysyłając już niczego. Logiczne ,,0'' wysyłane jest przez taki sam zabieg, jednak z przerwą po stanie wysokim wynoszącą 1.6875 ms. Aby bit został odczytany przez odbiornik każda przerwa musi być zakończona następnym stanem wysokim natężenia fali światła, dlatego kiedy kończona jest transmisja, po ostatniej przerwie generowany jest dodatkowy puls długości 562.5µs, aby odbiornik mógł odczytać długość przerwy ostatniego bitu. Wykres ilustrujący elementarna generację sygnału w tym standardzie przedstawia rysunek \ref*{Fig:necOnesZerosFigure}.
+W standardzie NEC\cite{necIR}, czyli najpopularniejszym sposobie przesyłania sygnałów do urządzeń RTV za pomocą światła podczerownego, zastosowana jest modulacja częstotliwośći. Każda wiadomość w tym typie komunikacji rozpoczyna się od stosunkowo długiego stanu wysokiego natężenia światła trwającego 9 ms, po czym następuje 4,5 ms przerwy sygnalizując tym samym rozpoczęcie nadawania. Chcąc teraz wysłać logiczną ,,1'' , należy wygenerować stan wysoki natężenia światła podczerwonego na 562.5µs i po nim odczekać 562.5µs nie wysyłając już niczego. Logiczne ,,0'' wysyłane jest przez taki sam zabieg, jednak z przerwą po stanie wysokim wynoszącą 1.6875 ms. Aby bit został odczytany przez odbiornik każda przerwa musi być zakończona następnym stanem wysokim natężenia fali światła, dlatego kiedy kończona jest transmisja, po ostatniej przerwie generowany jest dodatkowy puls długości 562.5µs, aby odbiornik mógł odczytać długość przerwy ostatniego bitu. Wykres ilustrujący elementarna generację sygnału w tym standardzie przedstawia Rys. \ref*{Fig:necOnesZerosFigure}.
 \begin{figure}[ht]
    \centering
    \includegraphics[width=8cm]{images/necOnesAndZeros.png}
@@ -225,8 +225,8 @@ W kontekście frameworka Flutter, język ten staje się kluczowym narzędziem bu
 Flutter to otwartoźródłowy zestaw narzędzi (SDK - Software Development Kit) stworzony przez Google do budowy interfejsów użytkownika (UI - User Inferface). Jest wykorzystywany do tworzenia aplikacji mobilnych, webowych i desktopowych, ze wskazaniem na aplikacje mobilne. Jednym z głównych atutów Fluttera jest możliwość tworzenia jednego kodu źródłowego, który może być budowany do aplikacji dla różnych platform, takich jak Android, iOS, web, Windows czy Linux.
 
 W centrum Fluttera znajduje się Dart, który jest używany do definiowania interfejsu użytkownika oraz logiki biznesowej.
-SDK ten bazuje na podejściu deklaratywnym, co oznacza, że w kodzie opisuje się, jak ma wyglądać interfejs w danym momencie, a nie, jak ma być aktualizowany w odpowiedzi na różne zdarzenia. To podejście ułatwia zrozumienie i utrzymanie kodu.
-Wprowadza on również własny silnik renderujący. Dzięki temu, dobrze zaprojektowane aplikacje Fluttera charakteryzują się płynnością i responsywnością.
+SDK ten bazuje na podejściu deklaratywnym, co oznacza, że w kodzie opisuje się, jak ma wyglądać interfejs w danym momencie, a~nie jak ma być aktualizowany w odpowiedzi na różne zdarzenia. To podejście ułatwia zrozumienie i utrzymanie kodu.
+Wprowadza on również własny silnik renderujący. Dzięki temu, dobrze zaprojektowane aplikacje Fluttera charakteryzują się płynnością i~responsywnością.
 
 Zestaw oferuje bogatą gamę wbudowanych widgetów, które są podstawowymi elementami budującymi interfejs użytkownika. Programiści mogą również tworzyć własne niestandardowe widgety, co umożliwia pełną swobodę w projektowaniu UI.
 
@@ -244,7 +244,7 @@ Usługi w BLE to logiczne grupy charakterystyk, które reprezentowane są jako z
 
 Komunikacja między urządzeniem centralnym, a peryferyjnym, opiera się na zestawie reguł znanych jako GATT Server (na urządzeniu peryferyjnym) i GATT Client (na urządzeniu centralnym). GATT Server udostępnia usługi i charakterystyki, natomiast GATT Client korzysta z protokołu GATT do odczytywania i zapisywania danych.
 
-Wiele bibliotek na rożne platformy sprzętowe umożliwia łatwe i szybkie obsługiwianie technologii Bluetooth Low Energy przez wydzielenie na wysokim poziomie abstrakcji funkcji, obiektów i metod zdecydowanie ułatwiających korzystanie z tej technologii. Takie podejście zwalnia z programisty obowiązek zajęcia się niuansami w projektach, w których nie są one krytycznymi elementami rozwiązania i pozwala na uniknięcie trudnych do zdiagnozowania błędów konfiguracji.
+Wiele bibliotek na rożne platformy sprzętowe umożliwia łatwe i szybkie obsługiwianie technologii Bluetooth Low Energy przez wydzielenie na wysokim poziomie abstrakcji funkcji, obiektów i metod zdecydowanie ułatwiających korzystanie z~tej technologii. Takie podejście zwalnia z programisty obowiązek zajęcia się niuansami w~projektach, w których nie są one krytycznymi elementami rozwiązania i pozwala na uniknięcie trudnych do zdiagnozowania błędów konfiguracji.
 
 \clearpage
 
@@ -258,7 +258,7 @@ Aby wykonać urzadzenie pośredniczące najpierw wykonano shemat elektryczny prz
    \label{Fig:deviceScheme}
 \end{figure}
 
-Na schemacie kolorem czarnym oznaczono połączenia do masy (GND), kolorem czerwonym zasilanie z mikrokontrolera o potencjale 3.3V. Na niebiesko zaznaczone są szyny danych modułów IR. Z kolei kolorem zielonym oznaczono linię zegarową, a żółtym linię danych,porotokołu komunikacjynego I2C wyświetlacza OLED.
+Na schemacie kolorem czarnym oznaczono połączenia do masy (GND), kolorem czerwonym zasilanie z mikrokontrolera o potencjale 3.3V. Na niebiesko zaznaczone są szyny danych modułów IR. Z kolei kolorem zielonym oznaczono linię zegarową, a~żółtym linię danych, porotokołu komunikacjynego I2C wyświetlacza OLED.
 
 Samo urządznie nie jest wrażliwe na zakłócenia elektromagnetyczne, ani nie wymagało ochronnej obudowy do przestestowania poprawności założeń projektowych oraz końcowych testów pełnego systemu, dlatego jako element łączący moduły została użyta płytka stykowa. Dzięki użyciu płytki zachowano pełną funkcjonalność urządzenia oraz zyskano dowolność zmian podczas projektowania rozmieszczenia i połączenia komponentów. Urządznie osadzone na płytce prototypowej zostało przedstawione na Rys. \ref*{Fig:deviceOnBoard}.
 \begin{figure}[ht]
@@ -285,7 +285,7 @@ Elementy przedstawione na schemacie elektrycznym znalazły się w przedstawionym
 \subsection{Środowisko narzędziowe}
 Kod sterujący urządzeniem pośredniczącym opartym o mikrokontroler ESP32 został przygotowany za pomocą jezyka C++ oraz frameworka Arduino. Cały projekt oprogramowania zarządzany był przez rozszerzenie do edytora tekstu Visual Studio Code, czyli PlatformIO, przy pomocy którego były doinstalowywane też wymagane biblioteki oraz budowany i wgrywany na płytkę ESP32 Wroom DevKitC był program sterujący, a także przeprowadzane debugowanie. Każda z tych operacji mogła się odbyć dzięki wsparciu programowania i debugowania za pomocą portu microUSB, które posiadała płytka oraz rozszerzenie edytora tekstu.
 \subsection{Ogólna struktura oprogramowania}
-Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zostało podzielone na 4 elementy. Główny z nich to plik main.cpp gdzie odbywa się sterowanie urządzeniem, korzystając przy tym z pozostałych modułów. Utworzone zostały 3 moduły narzędziowe, aby główny kod stał się bardziej przejrzysty oraz modularny. Opdowiadają one za obsługę wyświetlacza OLED, komunikację BLE oraz interpretację danych pochodzących z charakterystyk BLE. Wynikowa struktura podziału autorskich elementów oprogramowania została przedstawiona na Rys. \ref*{Fig:codeStructure}.
+Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zostało podzielone na 4 elementy. Główny z nich to plik ,,main.cpp'' gdzie odbywa się sterowanie urządzeniem, korzystając przy tym z pozostałych modułów. Utworzone zostały 3 moduły narzędziowe, aby główny kod stał się bardziej przejrzysty oraz modularny. Opdowiadają one za obsługę wyświetlacza OLED, komunikację BLE oraz interpretację danych pochodzących z charakterystyk BLE. Wynikowa struktura podziału autorskich elementów oprogramowania została przedstawiona na Rys. \ref*{Fig:codeStructure}.
 \begin{figure}[ht]
    \centering
    \includegraphics[width=4.5cm]{images/codeStructure.png}
@@ -294,19 +294,19 @@ Oprogramowanie sterujące urządzeniem wysyłąjącym sygnały podczerowne zosta
 \end{figure}
 
 \subsection{Główny program sterujący}
-Główny program, który steruje urządzeniem pośredniczącym znajduje się w pliku ,,main.cpp''. Aby zorzumieć jakie funkcjonalności oferuje, najlepiej prześledzić jego budowę.
+Główny program, który steruje całym urządzeniem pośredniczącym znajduje się w~pliku ,,main.cpp''. Aby zorzumieć jakie funkcjonalności oferuje, najlepiej prześledzić jego budowę.
 
 Najpierw dołączane są pliki nagłówkowe z frameworka Arduino dla ESP32 odpowiadające za obsługę wysyłu i odbioru syngałów podczerwonych. Dołączane są także autorskie moduły z przestrzeni nazw ,,bt2ir''. Korzystając z nich z kolei można utworzyć globalne obiekty klas, które pozwalają na zarządzanie połączeniem BLE, interpretację danych z charakterystyk tego połączenia, i pracę z  wyświetlaczem OLED. Obiekty tych klas zostają zinicjowane odpowiednimi danymi, prawidłowymi dla posiadanego sprzętu, jak rozdzielczość ekranu OLED czy numery pinów płytki deweloperskiej, na których będą przesyłane dane z i do modułów IR. Kod realizujący dołączanie plików nagłówkowych oraz inicjalizację obiektów globalnych znajduje się na List. \ref{Lst:globalDefinitions}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/globalDefinitions.txt}\protect\relax}, label={Lst:globalDefinitions}]{codes/globalDefinitions.cpp}
 
-Framework Arduino oczekuje zedefiniowania funkcji ,,setup()'', która będzie wykonywana raz podczas uruchomienia urządzenia. Utworzono takową i zawarto w niej już na początku zainicjowanie połaczenia szeregowego, aby móc odczytywać dane z urządzenia, na wypadek chęci wykrycia błędów działania. Znalazła się tam także inicjacja połaczenia z wyświetlaczem OLED poprzez protokół I2C oraz inicjacja serwera BLE, obie inicjacje zostały przeprowadzone za pomocą metod obiektów klas z autorskich modułów. Rozpoczęto w tej funkcji już nasłuchiwanie sygnałów podczerwonych i zainicjowano pracę modułu wysyłającego sygnały IR przy pomocy wcześniej utworzonych obiektów. Zawartość funkcji ,,setup()'' przedstawia kod źródłówy na listingu List.\ref*{Lst:setup}.
+Framework Arduino oczekuje zedefiniowania funkcji ,,setup()'', która będzie wykonywana raz podczas uruchomienia urządzenia. Utworzono takową i zawarto w niej już na początku zainicjowanie połaczenia szeregowego, aby móc odczytywać dane z~urządzenia, na wypadek chęci wykrycia błędów działania. Znalazła się tam także inicjacja połaczenia z wyświetlaczem OLED poprzez protokół I2C oraz inicjacja serwera BLE, obie inicjacje zostały przeprowadzone za pomocą metod obiektów klas z autorskich modułów. Rozpoczęto w tej funkcji już nasłuchiwanie sygnałów podczerwonych i zainicjowano pracę modułu wysyłającego sygnały IR przy pomocy wcześniej utworzonych obiektów. Zawartość funkcji ,,setup()'' przedstawia kod źródłówy na List.\ref*{Lst:setup}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/setup.txt}\protect\relax}, label={Lst:setup}]{codes/setup.cpp}
 
 Tworząc oprogramowanie za pomocą frameworka Arduino zdefiniować należy także funkcję, która będzie wykonywana w nieskończonej pętli na programowanym urządzeniu. Narzędzie wymaga nazywała się ona ,,loop()''. Przed nią jednak znalazły się jeszcze inicjalizacje dwóch znaczników czasowych w postaci dodatnich liczb całkowitych, które zostaną użyte do odliczania czasu trwania wyświetlania komunikatów dla użytkownika.
 
-W samej już funkcji umieszczono instrukcje warunkowe, przez które, sprawdzane jest czy wstąpiły zdarzenia, takie jak: odebranie danych za pomocą serwera BLE o wciśniętym klawiszu w aplikacji, odebranie sygnału podczerwonego na module odbiornika IR, czy też rozłączenie lub połączenie z serwerem BLE nowego użytkownika aplikacji mobilnej. Jeśli program wykryje zdarzenie serwera BLE, rysuje na wyświetlaczu OLED odświeżony stan połaczenia zwierający informację o liczbie połączonych użytkowników. Jeśli z kolei wykryte zostanie zdarzenie odebrania na serwerze BLE informacji o typie wciśniętego przycisku, rysowana jest jego ikona i nazwa, aby poinformować użytkownika o otrzymaniu jego żądania. Po obsłużeniu zdarzenia resetowana jest flaga informująca o jego aktywności. Obsługa opisanych zdarzeń w pierwszej części funkcji ,,loop()'' została przedstawiona na List. \ref*{Lst:loop1}.
+W samej już funkcji umieszczono instrukcje warunkowe, przez które, sprawdzane jest czy wstąpiły zdarzenia, takie jak: odebranie danych za pomocą serwera BLE o wciśniętym klawiszu w aplikacji, odebranie sygnału podczerwonego na module odbiornika IR, czy też rozłączenie lub połączenie z serwerem BLE nowego użytkownika aplikacji mobilnej. Jeśli program wykryje zdarzenie serwera BLE, rysuje na wyświetlaczu OLED odświeżony stan połaczenia zwierający informację o liczbie połączonych użytkowników. Jeśli z kolei wykryte zostanie zdarzenie odebrania na serwerze BLE informacji o typie wciśniętego przycisku, rysowana jest jego ikona i nazwa, aby poinformować użytkownika o~otrzymaniu jego żądania. Po obsłużeniu zdarzenia resetowana jest flaga informująca o~jego aktywności. Obsługa opisanych zdarzeń w pierwszej części funkcji ,,loop()'' została przedstawiona na List. \ref*{Lst:loop1}.
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/loop1.txt}\protect\relax}, label={Lst:loop1}]{codes/loop1.cpp}
 
 Program reaguje też na otrzymanie szesnastkowego kodu IR po wciśnieciu przycisku  pilota w aplikacji mobilnej. Po otrzymaniu tego kodu przez BLE, przesyłany jest on dalej w formie sygnału podczerwonego do telewizora, realizując w ten sposób sterowanie nim, po zakończeniu już obsługi zdarzenia resetowana jest jego flaga. Jeżeli odczytany zostanie na zewnętrznym module odbiorczym, prawidłowy sygnał podczerwony, wypisany zostaje on na wyświetlaczu OLED, dzięki dedykowanej metodzie obiektu sterującego tym ekranem. Aktualizowany zostaje też wtedy znacznik czasowy tego zdarzenia. Następnie też wznawiane jest nasłuchiwanie sygnałów podczerwonych. Każdy z komunikatów dla użytkownika posiada swój czas wyświetlania. Limitowanie czasu ich trwania jest realizowane za pomocą sprawdzania stempli czasowych. Jeśli któryś z komunikatów powinien już się zakończyć, co jest wnioskowane na podstawie odległości aktualnego czasu od odpowiedniego znacznika czasowego, resetowane są wszystkie znaczniki czasowe komunikatów i następuje wyświetlenie domyślnego ekranu stanu połączenia BLE. Te funkcjonalności znalazły się w drugiej części funkcji ,,loop()'', a jej kod źródłowy został przedstawiony na List. \ref{Lst:loop2}.
@@ -321,11 +321,11 @@ Klasa zarządzająca połaczeniem BLE została utworzona przy pomocy wzorca proj
    \item możliwość odczytywania i edytowania flag zdarzeń odebrania danych wciśniętego przycisku w aplikacji mobilnej
    \item dostęp do charakterystyk odebranego typu przycisku i jego kodu IR
    \item metoda pozwalająca narysować aktualny stan połączenia BLE.
-\end{enumerate} Część pliku nagłówkowego zawierająca dostępne metody publiczne klasy Connection została przedstawiona na List. \ref*{Lst:bleMethods}.
+\end{enumerate} Część pliku nagłówkowego zawierająca dostępne metody publiczne klasy ,,Connection'' została przedstawiona na List. \ref*{Lst:bleMethods}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/bleMethods.txt}\protect\relax}, label={Lst:bleMethods}]{codes/bleMethods.cpp}
 
-Najważniejszym elementem tego modułu jest metoda setupConnection() klasy Connection. W niej właśnie odbywa się inicjowanie serwera BLE wraz z jego parametrami oraz dołączenie funkcji wywoływanych podczas zdarzeń serwera.
+Najważniejszym elementem tego modułu jest metoda ,,setupConnection()'' klasy Connection. W niej właśnie odbywa się inicjowanie serwera BLE wraz z jego parametrami oraz dołączenie funkcji wywoływanych podczas zdarzeń serwera.
 
 Podczas przygotowywania urządzenia pośredniczącego do obsługi BLE w pierwszej kolejności inicjowane jest abstrakcja urządzenia. Kolejno dalej na urządzeniu tworzony jest serwer i przypisywane są mu autorskie klasy przechowujące metody wywoływane przez zdarzenia serwera, zawarte także w tym module, dzięki czemu biblioteka automatycznie będzie wykonywać czynności po połączeniu i rozłączeniu użytkownika, oraz o takim wydarzeniu zostanie poinformowany główny program sterujący.
 Na tak utworzonym serwerze tworzony jest serwis i jego 2 charakterystyki odpowiadające wyłącznie za odbieranie danych o typie wciśniętego przycisku i jego szesnastkowym kodzie IR. Obie charakterystyki otrzymują także swoje klasy z metodami wywoływanymi podczas odebrania danych, dzięki czemu główny program sterujący informowany jest o tym zdarzeniu. Utworzony w ten sposób serwer może rozpocząć rozgłaszanie swojej obecności i nazwiązywać połączenia z klientami. Kod funkcji realizującej inicjalizację serwera BLE znajduje się na List. \ref*{Lst:setupConnection}.
@@ -335,34 +335,34 @@ Na tak utworzonym serwerze tworzony jest serwis i jego 2 charakterystyki odpowia
 Aby uzyskać możliwość połaczenia wielu użytkowników z serwerem BLE urządzenia pośredniczącego metoda wywoływana podczas każdego połączenia nowego użytkownika musi wznowić rozgłaszanie dostępności serwera. Ta funkcjonalność została zaimplementowana w funkcjach wywwoływanych podczas zdarzeń serwera.
 \subsection{Moduł interpretujący dane z BLE}
 Aby ułatwić pracę z danymi odebranymi przez urządznie pośredniczące utworzono moduł przetwarzający je. Zawiera on wygodny typ wylieczniowy wykorzystywany do nadawania przejrzystych nazw programowych dla odebranych typów wciśniętego przycisku pilota z aplikacji mobilnej.
-Z kolei klasa Controller odpowiada za interpretację danych, odebranych za pomocą charakterystyk serwera BLE. Korzysta ona z instancji klasy Connection aby pobrać dane z charakterystyk i je przetworzyć. W tym celu, klasa ta, udostępnia metody pozwalające odświeżać przechowywane jej polach prywatnych ostatnio odebrane dane od aplikacji mobilnej. Publicznie dostępne elementy modułu znajdują się na List. \ref*{Lst:controller}.
+Z kolei klasa ,,Controller'' odpowiada za interpretację danych, odebranych za pomocą charakterystyk serwera BLE. Korzysta ona z instancji klasy ,,Connection'' aby pobrać dane z charakterystyk i je przetworzyć. W~tym celu, klasa ta, udostępnia metody pozwalające odświeżać przechowywane jej polach prywatnych ostatnio odebrane dane od aplikacji mobilnej. Publicznie dostępne elementy modułu znajdują się na List. \ref*{Lst:controller}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/controller.txt}\protect\relax}, label={Lst:controller}]{codes/controller.cpp}
 
-Dane odebrane za pomocą charakterystyk przechowywane są w postaci bitowej. Aby odczytać ich wartości należy zinterpretować ich zawartość za pomocą odpowiedniego szablonu, który w tym przypadku będzie typem danych. Metoda updateButtonType() z klasy Controller interpretuje dane charakterystki za pomocą typu 8 bitowej liczby całkowitej bez znaku, ponieważ ilość przycisków jest niewielka. Odbywa się tam też prosta kontrola poprawności danych, poprzez sprawdzenie czy odebrane dane mieszczą się w zakresie zdefiniowanych przycisków pilota. Kod źródłowy tej funkcji znajduje się na List. \ref*{Lst:dataProcessing}.
+Dane odebrane za pomocą charakterystyk przechowywane są w postaci bitowej. Aby odczytać ich wartości należy zinterpretować ich zawartość za pomocą odpowiedniego szablonu, który w tym przypadku będzie typem danych. Metoda ,,updateButtonType()'' z klasy ,,Controller'' interpretuje dane charakterystki za pomocą typu 8~bitowej liczby całkowitej bez znaku, ponieważ ilość przycisków jest niewielka. Odbywa się tam też prosta kontrola poprawności danych, poprzez sprawdzenie czy odebrane dane mieszczą się w zakresie zdefiniowanych przycisków pilota. Kod źródłowy tej funkcji znajduje się na List. \ref*{Lst:dataProcessing}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/dataProcessing.txt}\protect\relax}, label={Lst:dataProcessing}]{codes/dataProcessing.cpp}
 
 \subsection{Moduł obsługi ekranu OLED}
-Autorski moduł obsługi ekranu OLED jest w rzeczywistości nakładką na klasę sterującą wyświetlaczem OLED z bibliotek firmy Adafruit. Taka relacja realizowania jest za pomocą dziedziczenia publicznego po klasie ,,Adafruit\_SH1106G'' w utworzonej klasie nakładki ,,Display''. Sama nakładka znalazła się w przestrzeni nazw bt2ir.
+Autorski moduł obsługi ekranu OLED jest w rzeczywistości nakładką na klasę sterującą wyświetlaczem OLED z bibliotek firmy Adafruit. Taka relacja realizowania jest za pomocą dziedziczenia publicznego po klasie ,,Adafruit\_SH1106G'' w utworzonej klasie nakładki ,,Display''. Sama nakładka znalazła się w przestrzeni nazw ,,bt2ir''.
 
 Utworzona klasa nakładki stara się udostępnić metody, dzięki którym użytkownik w prosty i przejrzysty sposób może rysować konkretne obrazy i napisy na wyświetlaczu, w postaci przygotowanych i zparametryzowanych ekranów. Udostępnione zostały ekrany takie jak przedstawienie liczby połączonych smartfonów z serwerem BLE i jego stanu, wyświetlanie komunikatu o odebraniu wciśniętego przycisku z aplikacji mobilnej, czy wyświetlenia odebranego za pomocą modułu odbiorczego z diodą sygnału IR. Lista dostępnych funkcjonalności utworzonej nakładki w postaci metod publicznych została przedstawiona na List. \ref*{Lst:graphics}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/graphics.txt}\protect\relax}, label={Lst:graphics}]{codes/graphics.cpp}
 
-Ukryta dla użtykownika logika tej nakładki opiera się o 4 metody prywatne. Dwie z nich rysują bardziej podstawowe elementy ekranów, takie jak rysowanie wyrównanego tekstu czy wielkich cyfr. Dzięki nim powstały także dwie metody z nich korzystające, przy pomocy których, można narysować na wyświetlaczu ikonę z podpisem lub cyfrę z podpisem. Tak wydzielone fragmenty logiki kodu, przyspieszyły i ułatwiły zbudowanie wszystkich publicznie dostępnych funkcjonalności. Utworzona lista prywatnych metod zaprojektowanej klasy znajduje się na List. \ref*{Lst:graphicsPrivate}.
+Ukryta dla użtykownika logika tej nakładki opiera się o 4 metody prywatne. Dwie z nich rysują bardziej podstawowe elementy ekranów, takie jak rysowanie wyrównanego tekstu czy wielkich cyfr. Dzięki nim powstały także dwie metody z nich korzystające, przy pomocy których, można narysować na wyświetlaczu ikonę z podpisem lub cyfrę z podpisem. Tak wydzielone fragmenty logiki kodu, przyspieszyły i~ułatwiły zbudowanie wszystkich publicznie dostępnych funkcjonalności. Utworzona lista prywatnych metod zaprojektowanej klasy znajduje się na List. \ref*{Lst:graphicsPrivate}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/graphicsPrivate.txt}\protect\relax}, label={Lst:graphicsPrivate}]{codes/graphicsPrivate.cpp}
 
-Ikony rysowane na ekranach przez publiczne metody nakładki zostały umieszczone w programie za pomocą tablic bajtów, a same tablice zostały wygenerowane poprzez progowanie binarne obrazów w odcieniach szarości, przy pomocy aplikacji internetowej image2cpp[]. Po przekonwertowaniu obrazów na tablice bajtów i usunięciu z jej otoczenia niepotrzebnie wygenerowanych części kodu, można ją umieścić w oprogramowaniu i wykorzystywać do wyświetlania obrazu, którego ta tablica dotyczy. Jedna z wygenerowanych tablic znajduje się na List. \ref*{Lst:imageArray}.
+Ikony rysowane na ekranach przez publiczne metody nakładki zostały umieszczone w programie za pomocą tablic bajtów, a same tablice zostały wygenerowane poprzez progowanie binarne obrazów w odcieniach szarości, przy pomocy aplikacji internetowej image2cpp\cite{image2cpp}. Po przekonwertowaniu obrazów na tablice bajtów i usunięciu z~jej otoczenia niepotrzebnie wygenerowanych części kodu, można ją umieścić w oprogramowaniu i wykorzystywać do wyświetlania obrazu, którego ta tablica dotyczy. Jedna z~wygenerowanych tablic znajduje się na List. \ref*{Lst:imageArray}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/imageArray.txt}\protect\relax}, label={Lst:imageArray}]{codes/imageArray.cpp}
 
-Dzięki utworzonym narzędziom budowano publiczne metody dostępne dla użytkownika nakładki. W każdej takiej funkcji najpierw czyszczony był wyświetlacz, następnie rysowano w buforze ekranu odpowiedni obraz na podstawie zdefiniowanych tablic bajtów wraz z wyśrodkowanym podpisem, by końcowo wyświetlić dane zgromadzone w buforze rysowania. Jedną z tych metod jest ,,drawMoveUp()'' rysująca komunikat dla użytkownika o wciśnięciu przycisku przejścia w górę na pilocie w aplikacji mobilnej. Jej implementacja została przedstawiona na List. \ref*{Lst:drawMoveUp}, a jej fizyczny efekt na wyświetlaczu OLED pokazano na Rys. \ref*{Fig:drawMoveUp}.
+Dzięki utworzonym narzędziom budowano publiczne metody dostępne dla użytkownika nakładki. W każdej takiej funkcji najpierw czyszczony był wyświetlacz, następnie rysowano w buforze ekranu odpowiedni obraz na podstawie zdefiniowanych tablic bajtów wraz z wyśrodkowanym podpisem, by końcowo wyświetlić dane zgromadzone w~buforze rysowania. Jedną z tych metod jest ,,drawMoveUp()'' rysująca komunikat dla użytkownika o wciśnięciu przycisku przejścia w górę na pilocie w aplikacji mobilnej. Jej implementacja została przedstawiona na List. \ref*{Lst:drawMoveUp}, a jej fizyczny efekt na wyświetlaczu OLED pokazano na Rys. \ref*{Fig:drawMoveUp}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/drawMoveUp.txt}\protect\relax}, label={Lst:drawMoveUp}]{codes/drawMoveUp.cpp}
 
-Więcej ekranów i obrazów, które może też przedstawiać wyświetlacz OLED osadzony w urządzeniu pośredniczącym zostały zawarte w prezentacji pełnego systemu punkcie 8 tej pracy. W ten sposób opatrzone są w odpowiedni konekst ułatwijący zrozumienie ich celowości.
+Więcej ekranów i obrazów, które może przedstawiać wyświetlacz OLED osadzony w urządzeniu pośredniczącym zostały zawarte w prezentacji pełnego systemu. W ten sposób opatrzone są w odpowiedni konekst ułatwiający zrozumienie ich celowości.
 
 \begin{figure}[ht]
    \centering
@@ -375,10 +375,10 @@ Więcej ekranów i obrazów, które może też przedstawiać wyświetlacz OLED o
 
 \section{Aplikacja sterująca telewizorem}
 \subsection{Struktura aplikacji}
-Aplikacja mobilna została przygotowana przy pomocy frameworka Flutter i edytora kodu Visual Studio Code. Flutter jako narzędzie programistyczne udostępnia wygodny sposób dzielenia interfejsu użytkownika na ekrany i został on wykorzystany w aplikacji pilota. Wydzielono w projekcie główną stronę aplikacji odpowiedzialną za wyświetlanie jej nazwy, czyli ,,Bluetooth2IR'', oraz nawigowanie pomiędzy utworzonymi ekranami funkcjonalnymi. Elementy interfejsu zarządzane przez nią zostały wskazane na Rys. \ref*{Fig:mainPageElements} zawierającym okrojony zrzut ekranu z apliakjci mobilnej. Strona ta, zaimplementowana w pliku ,,homepage.dart'' jest głównym widgetem utworzonej aplikacji uruchamianej w ,,main.dart''. Plik wywołujący zbudowaną z widgetów aplikację oprócz samego jej uruchomienia definiuje także domyślne style czcionki, kolorów, przycisków i tła.
+Aplikacja mobilna została przygotowana przy pomocy frameworka Flutter i~edytora kodu Visual Studio Code. Flutter jako narzędzie programistyczne udostępnia wygodny sposób dzielenia interfejsu użytkownika na ekrany i~został on wykorzystany w~aplikacji pilota. Wydzielono w projekcie główną stronę aplikacji odpowiedzialną za wyświetlanie jej nazwy, czyli ,,Bluetooth2IR'', oraz nawigowanie pomiędzy utworzonymi ekranami funkcjonalnymi. Elementy interfejsu zarządzane przez nią zostały wskazane na Rys. \ref*{Fig:mainPageElements} zawierającym okrojony zrzut ekranu z apliakjci mobilnej. Strona ta, zaimplementowana w pliku ,,homepage.dart'' jest głównym widgetem utworzonej aplikacji uruchamianej w ,,main.dart''. Plik wywołujący zbudowaną z widgetów aplikację oprócz samego jej uruchomienia definiuje także domyślne style czcionki, kolorów, przycisków i tła.
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=8cm]{images/mainPageElements.png}
+   \includegraphics[width=8.5cm]{images/mainPageElements.png}
    \caption{Elementy interfejsu użytkownika zarządzane przez główną stronę aplikacji mobilnej pilota}
    \label{Fig:mainPageElements}
 \end{figure}
@@ -392,7 +392,7 @@ Dolna część interfejsu użytkownika odpowiada za przemieszczanie się po ekra
 \end{enumerate}
 
 \subsection{Moduł obsługujący BLE}
-Aby skutecznie zarządzać połaczeniem BLE z urządzeniem pośredniczącym w zaprojektowanej aplikacji utworzono moduł o nazwie ,,BLEService'', w postaci klasy opartej o wzorzec Singleton, korzystający z biblioteki Flutter Blue Plus\cite{flutterBluePlus}. Utworzona klasa udostępnia szereg typowych metod dla zarządznia połączeniem.
+Aby skutecznie zarządzać komunikacją BLE z urządzeniem pośredniczącym w~zaprojektowanej aplikacji utworzono moduł o nazwie ,,BLEService'', w postaci klasy opartej o wzorzec Singleton, korzystający z biblioteki Flutter Blue Plus\cite{flutterBluePlus}. Utworzona klasa udostępnia szereg typowych metod dla zarządznia połączeniem.
 
 Chcąc nawiązać połączenie z urządzeniem pośredniczącym, najpierw należy odnaleźć wszystkie dostępne urządzenia w okolicy. Przed tym, jednak jeszcze trzeba się upewnić, że smartfon posiada włączony adapter BLE. W projektowanej klasie służy do tego metoda ,,initCheckingBleAdapter()'' przedstawiona na List. \ref*{Lst:checkBLE}. Dodaje ona subskyrpcję do strumienia sprawdzającego włączenie adaptera BLE, która jeśli wykryje, że adapter jest wyłączony, pyta jednokrotnie użytkownika czy jednak nie chce go włączyć.
 
@@ -412,7 +412,7 @@ Zakładając, że odnaleziono przynajmniej 1 urządzenie pośredniczące, klasa 
 
 
 \subsection{Ekran łączenia się z urządzeniem pośredniczącym poprzez BLE}
-Ekran nawiązywania połączenia z urządzeniem pośredniczącym został oparty o moduł ,,BLEService'' opisany w poprzednim podpunkcie. Zawiera on właściwie jedynie przycisk odświeżania dostępnych urządzeń w pobliżu oraz interaktywną listę wyświetlającą te urządzenia.
+Ekran nawiązywania połączenia z urządzeniem pośredniczącym został oparty o~moduł ,,BLEService'' opisany w poprzednim podpunkcie. Zawiera on właściwie jedynie przycisk odświeżania dostępnych urządzeń w pobliżu oraz interaktywną listę wyświetlającą te urządzenia.
 Przełączając się na ten ekran lub włączając aplikację, gdyż jest on domyślnym pod-ekranem startowym, użytkownik uruchomi sprawdzanie włączenia adaptera BLE oraz lokalizacji. Stanie się tak, ponieważ zaimplementowane zostało automatyczne uruchamianie skanowania, które wymaga wymienionych zasobów do poprawnego działania, a metoda inicjalizacji tego obiektu zajmuje się sprawdzeniem ich dostępności. Ekrany aplikacji przedstawiające zapytania o włączenie lokalizacji oraz modułu Bluetooth, a także ekran podczas wyszukiwania dostępnych urządzeń zostały przedstawione na Rys. \ref*{Fig:initBLE}.
 \begin{figure}[ht]
    \centering
@@ -425,7 +425,7 @@ Jeśli użytkownik włączył swoje urządzenie pośredniczące i jest ono w pob
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=14cm]{images/connectBLE.png}
+   \includegraphics[width=13cm]{images/connectBLE.png}
    \caption{Ekrany kolejno po odnalezieniu urządzenia pośredniczącego, po rozpoczęciu łączenia z nim oraz po połaczeniu za pomocą BLE}
    \label{Fig:connectBLE}
 \end{figure}
@@ -433,12 +433,12 @@ Jeśli użytkownik włączył swoje urządzenie pośredniczące i jest ono w pob
 \subsection{Moduł obsługi przechowywania zestawów przycisków}
 W aplikacji mobilnej pilota uniwersalnego użtykownik ma możliwość wyboru modelu telewizora, którym chce sterować. Aby reprezentować programowo zbiór zdefiniowanych modeli telewizorów i przypisanych do nich parametrów przycsików  oraz zrealizować zapamiętywanie tych zestawów pomiędzy uruchomieniem aplikacji utworzono moduł ,,tv\_model.dart''. Odpowiedzalny jest on za zdefiniowanie klasy danych opisujących pojedynczy przycisk pilota, oraz składającej się z zbioru pól o typie takich przycisków, klasy pełnego zestawu przycisków pilota służącego do sterowania danym modelem telewizora. 
 
-Klasa ,,Button'' odpowiadająca za reprezentację  pojedynczego przycisku zawiera informacje w postaci pól prywatnych o typie przycisku i opdowiadającemu mu kodzie IR. Udostępnia także 2 metody: ,,fromJson()'' i ,,toJson()''. Pozwalają one na zapis i odczyt danych tekstowych w fromacie JSON, reprezentujących obiekty wspomnianej klasy. Dzięki tym metodom, typy danych używające tej abstrackcji przycisku mogą nie martwić się o jej konwerjsę do tego fromatu i swobodnie przeprowadzać zapis do plików tekstowych struktur, złożonych z obiektów klasy ,,Button''. Iplementacja tych metod znajduje się na List. \ref*{Lst:buttonJson}.
+Klasa ,,Button'' odpowiadająca za reprezentację  pojedynczego przycisku zawiera informacje w postaci pól prywatnych o typie przycisku i opdowiadającemu mu kodzie IR. Udostępnia także 2 metody: ,,fromJson()'' i~,,toJson()''. Pozwalają one na zapis i~odczyt danych tekstowych w fromacie JSON, reprezentujących obiekty wspomnianej klasy. Dzięki tym metodom, typy danych używające tej abstrackcji przycisku mogą nie martwić się o jej konwerjsę do tego fromatu i swobodnie przeprowadzać zapis do plików tekstowych struktur, złożonych z obiektów klasy ,,Button''. Iplementacja tych metod znajduje się na List. \ref*{Lst:buttonJson}.
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/buttonJson.txt}\protect\relax}, label={Lst:buttonJson}]{codes/buttonJson.cpp}
 
-Z kolei klasa TVModel składa się z wielu obiektów klasy Button z odpowiednio zdefniowanymi typami przycisku w postaci numerycznej. Posiada też pole nazwy modelu telewizora, którym definiowane przyciski na pilocie mają sterować. Dla tej klasy przeładowano także operator porównania który uwzględnia jedynie nazwę modelu telewizora co było wymagane dla używania tego typu danych w zbiorze niepowtarzających się danych ,,Set''. Posiada ona także metody toJson() oraz fromJson(), które dla pojedynczego obiektu zestawu przycisków są ciągami wywołań tego rodzaju metod z klasy Button i zapisu nazwy modelu sterowanego telewizora. 
+Z kolei klasa ,,TVModel'' składa się z wielu obiektów klasy ,,Button'' z odpowiednio zdefniowanymi typami przycisku w postaci numerycznej. Posiada też pole nazwy modelu telewizora, którym definiowane przyciski na pilocie mają sterować. Dla tej klasy przeładowano także operator porównania który uwzględnia jedynie nazwę modelu telewizora co było wymagane dla używania tego typu danych w zbiorze niepowtarzających się danych ,,Set''. Posiada ona także metody ,,toJson()'' oraz ,,fromJson()'', które dla pojedynczego obiektu zestawu przycisków są ciągami wywołań tego rodzaju metod z~klasy Button i zapisu nazwy modelu sterowanego telewizora. 
 
-Chcąc teraz przechowywać dane pomiędzy uruchomieniami aplikacji można skorzystać z nieulotnej pamięci aplikacji, do której można uzyskać dostęp za pomocą klasy SharedPreferences[] udostępnianego przez framework Flutter. Sama klasa z frameworka daje bezpośredni dostęp do pamięci aplikacji Androida w postaci klasy języka Dart. Dla wygody i zkonsolidowania operacji wykonywanych na tym obiekcie utoworzono klasę SharedPrefs służącą jako interfejs dostępu do danych zapisanych w pamięci oraz udostępniający łatwe w użyciu metody operujące właśnie na zestawach przycisków dla modeli telewizorów. Klasa ta przechowuje instancję obiektu SharedPreferences, która jest inicjowana za pomocą metody ,,initialize()'', oraz udostępnia statyczne metody pozwalające zapisywać i odczytywać nawet całe listy zestawów przycisków. Część definicji tej klasy zawierającą pole przechowujące instancę obiektu SharedPreferences, metodę inicjalizującą ten obiekt oraz metody zapisujące i odczytujące listy zestawów przycisków zawarto na List. \ref*{Lst:sharedPrefs}
+Chcąc teraz przechowywać dane pomiędzy uruchomieniami aplikacji można skorzystać z nieulotnej pamięci aplikacji, do której można uzyskać dostęp za pomocą klasy SharedPreferences\cite{sharedPreferences} udostępnianego przez framework Flutter. Sama klasa z frameworka daje bezpośredni dostęp do pamięci aplikacji Androida w postaci klasy języka Dart. Dla wygody i zkonsolidowania operacji wykonywanych na tym obiekcie utoworzono klasę ,,SharedPrefs'' służącą jako interfejs dostępu do danych zapisanych w pamięci oraz udostępniający łatwe w użyciu metody operujące właśnie na zestawach przycisków dla modeli telewizorów. Klasa ta przechowuje instancję obiektu SharedPreferences, która jest inicjowana za pomocą metody ,,initialize()'', oraz udostępnia statyczne metody pozwalające zapisywać i odczytywać nawet całe listy zestawów przycisków. Część definicji tej klasy zawierającą pole przechowujące instancę obiektu SharedPreferences, metodę inicjalizującą ten obiekt oraz metody zapisujące i odczytujące listy zestawów przycisków zawarto na List. \ref*{Lst:sharedPrefs}
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/sharedPrefs.txt}\protect\relax}, label={Lst:sharedPrefs}]{codes/sharedPrefs.cpp}
 
@@ -450,28 +450,28 @@ Kolejno dalej dekodowany jest ten łańcuch do listy obiektów JSON, by końcowo
 \subsection{Ekran wyboru i edycji zestawu przycisków dla konkretnego modelu telewizora}
 Drugi ekran o nazwie ,,TV Model'' daje użytkownikowi możliwość wyboru zestawu  predefiniowanych przcisków dla danego modelu telewizora lub utworzenia czy edytowania własnego zestawu. W pierwszej chwili po przejściu na ten ekran ładowane są zapamiętane zestawy przycisków z nieulotnej pamięci apliakacji. Tak załadowane zestawy przycisków stają się pozycjami pola wyboru modelu telewizora, którym użytkownik chce sterować. 
 
-Jeśli to pierwsze uruchomienie tego ekranu korzystający z aplikacji ujrzy na liście wybrany pusty zestaw przycików przyjazny do tworzenia własnego zestawu. Może on wtedy wybrać predefiniowany zestaw ,,Manta'' i przejść do korzystania z przycisków pilota w kolejnych ekranach. Stan aplikacji po pierwszym przejściu do tego ekranu i po wybraniu predefiniowanego modelu Manta został przedstawiony na Rys.\ref*{Fig:choosingManta}.
+Jeśli to pierwsze uruchomienie tego ekranu korzystający z aplikacji ujrzy na liście wybrany pusty zestaw przycików przyjazny do tworzenia własnego zestawu. Może on wtedy wybrać predefiniowany zestaw ,,Manta'' i przejść do korzystania z przycisków pilota w kolejnych ekranach. Stan aplikacji po pierwszym przejściu do tego ekranu i po wybraniu predefiniowanego modelu Manta został przedstawiony na Rys. \ref*{Fig:choosingManta}.
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=14cm]{images/choosingManta.png}
+   \includegraphics[width=13cm]{images/choosingManta.png}
    \caption{Ekrany aplikacji kolejno po przełączeniu na ekran ,,TV Models'', po rozwinięciu listy, oraz po wybraniu modelu ,,Manta''}
    \label{Fig:choosingManta}
 \end{figure}
 
-Ważnym elementem tego ekranu jest także możliwość dodania nowego zestawu przycisków sterujących telewizorem. Można tego dokonać najlepiej za pomocą wybrania pozycji ,,Add new Model'', ale nie jest to wymóg. Wystarczy, że nowa wprowadzona podczas edycji nazwa modelu nie będzie się jeszcze znajdować na liście dostępnych modeli. Wybierając więc jakąś pozycję i edytując jej pola według uznania, koniecznie zmieniając nazwę modelu, możemy utworzyć nowy zestaw. Należy pamiętać jednak aby wpisać poprawną liczbę w fromacie heksadecymalnym bo w przeciwnym wypadku fromularz zwróci błąd i nie uda się dodać tak skonfigurowanego zestawu. Przykład takiego procesu dla nowego modelu on nazwie ,,Samsung'' został przedstawiony na Rys. \ref*{Fig:addingSamsung}.
+Ważnym elementem tego ekranu jest także możliwość dodania nowego zestawu przycisków sterujących telewizorem. Można tego dokonać najlepiej za pomocą wybrania pozycji ,,Add new model'', ale nie jest to wymóg. Wystarczy, że nowa wprowadzona podczas edycji nazwa modelu nie będzie się jeszcze znajdować na liście dostępnych modeli. Wybierając więc jakąś pozycję i edytując jej pola według uznania, koniecznie zmieniając nazwę modelu, możemy utworzyć nowy zestaw. Należy pamiętać jednak aby wpisać poprawną liczbę w fromacie heksadecymalnym bo w przeciwnym wypadku fromularz zwróci błąd i nie uda się dodać tak skonfigurowanego zestawu. Przykład takiego procesu dla nowego modelu on nazwie ,,Samsung'' został przedstawiony na Rys. \ref*{Fig:addingSamsung}.
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=14cm]{images/addingSamsung.png}
+   \includegraphics[width=15cm]{images/addingSamsung.png}
    \caption{Ekrany aplikacji kolejno po przełączeniu na ekran ,,TV Models'', po zmianie nazwy modelu oraz wybranych kodów przycisków, oraz dodaniu nowego modelu ,,Samsung''}
    \label{Fig:addingSamsung}
 \end{figure}
 
-Edycja utworzonego przez użytkownika zestawu przycisków jest równie prosta. Wybiera on najpierw element, który chce edytować, zmienia w nim dane według uznania zachowując jednak ich poprawność formatu. Korzystający nie może jedank zmienić nazwy takiego modelu, a jeśli to zrobi informowany jest o niepowodzeniu i proponowane jest mu skorzystanie z opcji ,,Add new''. Edycję modelu ,,Samsung'', jej zakończenie oraz  próbę zmiany nazwy tego modelu przedstawiono na Rys.\ref*{Fig:changingSamsung}.
+Edycja utworzonego przez użytkownika zestawu przycisków jest równie prosta i~intuicyjna. Wybiera on najpierw element, którego elementy chce edytować, zmienia w nim dane według uznania, zachowując jednak poprawność ich formatu. Korzystający nie może jedank zmienić nazwy takiego modelu, a jeśli to zrobi informowany jest o~niepowodzeniu iproponowane jest mu skorzystanie z opcji ,,Add new''. Edycję modelu ,,Samsung'', jej zakończenie oraz  próbę zmiany nazwy tego modelu przedstawiono na Rys. \ref*{Fig:changingSamsung}.
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=14cm]{images/changingSamsung.png}
+   \includegraphics[width=15cm]{images/changingSamsung.png}
    \caption{Ekrany aplikacji kolejno po edycji modelu ''Samsung'', zatwierdzeniu tych zmian oraz próbie zmiany jego nazwy zakończonej niepowodzeniem}
    \label{Fig:changingSamsung}
 \end{figure}
@@ -485,7 +485,7 @@ Usunięcie zestawu przycisku jest być może nawet zbyt proste. Wystarczy wybra�
    \label{Fig:removingSamsung}
 \end{figure}
 
-Każda z przedstawionych funkcjonalności odczytywania i zapisywania danych jest zaimplementowana przy pomocy wcześniej omówionej klasy SharedPrefs i wykorzystaniu klas z pliku ,,tv\_model.dart''. Elementy edycyjne ekranu zostały zespolone za pomocą logiki formularza. Każde pole edycji posiada własny walidator danych. Pole nazwy wymaga jedynie nie pustego łańcucha tekstowego, a pola kodów IR, liczb w postaci szesnastkowej(poprawne są małe i wielkie litery). Podczas każdego wyboru innego zestawu przycisków, usunięciu jakiegoś czy dodaniu nowego zostaje aktualizowany globalny uchwyt do zestawu przycisków, dzięki któremu kolejne ekrany mogą korzystać z zdefiniowanych parametrów przycisków aktualnie wybranego zestawu.
+Każda z przedstawionych funkcjonalności odczytywania i zapisywania danych jest zaimplementowana przy pomocy wcześniej omówionej klasy SharedPrefs i wykorzystaniu klas z pliku ,,tv\_model.dart''. Elementy edycyjne ekranu zostały zespolone za pomocą logiki formularza. Każde pole edycji posiada własny walidator danych. Pole nazwy wymaga jedynie nie pustego łańcucha tekstowego, a pola kodów IR, liczb w postaci szesnastkowej(poprawne są małe i wielkie litery). Podczas każdego wyboru innego zestawu przycisków, usunięciu jakiegoś czy dodaniu nowego zostaje aktualizowany globalny uchwyt do zestawu przycisków, dzięki któremu kolejne ekrany mogą korzystać z~zdefiniowanych parametrów przycisków aktualnie wybranego zestawu.
 
 
 \subsection{Ekrany przycisków pilota}
@@ -494,12 +494,12 @@ Utworzony został również ekran pozwalający na wprowadzanie cyfr o nazwie ,,N
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=10cm]{images/buttonScreens.png}
+   \includegraphics[width=9.5cm]{images/buttonScreens.png}
    \caption{Ekrany ,,Main Buttons'' oraz ,,Numeric'' aplikacji mobilnej}
    \label{Fig:buttonScreens}
 \end{figure}
 
-Każdy z przycisków po naciśnięciu wysyła dane do 2 charakterystyk serwera BLE z którym wcześniej nawiązano połączenie. Dzieje się to za pomocą metod wysyłających dane z klasy BLEService i danych typu wciskanego przycisku i kodu sygnału podczerwonego zależnych od wybranego modelu telewizora, którym użytkownik chce sterować. Funkcja przypisana do parametru onPressed przycisku numerycznego ,,1'', wysyłająca te dane dla tego przycisku, została przedstawiona na List. \ref*{Lst:buttonSend}.
+Każdy z przycisków po naciśnięciu wysyła dane do 2 charakterystyk serwera BLE z którym wcześniej nawiązano połączenie. Dzieje się to za pomocą metod wysyłających dane z klasy ,,BLEService'' i danych typu wciskanego przycisku i kodu sygnału podczerwonego zależnych od wybranego modelu telewizora, którym użytkownik chce sterować. Funkcja przypisana do parametru onPressed przycisku numerycznego ,,1'', wysyłająca te dane dla tego przycisku, została przedstawiona na List. \ref*{Lst:buttonSend}.
 
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/buttonSend.txt}\protect\relax}, label={Lst:buttonSend}]{codes/buttonSend.cpp}
 \clearpage
@@ -508,12 +508,12 @@ Każdy z przycisków po naciśnięciu wysyła dane do 2 charakterystyk serwera B
 
 \section{Testy i prezentacja finalnego systemu}
 \subsection{Ustanawianie połączenia aplikacji z urządzeniem}
-Aplikacja mobilna podczas uruchomiania pyta użytkownika czy nie chce on włączyć adaptera Bluetooth i lokalizacji jeśli te nie są już włączone. Niweluje to możliwość ślepych prób odświeżania dostępnych urządzeń w poszukiwaniu urządzenia pośredniczącego. Jeżeli mikrokontroler jest zasilony, a aplikacja ma włączone oba wymagne moduły w ciągu 3 sekund od odświeżenia listy dostępnych urządzeń jest znajdowany system pośredniczący. Teraz użytkownik może połączyć się z nim za pomocą pojedynczego kliku na wyświetlanej liście w aplikacji. Stan urządzenia pośredniczącego i aplikacji mobilnej na chwilę przed nawiązaniem połączenia przedstawia Rys. \ref*{Fig:scanTest}.
+Aplikacja mobilna podczas uruchomiania pyta użytkownika czy nie chce on włączyć adaptera Bluetooth i lokalizacji jeśli te nie są już włączone. Niweluje to możliwość ślepych prób odświeżania dostępnych urządzeń w poszukiwaniu urządzenia pośredniczącego. Jeżeli mikrokontroler jest zasilony, a aplikacja ma włączone oba wymagne moduły w ciągu 3 sekund od odświeżenia listy dostępnych urządzeń jest znajdowany system pośredniczący. Teraz użytkownik może połączyć się z nim za pomocą pojedynczego kliku na wyświetlanej liście na ekranie smartfona. Stan urządzenia pośredniczącego i~aplikacji mobilnej na chwilę przed nawiązaniem połączenia przedstawia Rys. \ref*{Fig:scanTest}.
 
 \begin{figure}[ht]
    \centering
-   \includegraphics[width=14cm]{images/scanTest.jpg}
-   \caption{Stan systemu po włączeniu zasilania w urządzeniu pośredniczącym i wykonaniu skanowania dostępnych urządzeń w aplikacji mobilnej}
+   \includegraphics[width=13cm]{images/scanTest.jpg}
+   \caption{Stan systemu po włączeniu zasilania w urządzeniu pośredniczącym i~wykonaniu skanowania dostępnych urządzeń w aplikacji mobilnej}
    \label{Fig:scanTest}
 \end{figure}
 
@@ -530,7 +530,7 @@ Przechodząc do ekranu ,,TV Model'', nie zobaczy się od razu listy dostępnych 
 
 Użytkownik nie jest zmuszony do definiowania własnego modelu telewizora. Może on wybrać z dostępnej listy model marki Manta i przejść bezpośrednio do ekranów aplikacji z przyciskami pilota i sterować swoim urządzeniem telewizyjnym.
 
-Jeśli jednak chce edytować już wcześniej utworzony przez siebie model urządzenia odbierającego sygnały podczerwone najlepiej, żeby zaopatrzył się w kody sygnałów IR interesującego go modelu z materiałów producenta. Może jednak skorzystać też z czytnika kodów podczerownych oprogramowanego w urządzeniu pośredniczącym. Wystarczy, że skieruje on swojego starego pilota na to urządzenie i będzie wciskać przyciski. Działanie to zaprezentowano na Rys. \ref*{Fig:irCodeRemote}.
+Jeśli jednak chce edytować już wcześniej utworzony przez siebie model urządzenia odbierającego sygnały podczerwone najlepiej, żeby zaopatrzył się w kody sygnałów IR interesującego go modelu z materiałów producenta. Może jednak skorzystać też z~ czytnika kodów podczerownych oprogramowanego w urządzeniu pośredniczącym. Wystarczy, że skieruje on swojego starego pilota na to urządzenie i będzie wciskać przyciski. Działanie to zaprezentowano na Rys. \ref*{Fig:irCodeRemote}.
 
 \begin{figure}[ht]
    \centering
@@ -559,29 +559,29 @@ Z sterowania telewizorem może korzystać wiele aplikacji mobilnych jednocześni
 
 \section{Zakończenie}
 
-Niniejsza praca miała na celu zaproponowanie rozwiązania sterowania telewizorem z poziomu smartfona dzięki aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler z niezbędnymi modułami. Przedstawiono w niej i omówiono technologie i koncepty, z których skorzystano podczas procesu projektowania tego systemu. Opisane zostały też najważniejsze elementy fizycznej części systemu oraz oprogramowanie mikrokontrolera i zbudowana aplikacja mobilna oraz ich współpraca w sterowaniu telewizorem.
+Niniejsza praca miała na celu zaproponowanie rozwiązania sterowania telewizorem z poziomu smartfona dzięki aplikacji mobilnej i urządzeniu pośredniczącym opartemu o mikrokontroler z niezbędnymi modułami.  i omówiono w niej technologie i koncepty, z których korzystano podczas procesu projektowania tego systemu. Opisane zostały też najważniejsze elementy fizycznej części systemu oraz oprogramowanie mikrokontrolera i zbudowana aplikacja mobilna oraz ich współpraca w sterowaniu telewizorem.
 
-Utworzony prototyp systemu zapewnił możliwość programowani przycisków pilota w aplikacji mobilnej w oparciu o szesnastkowe kody syngałów podczerwonych. Kody te można uzyskać przeglądając sieć i strony producentów urzadzeń multimedialnych oraz dzięki wbudowanemu w urządzenie pośredniczące czytnikowi kodów IR, który po odebraniu takowego wyświetla go na ekranie OLED. Za pomocą skorzystania z serwera BLE zapewniono także dostęp do systemu dla wielu użytkowników jednocześnie. Utworzona aplikacja mobilna jest prosta w użytkowaniu i intuicyjna nawet dla użytkowników nieobytych z technologią obecną w dzisiejszych smartfonach.
+Utworzony prototyp systemu zapewnił możliwość programowani przycisków pilota w aplikacji mobilnej w oparciu o szesnastkowe kody syngałów podczerwonych. Kody te można uzyskać przeglądając sieć i strony producentów urzadzeń multimedialnych oraz dzięki wbudowanemu w urządzenie pośredniczące czytnikowi kodów IR, który po odebraniu takiego kodu przez podczerwień, wyświetla go na ekranie OLED. Przy pomocy serwera BLE zapewniono także dostęp do systemu dla wielu użytkowników jednocześnie. Utworzona aplikacja mobilna jest prosta w użytkowaniu i intuicyjna nawet dla użytkowników nieobytych z technologią obecną w dzisiejszych smartfonach.
 
-Zaprojektowany prototypowy system aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler jest już w pełni funkcjonalny i może zostać przekształcony do produktu komercyjnego. Aby zwiększyć jednak jego atrakcyjność na rynku można wskazać kilka usprawnień, jak:
+Zaprojektowany prototypowy system aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler jest już w pełni funkcjonalny i może nawet zostać przekształcony do produktu komercyjnego. Aby zwiększyć jednak atrakcyjność tego rozwiązania na rynku, można wskazać kilka usprawnień, jak:
 \begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.65cm]
-   \item zabudowanie urządzenia pośredniczącego w wygodną prostokątną obudowę z odpowiednim rozłożeniem modułów
-   \item wprowadznie automatyzacji programowania kodów IR i wczytywania ich z plików JSON, udostępnianych też na stronie internetowej firmy
-   \item dodanie obsługi inteligentnych gestów użytkownika w aplikacji dla konkretnych typów urządzeń
-   \item wprowadzenie kreatora ekranów przycisków w aplikacji dla maksymalnej uniwersalności rozwiązania
-   \item wprowadzenie systemu logowania użytkowników aby przechowywać ustawienia zestawów przycisków w wygodny dla niego sposób na serwerze
+   \item zabudowanie urządzenia pośredniczącego w wygodną prostokątną obudowę z odpowiednim rozłożeniem modułów,
+   \item wprowadznie automatyzacji programowania kodów IR i wczytywania ich z plików JSON, udostępnianych też na stronie internetowej firmy,
+   \item dodanie obsługi inteligentnych gestów użytkownika w aplikacji dla konkretnych typów urządzeń,
+   \item wprowadzenie kreatora ekranów przycisków pilota w aplikacji dla maksymalnej uniwersalności rozwiązania,
+   \item wprowadzenie systemu logowania, aby przechowywać zestawy przycisków na serwerze, dzięki czemu będą dostępne dla wielu urządzeń tego użytkownika
    
 \end{itemize}
 
 Autor za własny wkład pracy uważa: 
 \begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.65cm]
-   \item przegląd i dobór technologii do utworzonego rozwiązania
-   \item zaprojektowanie urządzenia pośredniczącego opartego o mikrokontroler wysyłającego i odbierającego sygnały IR
-   \item zaprojektowanie interfejsu użytkownika aplikacji mobilnej
-   \item zaprojektowanie komunikacji aplikacji mobilnej z mikrokontrolerem w oparciu o technologię BLE
-   \item utworzenie odpowiedniego oprogramowania sterującego dla mikrokontrolera
-   \item zbudowanie i oprogramowanie aplikacji mobilnej
-   \item opis oprogramowania i przedstawienie elementów utworzonego systemu
+   \item przegląd i dobór technologii do utworzonego rozwiązania,
+   \item zaprojektowanie urządzenia pośredniczącego opartego o mikrokontroler wysyłającego i odbierającego sygnały IR,
+   \item zaprojektowanie interfejsu użytkownika aplikacji mobilnej,
+   \item zaprojektowanie komunikacji aplikacji mobilnej pilota uniwersalnego z mikrokontrolerem w oparciu o~technologię BLE,
+   \item utworzenie odpowiedniego oprogramowania sterującego dla mikrokontrolera,
+   \item zbudowanie i oprogramowanie aplikacji mobilnej,
+   \item opis oprogramowania i przedstawienie elementów utworzonego systemu.
    
 \end{itemize}
 
