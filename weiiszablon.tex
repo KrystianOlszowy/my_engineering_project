@@ -1,5 +1,5 @@
 % typ dokumentu,draft
-\documentclass[12pt,twoside]{article}
+\documentclass[12pt,twoside,draft]{article}
 
 % użycie pakietu , jak include
 \usepackage{weiiszablon}
@@ -92,8 +92,21 @@ wyświetlania odebranego kodu sygnału podczerwonego na wyświetlaczu zintegrowa
 Zakres pracy obejmuje omówienie podobnych dostępnych rozwiązań na rynku, budowę systemu z~mikrokontrolerem na płytce ESP32 razem z wymaganymi modułami i utworzenie jego oprogramowania sterującego,~a także projekt i oprogramowanie aplikacji
 mobilnej frameworka Flutter służącej jako interfejs pilota uniwersalnego do telewizora. W obszarze zagadnień podejmowanych w pracy znajduje się także przedstawienie działania zaprojektowanej aplikacji współpracującej ze zbudowanym urządzeniem pośredniczącym oraz wskazanie potencjalnych możliwości rozbudowania systemu.
 
-\subsection{Zawartość pracy [niezakończone]}
-W rozdziale drugim  omówiono ogólnodostępne rozwiązania stanowiące aktualny stan wiedzy w zakresie zdalnego sterowania odbiornikiem telewizyjnym...
+\subsection{Zawartość pracy}
+W rozdziale drugim  omówiono ogólnodostępne rozwiązania stanowiące aktualny stan wiedzy w zakresie zdalnego sterowania odbiornikiem telewizyjnym.
+
+Rozdział trzeci zawiera przedstawienie i opis technologii wykorzystanych w zaprojektowanym rozwiązaniu.
+
+Czwarty rozdział opisuje sposób połączenia komponentów i ich parametry, składających się na urządzenie pośredniczące zbudowane aby skomunikować aplikację mobilną z telewizorem.
+
+W rozdziale piątym szczegółowo omówiono utworzone oprogramowanie mikrokontrolera odpowiedzialne za sterowanie jego zasobami i dołączonymi modułami.
+
+Rozdział szósty zawiera opis zaprojektowanego intefejsu użytkownika aplikacji mobilnej oraz jej funkcjonalności, a także wykorzystane rozwiązania programowe przy implementacji.
+
+Siódmy rozdział koncentruje się na przedstawieniu sposobu korzystania z utworzonego rozwiązania i ocenie skuteczności poszczególnych jego funkcji.
+
+W ostatnim rozdziale zawarto podsumowanie całej pracy, możliwe usprawnienia zaprojektowanego rozwiązania oraz wskazano elementy projektu, które autor uważa za wkład własny.
+
 
 \clearpage
 \section{Porównanie zaprojektowanego systemu z do\-stęp\-ny\-mi rozwiązaniami}
@@ -112,7 +125,7 @@ możemy na przykład w modelu Philips SRP4030/10\cite{expensiveController}.
 
 Dostępne są jednak także rozbudowane aplikacje z dedykowanymi urządzeniami wysyłającymi sygnały podczerwone łączące się ze smartfonem poprzez WiFi. Znajdujemy już w nich wiele z pożądanych cech w pilocie uniwersalnym, jak: niska cena względem oferowanych możliwości, możliwość otrzymania predefiniowanych modeli telewizorów czy edycję nie wymagającą posiadania oryginalnego pilota do sterowanego urządzenia. Przykładowym dostępnym rozwiązaniem tego typu jest urządzenie Smart IR Remote Crabtree\cite{appController}.
 \subsection{Zestawienie z autorskim projektem}
-{Wymienione wcześniej urządzenia mają swoje zastosowania, ale nie wystrzegają się też wad. Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w popełnieniu błędu programowanie. Dostęp do tworzenia własnych zestawów przycisków jest nierzadko trudny, czasem niemożliwy, a samo użycie często wymaga przchodzenia po niewidocznej liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski.Urządzenia nieposiadające tych wad czyli aplikacje z dedykowaną stacją wysyłającą sterowanie do urządzeń domowych, łączą się jednak poprzez WiFi ze smartfonem, przez co pobiera ono więcej energii niż inne rozwiązania oraz wymaga podłączenia do sieci użytkownika, generując jej obciążenie.
+{Wymienione wcześniej urządzenia mają swoje zastosowania, ale nie wystrzegają się też wad. Wiele z nich wymaga zasilania bateryjnego co jest szkodliwe dla środowiska, o które szczególnie stara się dbać społeczeństwo w dzisiejszych czasach. Posiadają one często mozolne i łatwe w popełnieniu błędu programowanie. Dostęp do tworzenia własnych zestawów przycisków jest nierzadko trudny, czasem niemożliwy, a samo użycie często wymaga przchodzenia po niewidocznej liście i sprawdzeniu czy telewizor reaguje na predefiniowane przyciski. Urządzenia nieposiadające tych wad czyli aplikacje z dedykowaną stacją wysyłającą sterowanie do urządzeń domowych, łączą się jednak poprzez WiFi ze smartfonem, przez co pobiera ono więcej energii niż inne rozwiązania oraz wymaga podłączenia do sieci użytkownika, generując jej obciążenie.
 
    Autorskie rozwiązanie systemu służacego za pilota do telewizora stara się rozwiązać przedstawione problemy. Bateria czy akumulator możliwe są do używania z urządzeniem wysyłającym sygnały podczerwone, jednak z powodzeniem zasilanie może i powinno odbywać się przez kabel microUSB, dzięki czemu nie zwiększany jest popyt na szkodliwe dla środowiska baterie. Programowanie przycisków odbywa się przez podanie kodów IR w odpowiednich polach, które sprawdzają czy dane w nich zawarte są poprawne, dzięki czemu użytkownik ma bezpośredni i przejrzysty dostęp do swoich ustawień pilota. Utworzony przez niego lub predefiniowany model telewizora wybierany jest z listy, którą można łatwo przeglądać i rozbudować. Sama aplikacja posiada kontrolę błędów konfiguracji oraz komunikacji bezprzewodowej i jest intuicyjna dla użytkownika już podczas pierwszego uruchomienia. Wywmiana danych ze smartfonem odbywa się za pomocą technologii Bluetooth Low Energy co ogranicza zużycie energii. Zauważając, że z urządzenia pośredniczącego może korzystać wiele osób jednocześnie w większej skali jest to tańsze rozwiązanie niż piloty uniwersalne, kiedy rozważymy wielu użytkowników. Łatwość obsługi i przejrzystość interfejsu aplikacji jest atutem zwłaszcza dla osób starszych, nieobytych z technologią.
 }
@@ -551,16 +564,26 @@ Niniejsza praca miała na celu zaproponowanie rozwiązania sterowania telewizore
 Utworzony prototyp systemu zapewnił możliwość programowani przycisków pilota w aplikacji mobilnej w oparciu o szesnastkowe kody syngałów podczerwonych. Kody te można uzyskać przeglądając sieć i strony producentów urzadzeń multimedialnych oraz dzięki wbudowanemu w urządzenie pośredniczące czytnikowi kodów IR, który po odebraniu takowego wyświetla go na ekranie OLED. Za pomocą skorzystania z serwera BLE zapewniono także dostęp do systemu dla wielu użytkowników jednocześnie. Utworzona aplikacja mobilna jest prosta w użytkowaniu i intuicyjna nawet dla użytkowników nieobytych z technologią obecną w dzisiejszych smartfonach.
 
 Zaprojektowany prototypowy system aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler jest już w pełni funkcjonalny i może zostać przekształcony do produktu komercyjnego. Aby zwiększyć jednak jego atrakcyjność na rynku można wskazać kilka usprawnień, jak:
-\begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.6cm]
+\begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.65cm]
    \item zabudowanie urządzenia pośredniczącego w wygodną prostokątną obudowę z odpowiednim rozłożeniem modułów
-   \item wprowadznie automatyzacji programowania kodów IR i wczytywania ich z plików JSON
-   \item dodanie obługi inteligentnych gestów w aplikacji dla konkretnych typów urządzeń
+   \item wprowadznie automatyzacji programowania kodów IR i wczytywania ich z plików JSON, udostępnianych też na stronie internetowej firmy
+   \item dodanie obsługi inteligentnych gestów użytkownika w aplikacji dla konkretnych typów urządzeń
    \item wprowadzenie kreatora ekranów przycisków w aplikacji dla maksymalnej uniwersalności rozwiązania
-   \item wprowadzenia logowania użytkowników aby przechowywać ustawienia w wygodny dla niego sposób na serwerze
+   \item wprowadzenie systemu logowania użytkowników aby przechowywać ustawienia zestawów przycisków w wygodny dla niego sposób na serwerze
    
 \end{itemize}
 
 Autor za własny wkład pracy uważa: 
+\begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.65cm]
+   \item przegląd i dobór technologii do utworzonego rozwiązania
+   \item zaprojektowanie urządzenia pośredniczącego opartego o mikrokontroler wysyłającego i odbierającego sygnały IR
+   \item zaprojektowanie interfejsu użytkownika aplikacji mobilnej
+   \item zaprojektowanie komunikacji aplikacji mobilnej z mikrokontrolerem w oparciu o technologię BLE
+   \item utworzenie odpowiedniego oprogramowania sterującego dla mikrokontrolera
+   \item zbudowanie i oprogramowanie aplikacji mobilnej
+   \item opis oprogramowania i przedstawienie elementów utworzonego systemu
+   
+\end{itemize}
 
 \clearpage
 \addcontentsline{toc}{section}{Literatura}
