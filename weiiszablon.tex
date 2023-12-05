@@ -482,7 +482,7 @@ Utworzony został również ekran pozwalający na wprowadzanie cyfr o nazwie ,,N
 \begin{figure}[ht]
    \centering
    \includegraphics[width=10cm]{images/buttonScreens.png}
-   \caption{Ekran ,,Main Buttons'' oraz ,,Numeric'' aplikacji mobilnej}
+   \caption{Ekrany ,,Main Buttons'' oraz ,,Numeric'' aplikacji mobilnej}
    \label{Fig:buttonScreens}
 \end{figure}
 
@@ -491,28 +491,76 @@ Każdy z przycisków po naciśnięciu wysyła dane do 2 charakterystyk serwera B
 \lstinputlisting[inputencoding=utf8/cp1250, language={C++}, caption={\protect\input{captions/buttonSend.txt}\protect\relax}, label={Lst:buttonSend}]{codes/buttonSend.cpp}
 \clearpage
 
+
+
 \section{Testy i prezentacja finalnego systemu}
 \subsection{Ustanawianie połączenia aplikacji z urządzeniem}
-Aplikacja mobilna podczas uruchomiania pyta użytkownika czy nie chce on włączyć adaptera Bluetooth i lokalizacji jeśli te nie są już włączone. Niweluje to możliwość ślepych prób odświeżania dostępnych urządzeń w poszukiwaniu urządzenia pośredniczącego. Jeżeli mikrokontroler jest zasilony, a aplikacja ma włączone oba wymagne moduły w ciągu 3 sekund od odświeżenia listy dostępnych urządzeń jest znajdowany system pośredniczący. Teraz użytkownik może połączyć się z nim za pomocą pojedynczego kliku na wyświetlanej liście w aplikacji. Stan urządzenia pośredniczącego i aplikacji mobilnej na chwilę przed nawiązaniem połączenia przedstawia Rys. \ref*{}.
+Aplikacja mobilna podczas uruchomiania pyta użytkownika czy nie chce on włączyć adaptera Bluetooth i lokalizacji jeśli te nie są już włączone. Niweluje to możliwość ślepych prób odświeżania dostępnych urządzeń w poszukiwaniu urządzenia pośredniczącego. Jeżeli mikrokontroler jest zasilony, a aplikacja ma włączone oba wymagne moduły w ciągu 3 sekund od odświeżenia listy dostępnych urządzeń jest znajdowany system pośredniczący. Teraz użytkownik może połączyć się z nim za pomocą pojedynczego kliku na wyświetlanej liście w aplikacji. Stan urządzenia pośredniczącego i aplikacji mobilnej na chwilę przed nawiązaniem połączenia przedstawia Rys. \ref*{Fig:scanTest}.
 
-Nawiązywanie połącznia aplikacji z systemem wysyłającym sygnały podczerowne do telewizora trwa zazwyczaj do 3 sekund. Jeżeli ten czas jest przekroczony oznacza to zazwyczaj niski poziom naładowania baterii lub spadek napięcia zasilającego mikrokontroler. Po połączeniu się za pomocą BLE obu elementów systemu sterowania telewizorem, na wyświetlaczu OLED widać zwiększenie się liczby połączonych urządzeń, a w aplikacji połączone urządzenie jest podświetlane na zielono. Stan obu urządzeń po nawiązaniu połączenia przedstawia Rys.\ref*{} Tak połączony system, można teraz parametryzować w kolejnym oknie aplikacji.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=14cm]{images/scanTest.jpg}
+   \caption{Stan systemu po włączeniu zasilania w urządzeniu pośredniczącym i wykonaniu skanowania dostępnych urządzeń w aplikacji mobilnej}
+   \label{Fig:scanTest}
+\end{figure}
+
+Nawiązywanie połącznia aplikacji z systemem wysyłającym sygnały podczerowne do telewizora trwa zazwyczaj do 3 sekund. Jeżeli ten czas jest przekroczony oznacza to zazwyczaj niski poziom naładowania baterii lub spadek napięcia zasilającego mikrokontroler. Po połączeniu się za pomocą BLE obu elementów systemu sterowania telewizorem, na wyświetlaczu OLED widać zwiększenie się liczby połączonych urządzeń, a w aplikacji połączone urządzenie jest podświetlane na zielono. Stan obu urządzeń po nawiązaniu połączenia przedstawia Rys.\ref*{Fig:connectingTest} Tak połączony system, można teraz parametryzować w kolejnym oknie aplikacji.
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=14cm]{images/connectingTest.jpg}
+   \caption{Stan systemu po nawiązaniu połączenia}
+   \label{Fig:connectingTest}
+\end{figure}
+
 \subsection{Edycja i wybór modelu telewizora w aplikacji}
 Przechodząc do ekranu ,,TV Model'', nie zobaczy się od razu listy dostępnych predefiniowanych lub zdefiniowanych przez użytkownika telewizorów którymi można sterować lecz będzie to opóźnione o kilka sekund z uwagi na konieczność wczytania tych modeli z pamięci apliakacji. Po pierwszym wczytaniu danych z pamięci ekran działa już płynnie i pozwala na swobodne działanie.
 
 Użytkownik nie jest zmuszony do definiowania własnego modelu telewizora. Może on wybrać z dostępnej listy model marki Manta i przejść bezpośrednio do ekranów aplikacji z przyciskami pilota i sterować swoim urządzeniem telewizyjnym.
 
-Jeśli jednak chce edytować już wcześniej utworzony przez siebie model urządzenia odbierającego sygnały podczerwone najlepiej żeby zaopatrzył się w kody sygnałów IR interesującego go modelu z materiałów producenta. Może jednak skorzystać też z czytnika kodów podczerownych oprogramowanego w urządzeniu pośredniczącym. Wystarczy, że skieruje on swojego starego pilota na to urządzenie i będzie wciskać przyciski zapisując ich kody otrzymane na ekranie wyświetlacza OLED, do odpowiednich pól szesnatkowych kodów syngałów podczerownych w aplikacji mobilnej. Aplikacja sprawdza poprawność tych kodów oraz czy nie zmieniane są predefiniowane modele. W razie potrzeby podpowiada użytkownikowi, też jaki popełnił błąd lub infromuje go o innych możliwościach.
+Jeśli jednak chce edytować już wcześniej utworzony przez siebie model urządzenia odbierającego sygnały podczerwone najlepiej, żeby zaopatrzył się w kody sygnałów IR interesującego go modelu z materiałów producenta. Może jednak skorzystać też z czytnika kodów podczerownych oprogramowanego w urządzeniu pośredniczącym. Wystarczy, że skieruje on swojego starego pilota na to urządzenie i będzie wciskać przyciski. Działanie to zaprezentowano na Rys. \ref*{Fig:irCodeRemote}.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=14cm]{images/irCodeRemote.png}
+   \caption{Stan wyświetlacza OLED po odebraniu kodu IR z przycisku zwiększenia głośności pilota do telewizora ,,Manta''}
+   \label{Fig:irCodeRemote}
+\end{figure}
+
+ Otrzymane w ten sposób szesnastkowe kody IR na ekranie wyświetlacza OLED, użytkownik może zapisać do odpowiednich pól syngałów podczerownych w aplikacji mobilnej wybranego zdefiniowanego przez niego zestawu. Aplikacja sprawdza przed ich zapisaniem jednak poprawność tych kodów oraz czy nie zmieniane są predefiniowane modele. W razie potrzeby podpowiada użytkownikowi jaki popełnił błąd lub infromuje go o innych możliwościach działania.
+
+ Nasłuchując syngałów IR pochodzących z pilota do telewizora marki ,,Manta'' zebrano wszystkie kody przycisków pilota zawartych na kolejnych ekranach apliakacji mobilnej. Zebrane kody szesnastkowe zapisano w kodzie aplikacji i utoworzono z nich opisywany już predefiniowany zestaw przycisków dla tego telewizora, którego użtykownik nie może usunąć z listy.
 
 \subsection{Korzystanie z przycisków pilota}
-Kiedy użytkownik ustawił już swój model telewizora w aplikacji oraz nawiązał połączenie z urządzeniem pośredniczącym może już korzystać z przycisków pilota w aplikacji mobilnej. Reakcja odbiornika na wciśnięty przycisk jest właściwie natychmiastowa i użytkownik jej nie odczuwa. Sam pilot nie obsługuje jednak przytrzymywania przycisku co może stać się zaletą ponieważ nie możliwe w ten sposób jest wysyłanie masy sygnałów naraz co często ma niezamierzone skutki jak zbyt duże zwiększenie głośności urządzenia.
+Kiedy użytkownik ustawił już swój model telewizora w aplikacji oraz nawiązał połączenie BLE z urządzeniem pośredniczącym może już korzystać z przycisków pilota w aplikacji mobilnej. Reakcja odbiornika na wciśnięty przycisk jest właściwie natychmiastowa i użytkownik jej nie odczuwa. Sam pilot nie obsługuje jednak przytrzymywania przycisku, co może stać się zaletą ponieważ nie możliwe w ten sposób jest wysyłanie masy sygnałów naraz co często ma niezamierzone skutki jak zbyt duże zwiększenie głośności urządzenia. Na Rys. \ref*{Fig:buttonsTest} przedstawione zostało użycie przycisku wyciszającego telewizor oraz przycisków numerycznych do podania numeru kanału.
+
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=13cm]{images/buttonsTest.png}
+   \caption{Wciśnięcie przycisku wyciszenia i wpisanie numeru kanału w aplikacji mobilnej pilota}
+   \label{Fig:buttonsTest}
+\end{figure}
+
+Z sterowania telewizorem może korzystać wiele aplikacji mobilnych jednocześnie dzięki zastosowania serwera BLE na urządzeniu pośredniczącym. Dlatego klient ciągle połączony z serwerem nie blokuje możliwości sterowania tym urządzeniem mutlimedialnym dla innych użytkowników domowych.
 
 \clearpage
 
 \section{Zakończenie}
 
-1 $\div$ 3 stron merytorycznie podsumowanie najważniejszych elementów pracy oraz wnioski wynikające z osiągniętego celu pracy. Proponowane zalecenia i modyfikacje oraz rozwiązania będące wynikiem realizowanej pracy.
+Niniejsza praca miała na celu zaproponowanie rozwiązania sterowania telewizorem z poziomu smartfona dzięki aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler z niezbędnymi modułami. Przedstawiono w niej i omówiono technologie i koncepty, z których skorzystano podczas procesu projektowania tego systemu. Opisane zostały też najważniejsze elementy fizycznej części systemu oraz oprogramowanie mikrokontrolera i zbudowana aplikacja mobilna oraz ich współpraca w sterowaniu telewizorem.
 
-Ostatni akapit podsumowania musi zawierać wykaz własnej pracy dyplomanta i zaczynać się od sformułowania: „Autor za własny wkład pracy uważa: \ldots”.
+Utworzony prototyp systemu zapewnił możliwość programowani przycisków pilota w aplikacji mobilnej w oparciu o szesnastkowe kody syngałów podczerwonych. Kody te można uzyskać przeglądając sieć i strony producentów urzadzeń multimedialnych oraz dzięki wbudowanemu w urządzenie pośredniczące czytnikowi kodów IR, który po odebraniu takowego wyświetla go na ekranie OLED. Za pomocą skorzystania z serwera BLE zapewniono także dostęp do systemu dla wielu użytkowników jednocześnie. Utworzona aplikacja mobilna jest prosta w użytkowaniu i intuicyjna nawet dla użytkowników nieobytych z technologią obecną w dzisiejszych smartfonach.
+
+Zaprojektowany prototypowy system aplikacji mobilnej i urządzenia pośredniczącego opartego o mikrokontroler jest już w pełni funkcjonalny i może zostać przekształcony do produktu komercyjnego. Aby zwiększyć jednak jego atrakcyjność na rynku można wskazać kilka usprawnień, jak:
+\begin{itemize}[label=-,labelsep=0.4cm,leftmargin=0.6cm]
+   \item zabudowanie urządzenia pośredniczącego w wygodną prostokątną obudowę z odpowiednim rozłożeniem modułów
+   \item wprowadznie automatyzacji programowania kodów IR i wczytywania ich z plików JSON
+   \item dodanie obługi inteligentnych gestów w aplikacji dla konkretnych typów urządzeń
+   \item wprowadzenie kreatora ekranów przycisków w aplikacji dla maksymalnej uniwersalności rozwiązania
+   \item wprowadzenia logowania użytkowników aby przechowywać ustawienia w wygodny dla niego sposób na serwerze
+   
+\end{itemize}
+
+Autor za własny wkład pracy uważa: 
 
 \clearpage
 \addcontentsline{toc}{section}{Literatura}
