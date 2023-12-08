@@ -88,6 +88,7 @@
 \setlist[enumerate,1]{label=\arabic*),leftmargin=1.25cm}
 \setlist[itemize,1]{label=-,labelsep=0.4cm,leftmargin=1.25cm}
 \setlist[itemize,2]{label=-,labelsep=0.4cm,leftmargin=0.6cm}
+\setlist{noitemsep}
 
 % do sztucznego zwiekszenia poziomu zaglebienia srodowiska itemize
 % / do przejscia na poziom 2
@@ -276,8 +277,10 @@
 \newcommand\keywordsEN[1]{\renewcommand\@keywordsEN{#1}}
 \newcommand\@keywordsEN{\@latex@error{No \noexpand\keywordsEN given}\@ehc}
 
+\usepackage[unicode=true,naturalnames]{hyperref}
+\usepackage[all]{nowidow}
 
-
+\newcommand{\kod}[1]{\texttt{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% strona tytułowa pracy
 \renewcommand{\maketitle}{

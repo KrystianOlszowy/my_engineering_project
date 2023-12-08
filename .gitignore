@@ -5,3 +5,7 @@
 !*.sty
 !.gitignore
 !*.bib
+!*.cpp
+!*.txt
+!*.png
+!*.jpg
