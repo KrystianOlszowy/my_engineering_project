@@ -1,0 +1,1 @@
+Metoda odpowiedzialna za skanowanie dostêpnych urz¹dzeñ

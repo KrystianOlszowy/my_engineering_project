@@ -1,0 +1,1 @@
+Funkcja interpretuj¹ca dane z charakterystyki typu przycisku

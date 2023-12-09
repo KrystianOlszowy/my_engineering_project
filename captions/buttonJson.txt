@@ -1,0 +1,1 @@
+Metody klasy Button pozwalaj¹ce na jej wspó³pracê z formatem zapisu JSON

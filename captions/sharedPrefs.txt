@@ -1,0 +1,1 @@
+Pocz¹tek definicji klasy SharedPrefs

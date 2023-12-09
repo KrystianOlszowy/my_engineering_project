@@ -1,0 +1,1 @@
+Metoda odpowiadaj¹ca za wysy³anie kodu IR wciœniêtego przycisku

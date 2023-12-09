@@ -1,0 +1,1 @@
+Metoda odpowiedzialna za sprawdzenie dostêpnoœci lokalizacji

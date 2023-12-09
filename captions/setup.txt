@@ -1,0 +1,1 @@
+Kod funkcji wykonywanej podczas uruchomienia urz¹dzenia

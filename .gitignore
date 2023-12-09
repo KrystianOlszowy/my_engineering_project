@@ -1,14 +1,25 @@
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.pdf
+
 # ignorowanie wszytskich plików
-*
+#*
 # wyłączenie ignorowania dla poniższych rozszerzeń
-!*.tex
-!*.sty
-!.gitignore
-!*.bib
-!*.cpp
-!*.txt
-!*.png
-!*.jpg
-!images/*
-!codes/*
-!captions/*
+#!*.tex
+#!*.sty
+#!.gitignore
+#!*.bib
+#!*.cpp
+#!*.txt
+#!*.png
+#!*.jpg
+#!images/*
+#!codes/*
+#!captions/*
